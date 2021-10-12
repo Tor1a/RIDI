@@ -1,0 +1,5 @@
+package ridi.model.board;
+
+public class ReplyDto {
+
+}

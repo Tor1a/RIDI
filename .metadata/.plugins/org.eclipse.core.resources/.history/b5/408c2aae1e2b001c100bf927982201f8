@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jjang051.mybatis.ReplyBoardMapper">
+	<insert id="insertBoard" parameterType="ReplyDto">
+		INSERT INTO REPLYBOARD VALUES (
+										SEQ_REPLYBOARD.NEXTVAL,
+										#{name},
+										#{email},
+										#{subject},
+										#{password},
+										SYSDATE,
+										#{reGroup},
+										#{reStep},
+										#{reLevel},
+										0,
+										#{contents}
+										)
+	</insert>
+	<!--   reGroup 최대 값 구하기 -->
+	<select id="getMaxReGroup" resultType="Integer">
+		SELECT NVL(MAX(REGROUP),1) AS REGROUPMAX FROM REPLYBOARD
+	</select>
+	<!-- parameter  두개 이상일때는 Dto를 만들거나 아니면 HashMap을 사용한다. -->
+	<!-- XML에서 특수문자 처리는 CDATA -->
+	<select id="getAllList" parameterType="HashMap" resultType="ReplyDto">
+		SELECT * FROM (SELECT B.*,ROWNUM AS NUM FROM ( SELECT * FROM REPLYBOARD ORDER BY REGROUP DESC, RELEVEL ASC ) B	) 
+		WHERE NUM  <![CDATA[>=]]>  #{start} AND NUM  <![CDATA[<]]>  #{end}
+	</select>
+	
+	<!-- 
+	<select id="getSearchAllList" parameterType="HashMap" 
+	resultType="ReplyDto">
+		SELECT * FROM 
+					(SELECT B.*,ROWNUM AS NUM FROM 
+					( SELECT * FROM REPLYBOARD WHERE 
+					${field} LIKE 
+					'%' || #{searchWord} || '%' 
+					ORDER BY REGROUP DESC, RELEVEL ASC ) B )
+				WHERE NUM  <![CDATA[>=]]>  
+				#{start} AND NUM <![CDATA[<]]> #{end}
+	</select>
+	-->
+	<select id="getSearchAllList" parameterType="SearchDto" 
+	resultType="ReplyDto">
+		SELECT * FROM 
+					(SELECT B.*,ROWNUM AS NUM FROM 
+					( SELECT * FROM REPLYBOARD WHERE 
+					${field} LIKE 
+					'%' || #{searchWord} || '%' 
+					ORDER BY REGROUP DESC, RELEVEL ASC ) B )
+				WHERE NUM  <![CDATA[>=]]>  
+				#{start} AND NUM <![CDATA[<]]> #{end}
+	</select>
+	
+	
+	<select id="getSearchTotal" 
+	parameterType="HashMap" resultType="Integer">
+		SELECT COUNT(*) AS TOTAL FROM 
+		REPLYBOARD WHERE ${field} 
+		LIKE '%' || #{searchWord} || '%' 
+	</select>
+	
+	<select id="getTotal" resultType="Integer">
+		SELECT COUNT(*) AS TOTAL FROM REPLYBOARD
+	</select>
+	
+	
+	<!-- 조회수 증가 -->
+	<update id="updateReadCount" parameterType="Integer">
+		UPDATE REPLYBOARD SET READCOUNT = 
+		READCOUNT + 1 WHERE NO = #{no}
+	</update>
+	
+	<!-- 하나 읽기 -->
+	<select id="getBoardSelectOne" parameterType="Integer" resultType="ReplyDto">
+		SELECT * FROM REPLYBOARD WHERE NO = #{no}
+	</select>
+	
+	<!-- 댓글 쓰기 -->
+	<!-- 
+	<insert id="insertReplyBoard" parameterType="ReplyDto">
+		INSERT INTO REPLYBOARD VALUES (
+										SEQ_REPLYBOARD.NEXTVAL,
+										#{name},
+										#{email},
+										#{subject},
+										#{password},
+										SYSDATE,
+										#{reGroup},
+										#{reStep},
+										#{reLevel},
+										0,
+										#{contents}
+										)
+	</insert>
+	 -->
+	<!-- 
+	<update id="updateReLevel" parameterType="HashMap">
+		UPDATE REPLYBOARD SET RELEVEL = RELEVEL + 1 WHERE REGROUP = #{reGroup} AND RELEVEL > #{reLevel}
+	</update>
+	 -->
+	<update id="updateReLevel" parameterType="ReplyDto">
+		UPDATE REPLYBOARD SET RELEVEL = RELEVEL + 1 
+		WHERE REGROUP = #{reGroup} AND 
+		RELEVEL  <![CDATA[ > ]]> #{reLevel}
+	</update>
+	<insert id="insertReplyBoard" parameterType="ReplyDto">
+		INSERT INTO REPLYBOARD VALUES (SEQ_REPLYBOARD.NEXTVAL,
+									   #{name},
+									   #{email},
+									   #{subject},
+									   #{password},
+									   SYSDATE,
+									   #{reGroup},
+									   #{reStep},
+									   #{reLevel},
+									   0,
+									   #{contents})
+	</insert>
+	
+	<!--   이전 글 가져오기 -->
+	<select id="getSelectPrev" parameterType="Integer" resultType="ReplyDto">
+		SELECT * FROM (SELECT B.*,ROWNUM AS NUM FROM 
+						( SELECT * FROM REPLYBOARD ORDER BY REGROUP DESC, RELEVEL ASC ) B)
+					WHERE NUM = #{num} - 1
+	</select>
+	<!--   다음 글 가져오기 -->
+	<select id="getSelectNext" parameterType="Integer" resultType="ReplyDto">
+		SELECT * FROM (SELECT B.*,ROWNUM AS NUM FROM 
+						( SELECT * FROM REPLYBOARD ORDER BY REGROUP DESC, RELEVEL ASC ) B)
+					WHERE NUM = #{num} + 1
+	</select>
+</mapper>
+
+
+
+
