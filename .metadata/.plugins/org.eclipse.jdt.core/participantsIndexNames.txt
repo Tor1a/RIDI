@@ -1,7 +1,3 @@
 INDEX VERSION 1.131
-C:\java_RIDI\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\399731766.index
-\RIDI\src\main\java
-C:\java_RIDI\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4072221596.index
-\RIDI\src\main\java
-C:\java_RIDI\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2771599623.index
+C:\Users\user\Desktop\768768\RIDI\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\399731766.index
 \RIDI\src\main\java
