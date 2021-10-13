@@ -17,3 +17,16 @@
 1634023156199	Rename resource 'Payment'
 1634023163564	Rename resource 'Reply'
 1634023482635	Rename type 'PaymentController'
+1634103970732	Rename package 'ridi.model.order'
+1634103979887	Rename type 'orderDao'
+1634103986172	Rename compilation unit 'orderDto.java'
+1634104706144	Rename resource 'PaymentMapper.xml'
+1634104721341	Rename resource 'ReplyBoardMapper.xml'
+1634104734106	Copy file
+1634105987920	Rename package 'ridi.model.books'
+1634105996964	Rename type 'booksDao'
+1634106004822	Rename type 'booksDto'
+1634111625048	Copy file
+1634111640990	Delete element
+1634111704235	Rename resource 'membe'
+1634111707282	Move 'join.jsp' to 'member'

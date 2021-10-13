@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="">
-
-
+<mapper namespace="ridi.mybatis.MemberMapper">
+<select id="getAllMember" resultType="MemberDto">
+	SELECT * FROM MEMBER
+</select>
+	<insert id="insertMember" parameterType="MemberDto">
+		INSERT INTO MEMBER VALUSE(
+									SEQ_MEMBER.NEXTVAL,
+									#{name},
+									#{rrn},
+									#{id},
+									#{password},
+									#{email},
+									#{gender},
+									#{zipcode},
+									#{address},
+									#{hp},
+									#{creation_date}
+		)
+	</insert>
+	<select id="getOneMember" resultType="MemberDto">
+		SELECT * FROM MEMBER
+	</select>
 </mapper>
 
 
