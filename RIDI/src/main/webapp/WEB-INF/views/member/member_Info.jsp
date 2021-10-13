@@ -3,12 +3,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>HOME</title>
+<title>회원 정보</title>
 </head>
 <body>
-	<h1>hihihi</h1>
-	<script>
-		location.href="MemberShow";
-	</script>
+	
 </body>
 </html>
