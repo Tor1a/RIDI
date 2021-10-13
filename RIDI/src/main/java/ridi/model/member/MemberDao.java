@@ -32,7 +32,7 @@ public class MemberDao {
 	      return loggedMember;
 	   }
 	   
-	   //�삤�꽦�떇�씠 �엫�떆 �깮�꽦
+	   //오성식이 임시 생성
 	   public MemberDto getOneMember() {
 		   MemberDto memberDto = null;
 		   SqlSession sqlSession = sqlSessionFactory.openSession();

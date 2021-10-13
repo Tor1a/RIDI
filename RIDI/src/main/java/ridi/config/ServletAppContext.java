@@ -2,14 +2,16 @@ package ridi.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@EnableWebMvc	//Controller annotationÀÌ ºÙ¾îÀÖ´Â class¸¦  Controller ·Î µî·ÏÇØÁØ´Ù.
-@ComponentScan("ridi.controller") // scanÇÒ ÆÐÁöÅ° ÁöÁ¤
+@EnableWebMvc	//Controller annotationï¿½ï¿½ ï¿½Ù¾ï¿½ï¿½Ö´ï¿½ classï¿½ï¿½  Controller ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø´ï¿½.
+@ComponentScan("ridi.controller") // scanï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å° ï¿½ï¿½ï¿½ï¿½
+@Configuration
 public class ServletAppContext implements WebMvcConfigurer{
 	
 			//ViewResolver
@@ -18,7 +20,7 @@ public class ServletAppContext implements WebMvcConfigurer{
 			registry.jsp("/WEB-INF/views/",".jsp");
 		}
 		
-		//Á¤Àû ÆÄÀÏ ¼¼ÆÃ
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		public void addResourceHandlers(ResourceHandlerRegistry registry) {
 			WebMvcConfigurer.super.addResourceHandlers(registry);
 			registry.addResourceHandler("/**").addResourceLocations("/resources/");
