@@ -7,8 +7,5 @@
 </head>
 <body>
 	<h1>hihihi</h1>
-	<script>
-		location.href="MemberShow";
-	</script>
 </body>
 </html>

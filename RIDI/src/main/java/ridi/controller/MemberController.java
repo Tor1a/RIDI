@@ -9,11 +9,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import lombok.extern.slf4j.Slf4j;
 import ridi.model.member.MemberDao;
 import ridi.model.member.MemberDto;
 import ridi.utlils.ScriptWriterUtil;
 
 @Controller
+@Slf4j
 public class MemberController {
 	 @Autowired
      MemberDao memberDao;
@@ -45,7 +47,8 @@ public class MemberController {
   
   @RequestMapping("/MemberShow")
   public String memberShow() {
-	  memberDao.getOneMember();
+	  memberDto = memberDao.getOneMember();
+	  log.info("memberDto ================================= {}",memberDto);
 	  return "hi";
   }
 

@@ -1,4 +1,7 @@
-INDEX VERSION 1.4+C:\Users\user\Desktop\768768\RIDI\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-399731766.index
-253833856.index
+INDEX VERSION 1.4+C:\Users\user\Desktop\¹é¾÷¿ë\RIDI\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2606262909.index
+3704630361.index
+4226575688.index
 3197884292.index
+1286833658.index
+1025862844.index
