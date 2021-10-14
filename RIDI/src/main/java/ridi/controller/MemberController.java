@@ -29,6 +29,7 @@ public class MemberController {
 
   @RequestMapping("/MemberJoin.do")
   public String memberJoin(@ModelAttribute MemberDto memberDto, HttpServletResponse response) throws IOException {
+     //logger.info("memberDto==={}", memberDto.toString());
      memberDto.setAddress(memberDto.getAddress01()+" "+memberDto.getAddress02());
      memberDto.setHp(memberDto.getPhoneNumber()+"-"+memberDto.getPhoneMiddleNumber()+"-"+memberDto.getPhoneLastNumber());
      int result = memberDao.insertMember(memberDto);
@@ -42,14 +43,11 @@ public class MemberController {
   
   @RequestMapping("/MemberJoinForm.do")
   public String memberWriteForm() {
-     return "member/join";
+     return "member/member_Join";
   }
   
-  @RequestMapping("/MemberShow")
-  public String memberShow() {
-	  memberDto = memberDao.getOneMember();
-	  log.info("memberDto ================================= {}",memberDto);
-	  return "hi";
+  @RequestMapping("/MemberLoginForm.do")
+  public String memberLoginForm() {
+	  return "member/member_Login";
   }
-
 }

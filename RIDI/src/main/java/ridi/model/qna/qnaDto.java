@@ -7,17 +7,17 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Repository
-public class qnaDto {
+public class QnaDto {
 	private int no;
 	private String content;
 	private int book_No;
 	private String writer_Id;
 	private String reply_Ok;
-	public qnaDto() {
+	public QnaDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public qnaDto(int no, String content, int book_No, String writer_Id, String reply_Ok) {
+	public QnaDto(int no, String content, int book_No, String writer_Id, String reply_Ok) {
 		super();
 		this.no = no;
 		this.content = content;
@@ -27,7 +27,7 @@ public class qnaDto {
 	}
 	@Override
 	public String toString() {
-		return "qnaDto [no=" + no + ", content=" + content + ", book_No=" + book_No + ", writer_Id=" + writer_Id
+		return "QnaDto [no=" + no + ", content=" + content + ", book_No=" + book_No + ", writer_Id=" + writer_Id
 				+ ", reply_Ok=" + reply_Ok + "]";
 	}
 	public int getNo() {
@@ -61,5 +61,5 @@ public class qnaDto {
 		this.reply_Ok = reply_Ok;
 	}
 	
-	
+
 }

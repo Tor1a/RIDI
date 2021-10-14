@@ -4,9 +4,14 @@ import java.sql.Date;
 
 import org.springframework.stereotype.Repository;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
+import ridi.model.member.MemberDao;
 
 @Repository
-public class ordersDto {
+public class OrdersDto {
 	private int no;
 	private int order_No;
 	private String book_Name;
@@ -18,6 +23,32 @@ public class ordersDto {
 	private Date order_Date;
 	private String seller;
 	private String payCheck;
+	public OrdersDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public OrdersDto(int no, int order_No, String book_Name, int qTY, int price, String ordered,
+			String shipping_Address, String shipping_Stage, Date order_Date, String seller, String payCheck) {
+		super();
+		this.no = no;
+		this.order_No = order_No;
+		this.book_Name = book_Name;
+		QTY = qTY;
+		this.price = price;
+		this.ordered = ordered;
+		this.shipping_Address = shipping_Address;
+		this.shipping_Stage = shipping_Stage;
+		this.order_Date = order_Date;
+		this.seller = seller;
+		this.payCheck = payCheck;
+	}
+	@Override
+	public String toString() {
+		return "OrdersDto [no=" + no + ", order_No=" + order_No + ", book_Name=" + book_Name + ", QTY=" + QTY
+				+ ", price=" + price + ", ordered=" + ordered + ", shipping_Address=" + shipping_Address
+				+ ", shipping_Stage=" + shipping_Stage + ", order_Date=" + order_Date + ", seller=" + seller
+				+ ", payCheck=" + payCheck + "]";
+	}
 	public int getNo() {
 		return no;
 	}
@@ -84,31 +115,6 @@ public class ordersDto {
 	public void setPayCheck(String payCheck) {
 		this.payCheck = payCheck;
 	}
-	@Override
-	public String toString() {
-		return "ordersDto [no=" + no + ", order_No=" + order_No + ", book_Name=" + book_Name + ", QTY=" + QTY
-				+ ", price=" + price + ", ordered=" + ordered + ", shipping_Address=" + shipping_Address
-				+ ", shipping_Stage=" + shipping_Stage + ", order_Date=" + order_Date + ", seller=" + seller
-				+ ", payCheck=" + payCheck + "]";
-	}
-	public ordersDto(int no, int order_No, String book_Name, int qTY, int price, String ordered,
-			String shipping_Address, String shipping_Stage, Date order_Date, String seller, String payCheck) {
-		super();
-		this.no = no;
-		this.order_No = order_No;
-		this.book_Name = book_Name;
-		QTY = qTY;
-		this.price = price;
-		this.ordered = ordered;
-		this.shipping_Address = shipping_Address;
-		this.shipping_Stage = shipping_Stage;
-		this.order_Date = order_Date;
-		this.seller = seller;
-		this.payCheck = payCheck;
-	}
-	public ordersDto() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
 	
 }

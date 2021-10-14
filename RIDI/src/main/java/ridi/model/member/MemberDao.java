@@ -37,6 +37,7 @@ public class MemberDao {
 		   MemberDto memberDto = null;
 		   SqlSession sqlSession = sqlSessionFactory.openSession();
 		   memberDto = sqlSession.selectOne("getOneMember");
+		   log.info("memberDto ========================================= {}",memberDto);
 		   sqlSession.close();
 		   return memberDto;
 	   }

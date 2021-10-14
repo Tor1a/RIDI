@@ -2,7 +2,10 @@ package ridi.model.review;
 
 import org.springframework.stereotype.Repository;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Repository
-public class reviwDao {
+@Slf4j
+public class ReviewDao {
 
 }

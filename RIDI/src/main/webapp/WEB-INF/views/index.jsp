@@ -1,11 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>HOME</title>
-</head>
-<body>
-	<h1>hihihi</h1>
-</body>
-</html>
+<%@ include file="include/header.jsp"%>
+	<h1>RIDI</h1>
+	<a href="MemberLoginForm.do">Member login</a>
+<%@ include file="include/footer.jsp"%>

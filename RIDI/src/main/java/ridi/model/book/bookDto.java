@@ -8,8 +8,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+
 @Repository
-public class bookDto {
+public class BookDto {
 	private int no;
 	private String book_Name;
 	private int price;
@@ -23,6 +24,38 @@ public class bookDto {
 	private String author;
 	private String book_Intro;
 	private String book_Image;
+	private String book_RealImage;
+	public BookDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public BookDto(int no, String book_Name, int price, int stock, int star_Rating, Date estimated_Time,
+			int shipping_Price, String category, Date publicataion_Date, int pages, String author, String book_Intro,
+			String book_Image, String book_RealImage) {
+		super();
+		this.no = no;
+		this.book_Name = book_Name;
+		this.price = price;
+		this.stock = stock;
+		this.star_Rating = star_Rating;
+		this.estimated_Time = estimated_Time;
+		this.shipping_Price = shipping_Price;
+		this.category = category;
+		this.publicataion_Date = publicataion_Date;
+		this.pages = pages;
+		this.author = author;
+		this.book_Intro = book_Intro;
+		this.book_Image = book_Image;
+		this.book_RealImage = book_RealImage;
+	}
+	@Override
+	public String toString() {
+		return "BookDto [no=" + no + ", book_Name=" + book_Name + ", price=" + price + ", stock=" + stock
+				+ ", star_Rating=" + star_Rating + ", estimated_Time=" + estimated_Time + ", shipping_Price="
+				+ shipping_Price + ", category=" + category + ", publicataion_Date=" + publicataion_Date + ", pages="
+				+ pages + ", author=" + author + ", book_Intro=" + book_Intro + ", book_Image=" + book_Image
+				+ ", book_RealImage=" + book_RealImage + "]";
+	}
 	public int getNo() {
 		return no;
 	}
@@ -101,35 +134,11 @@ public class bookDto {
 	public void setBook_Image(String book_Image) {
 		this.book_Image = book_Image;
 	}
-	@Override
-	public String toString() {
-		return "bookDto [no=" + no + ", book_Name=" + book_Name + ", price=" + price + ", stock=" + stock
-				+ ", star_Rating=" + star_Rating + ", estimated_Time=" + estimated_Time + ", shipping_Price="
-				+ shipping_Price + ", category=" + category + ", publicataion_Date=" + publicataion_Date + ", pages="
-				+ pages + ", author=" + author + ", book_Intro=" + book_Intro + ", book_Image=" + book_Image + "]";
+	public String getBook_RealImage() {
+		return book_RealImage;
 	}
-	public bookDto(int no, String book_Name, int price, int stock, int star_Rating, Date estimated_Time,
-			int shipping_Price, String category, Date publicataion_Date, int pages, String author, String book_Intro,
-			String book_Image) {
-		super();
-		this.no = no;
-		this.book_Name = book_Name;
-		this.price = price;
-		this.stock = stock;
-		this.star_Rating = star_Rating;
-		this.estimated_Time = estimated_Time;
-		this.shipping_Price = shipping_Price;
-		this.category = category;
-		this.publicataion_Date = publicataion_Date;
-		this.pages = pages;
-		this.author = author;
-		this.book_Intro = book_Intro;
-		this.book_Image = book_Image;
+	public void setBook_RealImage(String book_RealImage) {
+		this.book_RealImage = book_RealImage;
 	}
-	public bookDto() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
 	
 }

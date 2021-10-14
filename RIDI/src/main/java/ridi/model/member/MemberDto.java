@@ -26,6 +26,39 @@ public class MemberDto {
 	private String phoneMiddleNumber;
 	private String phoneLastNumber;
 	private Date creation_Date;
+	public MemberDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public MemberDto(int no, String name, String rRN, String id, String password, String email, String gender,
+			int zipcode, String address, String address01, String address02, String hp, String phoneNumber,
+			String phoneMiddleNumber, String phoneLastNumber, Date creation_Date) {
+		super();
+		this.no = no;
+		this.name = name;
+		RRN = rRN;
+		this.id = id;
+		this.password = password;
+		this.email = email;
+		this.gender = gender;
+		this.zipcode = zipcode;
+		this.address = address;
+		this.address01 = address01;
+		this.address02 = address02;
+		this.hp = hp;
+		this.phoneNumber = phoneNumber;
+		this.phoneMiddleNumber = phoneMiddleNumber;
+		this.phoneLastNumber = phoneLastNumber;
+		this.creation_Date = creation_Date;
+	}
+	@Override
+	public String toString() {
+		return "MemberDto [no=" + no + ", name=" + name + ", RRN=" + RRN + ", id=" + id + ", password=" + password
+				+ ", email=" + email + ", gender=" + gender + ", zipcode=" + zipcode + ", address=" + address
+				+ ", address01=" + address01 + ", address02=" + address02 + ", hp=" + hp + ", phoneNumber="
+				+ phoneNumber + ", phoneMiddleNumber=" + phoneMiddleNumber + ", phoneLastNumber=" + phoneLastNumber
+				+ ", creation_Date=" + creation_Date + "]";
+	}
 	public int getNo() {
 		return no;
 	}
@@ -122,39 +155,5 @@ public class MemberDto {
 	public void setCreation_Date(Date creation_Date) {
 		this.creation_Date = creation_Date;
 	}
-	@Override
-	public String toString() {
-		return "MemberDto [no=" + no + ", name=" + name + ", RRN=" + RRN + ", id=" + id + ", password=" + password
-				+ ", email=" + email + ", gender=" + gender + ", zipcode=" + zipcode + ", address=" + address
-				+ ", address01=" + address01 + ", address02=" + address02 + ", hp=" + hp + ", phoneNumber="
-				+ phoneNumber + ", phoneMiddleNumber=" + phoneMiddleNumber + ", phoneLastNumber=" + phoneLastNumber
-				+ ", creation_Date=" + creation_Date + "]";
-	}
-	public MemberDto(int no, String name, String rRN, String id, String password, String email, String gender,
-			int zipcode, String address, String address01, String address02, String hp, String phoneNumber,
-			String phoneMiddleNumber, String phoneLastNumber, Date creation_Date) {
-		super();
-		this.no = no;
-		this.name = name;
-		RRN = rRN;
-		this.id = id;
-		this.password = password;
-		this.email = email;
-		this.gender = gender;
-		this.zipcode = zipcode;
-		this.address = address;
-		this.address01 = address01;
-		this.address02 = address02;
-		this.hp = hp;
-		this.phoneNumber = phoneNumber;
-		this.phoneMiddleNumber = phoneMiddleNumber;
-		this.phoneLastNumber = phoneLastNumber;
-		this.creation_Date = creation_Date;
-	}
-	public MemberDto() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
 	
 }

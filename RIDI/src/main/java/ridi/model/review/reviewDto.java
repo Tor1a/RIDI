@@ -7,9 +7,11 @@ import org.springframework.stereotype.Repository;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
+import ridi.model.member.MemberDao;
 
 @Repository
-public class reviewDto {
+public class ReviewDto {
 	private int no;
 	private int book_No;
 	private String contents;
@@ -17,11 +19,11 @@ public class reviewDto {
 	private int star_Rating;
 	private String password;
 	private Date review_Date;
-	public reviewDto() {
+	public ReviewDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public reviewDto(int no, int book_No, String contents, String wirter_Id, int star_Rating, String password,
+	public ReviewDto(int no, int book_No, String contents, String wirter_Id, int star_Rating, String password,
 			Date review_Date) {
 		super();
 		this.no = no;
@@ -34,7 +36,7 @@ public class reviewDto {
 	}
 	@Override
 	public String toString() {
-		return "reviewDto [no=" + no + ", book_No=" + book_No + ", contents=" + contents + ", wirter_Id=" + wirter_Id
+		return "ReviewDto [no=" + no + ", book_No=" + book_No + ", contents=" + contents + ", wirter_Id=" + wirter_Id
 				+ ", star_Rating=" + star_Rating + ", password=" + password + ", review_Date=" + review_Date + "]";
 	}
 	public int getNo() {
@@ -79,7 +81,5 @@ public class reviewDto {
 	public void setReview_Date(Date review_Date) {
 		this.review_Date = review_Date;
 	}
-	
-	
 	
 }
