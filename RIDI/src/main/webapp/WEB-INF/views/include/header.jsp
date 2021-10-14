@@ -26,8 +26,8 @@
                         </form>
                     </div>
                     <div id="logJoin">
-                        <a href="#" class="HDJoin">회원가입</a>
-                        <a href="#" class="HDLogin">로그인</a>
+                        <a href="MemberJoinForm.do" class="HDJoin">회원가입</a>
+                        <a href="MemberLoginForm.do" class="HDLogin">로그인</a>
                     </div>
                 </div>
                 <nav>
