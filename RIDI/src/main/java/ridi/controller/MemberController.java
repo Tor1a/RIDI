@@ -27,7 +27,6 @@ public class MemberController {
 
   @RequestMapping("/MemberJoin.do")
   public String memberJoin(@ModelAttribute MemberDto memberDto, HttpServletResponse response) throws IOException {
-     //logger.info("memberDto==={}", memberDto.toString());
      memberDto.setAddress(memberDto.getAddress01()+" "+memberDto.getAddress02());
      memberDto.setHp(memberDto.getPhoneNumber()+"-"+memberDto.getPhoneMiddleNumber()+"-"+memberDto.getPhoneLastNumber());
      int result = memberDao.insertMember(memberDto);
