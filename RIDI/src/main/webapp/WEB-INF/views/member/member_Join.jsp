@@ -12,7 +12,7 @@
 	<div id="join_contents" class="join_container">
 		<header class="join_title">
 			<div class="innerL">
-					<h1 class="logoB"><a href="#">RIDI</a></h1>
+					<h1 class="logoB"><a href="/RIDI">RIDI</a></h1>
 			</div>
 	    </header>
 		<form method="POST" action="MemberJoin.do" id="join" class="join_form" name="signUp" enctype="multipart/form-data">

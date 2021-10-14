@@ -5,10 +5,10 @@
 	SELECT * FROM MEMBER
 </select>
 	<insert id="insertMember" parameterType="MemberDto">
-		INSERT INTO MEMBER VALUSE(
+		INSERT INTO MEMBER VALUES(
 									SEQ_MEMBER.NEXTVAL,
 									#{name},
-									#{rrn},
+									#{RRN},
 									#{id},
 									#{password},
 									#{email},
@@ -16,11 +16,14 @@
 									#{zipcode},
 									#{address},
 									#{hp},
-									#{creation_date}
+									SYSDATE
 		)
 	</insert>
 	<select id="getOneMember" resultType="MemberDto">
 		SELECT * FROM MEMBER
+	</select>
+	<select id="getLoggedMember" resultType="MemberDto">
+		SELECT * FROM MEMBER WHERE ID=#{id} AND PASSWORD = #{password}
 	</select>
 </mapper>
 

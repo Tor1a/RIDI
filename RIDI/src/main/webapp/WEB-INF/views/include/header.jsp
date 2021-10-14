@@ -20,7 +20,7 @@
             <div class="headerInner">
                 <div class="headerTop">
                     <div class="logoSearch">
-                        <h1 class="logo"><a href="#">RIDI <span class="headerToneDown">RIDI</span></a></h1>
+                        <h1 class="logo"><a href="/RIDI">RIDI <span class="headerToneDown">RIDI</span></a></h1>
                         <form action="" method="POST">
                             <input type="text" name="searchBox" id="searchBox" placeholder="제목, 저자, 출판사검색">
                         </form>
@@ -32,7 +32,7 @@
                 </div>
                 <nav>
                     <ul class="headerMenu">
-                        <li><a href="#"><i class="fas fa-home"></i>홈</a></li>
+                        <li><a href="/RIDI"><i class="fas fa-home"></i>홈</a></li>
                         <li><a href="#"><i class="fas fa-shopping-cart"></i>카트</a></li>
                         <li><a href="#"><i class="fas fa-box"></i>주문/배송조회</a></li>
                         <li><a href="#"><i class="far fa-user"></i>마이리디</a></li>

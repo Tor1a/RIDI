@@ -12,16 +12,16 @@
 <body id=loginBack>
     <header id="loginHeader">
         <div class="loginInner">
-                <h1 class="loginLogo"><a href="#">RIDI</a></h1>
+                <h1 class="loginLogo"><a href="/RIDI">RIDI</a></h1>
         </div>
     </header>
     <div class="loginFormInner">
-        <form>
+        <form method="POST" action="MemberLogin.do">
             <div class="loginInput">
                 <input type="text" name="id" class="loginId" placeholder="아이디">
                 <input type="password" name="password" class="loginPassword" placeholder="비밀번호">
                 <input type="submit" value="로그인" class="loginBtn">
-                <a href="#" type="button" class="joinBtn">회원가입</a>
+                <a href="MemberJoinForm.do" type="button" class="joinBtn">회원가입</a>
             </div>
         </form>
     </div>

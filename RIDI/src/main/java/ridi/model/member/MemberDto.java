@@ -2,6 +2,7 @@ package ridi.model.member;
 
 import java.sql.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Repository;
 
 import lombok.Getter;
@@ -12,8 +13,10 @@ import lombok.ToString;
 public class MemberDto {
 	private int no;
 	private String name;
-	private String RRN; // �ֹι�ȣ
-	private String id;
+	private String RRN;
+	private String rrn_first;
+	private String rrn_last;
+	private String id; 
 	private String password;
 	private String email;
 	private String gender;
@@ -25,18 +28,21 @@ public class MemberDto {
 	private String phoneNumber;
 	private String phoneMiddleNumber;
 	private String phoneLastNumber;
-	private Date creation_Date;
+	private String creation_Date;
 	public MemberDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public MemberDto(int no, String name, String rRN, String id, String password, String email, String gender,
-			int zipcode, String address, String address01, String address02, String hp, String phoneNumber,
-			String phoneMiddleNumber, String phoneLastNumber, Date creation_Date) {
+	
+	public MemberDto(int no, String name, String rRN, String rrn_first, String rrn_last, String id, String password,
+			String email, String gender, int zipcode, String address, String address01, String address02, String hp,
+			String phoneNumber, String phoneMiddleNumber, String phoneLastNumber, String creation_Date) {
 		super();
 		this.no = no;
 		this.name = name;
 		RRN = rRN;
+		this.rrn_first = rrn_first;
+		this.rrn_last = rrn_last;
 		this.id = id;
 		this.password = password;
 		this.email = email;
@@ -51,14 +57,16 @@ public class MemberDto {
 		this.phoneLastNumber = phoneLastNumber;
 		this.creation_Date = creation_Date;
 	}
+
 	@Override
 	public String toString() {
-		return "MemberDto [no=" + no + ", name=" + name + ", RRN=" + RRN + ", id=" + id + ", password=" + password
-				+ ", email=" + email + ", gender=" + gender + ", zipcode=" + zipcode + ", address=" + address
-				+ ", address01=" + address01 + ", address02=" + address02 + ", hp=" + hp + ", phoneNumber="
-				+ phoneNumber + ", phoneMiddleNumber=" + phoneMiddleNumber + ", phoneLastNumber=" + phoneLastNumber
-				+ ", creation_Date=" + creation_Date + "]";
+		return "MemberDto [no=" + no + ", name=" + name + ", RRN=" + RRN + ", rrn_first=" + rrn_first + ", rrn_last="
+				+ rrn_last + ", id=" + id + ", password=" + password + ", email=" + email + ", gender=" + gender
+				+ ", zipcode=" + zipcode + ", address=" + address + ", address01=" + address01 + ", address02="
+				+ address02 + ", hp=" + hp + ", phoneNumber=" + phoneNumber + ", phoneMiddleNumber=" + phoneMiddleNumber
+				+ ", phoneLastNumber=" + phoneLastNumber + ", creation_Date=" + creation_Date + "]";
 	}
+
 	public int getNo() {
 		return no;
 	}
@@ -76,6 +84,18 @@ public class MemberDto {
 	}
 	public void setRRN(String rRN) {
 		RRN = rRN;
+	}
+	public String getRrn_first() {
+		return rrn_first;
+	}
+	public void setRrn_first(String rrn_first) {
+		this.rrn_first = rrn_first;
+	}
+	public String getRrn_last() {
+		return rrn_last;
+	}
+	public void setRrn_last(String rrn_last) {
+		this.rrn_last = rrn_last;
 	}
 	public String getId() {
 		return id;
@@ -149,10 +169,10 @@ public class MemberDto {
 	public void setPhoneLastNumber(String phoneLastNumber) {
 		this.phoneLastNumber = phoneLastNumber;
 	}
-	public Date getCreation_Date() {
+	public String getCreation_Date() {
 		return creation_Date;
 	}
-	public void setCreation_Date(Date creation_Date) {
+	public void setCreation_Date(String creation_Date) {
 		this.creation_Date = creation_Date;
 	}
 	
