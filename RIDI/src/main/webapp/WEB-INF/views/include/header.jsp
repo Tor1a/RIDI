@@ -26,8 +26,14 @@
                         </form>
                     </div>
                     <div id="logJoin">
-                        <a href="MemberJoinForm.do" class="HDJoin">회원가입</a>
-                        <a href="MemberLoginForm.do" class="HDLogin">로그인</a>
+                    	<c:if test="${empty sessionScope.loggedMember }">
+                    		<a href="MemberJoinForm.do" class="HDJoin">회원가입</a>
+                        	<a href="MemberLoginForm.do" class="HDLogin">로그인</a>
+                    	</c:if>
+                    	<c:if test="${!empty sessionScope.loggedMember }">
+                    		<a style="color:#fff">${loggedMember.name }님 환영합니다</a>
+                    		<a href="MemberLogout.do" class="HDLogin">로그아웃</a>
+                    	</c:if>
                     </div>
                 </div>
                 <nav>

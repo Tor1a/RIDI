@@ -66,6 +66,12 @@ public class MemberController {
 	  }
   }
   
+  @RequestMapping("/MemberLogout.do")
+  public String memberLogout(HttpSession session) {
+	  session.invalidate();
+	  return "index";
+  }
+  
   @RequestMapping("/MemberJoin.do")
   public void memberJoin(MemberDto memberDto,HttpServletRequest request, HttpServletResponse response) throws IOException {
 	  memberDto.setRRN(memberDto.getRrn_first()+"-"+memberDto.getRrn_last());
