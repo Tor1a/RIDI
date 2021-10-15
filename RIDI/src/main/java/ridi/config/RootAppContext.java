@@ -43,9 +43,17 @@ public class RootAppContext {
 		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 		sqlSessionFactoryBean.setConfigLocation(resolver.getResource("classpath:ridi/mybatis/config.xml"));
 		sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:ridi/mybatis/mapper/*.xml"));
+<<<<<<< HEAD
 
+=======
+//		sqlSessionFactoryBean.setMapperLocations(resolver.getResource("classpath:ridi/mybatis/MemberMapper.xml"));
+//		sqlSessionFactoryBean.setMapperLocations(resolver.getResource("classpath:ridi/mybatis/OrdersMapper.xml"));
+//		sqlSessionFactoryBean.setMapperLocations(resolver.getResource("classpath:ridi/mybatis/QnaMapper.xml"));
+//		sqlSessionFactoryBean.setMapperLocations(resolver.getResource("classpath:ridi/mybatis/ReviewMapper.xml"));
+>>>>>>> master
 		
 		return (SqlSessionFactory)sqlSessionFactoryBean.getObject();
 	}
+	
 	
 }
