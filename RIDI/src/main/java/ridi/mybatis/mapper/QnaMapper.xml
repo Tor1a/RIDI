@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ridi.mybatis.mapper.QnaMapper">
+	<insert id="insertQna" parameterType="QnaDto">
+		INSERT INTO QNA VALUES (
+							SEQ_QNA.NEXTVAL,
+							#{writerId},
+							#{subject},
+							#{password},
+							SYSDATE,
+							#{reGroup},
+							#{reStep},
+							#{reLevel},
+							0,
+							#{contents})
+		
+	</insert>
+	<!-- <select id="getAllList" parameterType="HashMap" resultType="QnaDto">
+		SELECT * FROM (SELECT B.*,ROWNUM AS NUM FROM ( SELECT * FROM QNA ORDER BY REGROUP DESC, RELEVEL ASC ) B	) 
+		WHERE NUM  <![CDATA[>=]]>  #{start} AND NUM  <![CDATA[<]]>  #{end}
+	</select>
+	 -->
+</mapper>
+
+
+
+
