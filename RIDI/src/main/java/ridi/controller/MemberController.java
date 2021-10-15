@@ -73,5 +73,14 @@ public class MemberController {
 	  }
   }
   
+  @RequestMapping("/MemberInfoForm.do")
+  public String memberInfo() {
+	  return "member/member_Info";
+  }
+  
+  @RequestMapping("/MemberInfoModify.do")
+  public String memberInfoModify() {
+	  return "member/member_Modify";
+  }
  
 }

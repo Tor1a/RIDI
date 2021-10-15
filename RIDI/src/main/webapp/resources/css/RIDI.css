@@ -82,7 +82,7 @@ a { text-decoration: none; color: #333; }
 
 #infoContent .infoInner { display: -webkit-box; display: -ms-flexbox; display: flex; margin: 0 auto; width: 1200px; }
 
-#infoContent .infoInner .infoSub { margin-right: 80px; width: 235px; margin-left: 24px; }
+#infoContent .infoInner .infoSub { margin-right: 30px; width: 235px; margin-left: 24px; }
 
 #infoContent .infoInner .infoSub .infoTableLine { width: 130px; }
 
@@ -105,6 +105,60 @@ a { text-decoration: none; color: #333; }
 #infoContent .infoInner .info .infoNoticeBox .infoNoticeTitle::before { content: ''; display: block; width: 88%; height: 2px; background: #e5e5e5; position: absolute; left: 90px; top: 50%; margin-top: -3px; z-index: 1; }
 
 #infoContent .infoInner .info .infoNoticeBox li { padding-left: 10px; margin-bottom: 5px; }
+
+#modify_check h4 { font-size: 20px; margin-bottom: 17px; }
+
+#modify_check p { font-weight: bold; margin-bottom: 10px; font-size: 13px; }
+
+#modify_check .modifyChInput { padding: 7px 10px; width: 200px; outline-color: #1F8CE6; }
+
+#modify_check .modifyChBtn { border: none; cursor: pointer; font-size: 12px; background-color: #1F8CE6; color: #fff; border-radius: 5px; padding: 8px 18px; }
+
+#modifyForm { width: 65%; }
+
+#modifyForm h4 { margin-bottom: 15px; font-size: 20px; }
+
+#modifyForm form table { width: 100%; border-top: 1px solid #e6e8eb; border-collapse: collapse; }
+
+#modifyForm form table tbody { border-bottom: 1px solid #e6e8eb; }
+
+#modifyForm form table tbody tr { border-bottom: 1px solid #e6e8eb; }
+
+#modifyForm form table tbody tr th { width: 130px; background-color: #f2f4f5; color: #808991; text-align: right; padding: 13px 10px; }
+
+#modifyForm form table tbody tr td { padding-left: 15px; }
+
+#modifyForm form table tbody tr .modifyName span { line-height: 45px; font-weight: bold; }
+
+#modifyForm form table tbody tr .modifyName a { border: 1px solid #d1d5d9; color: #808991; border-radius: 5px; margin-right: 10px; margin-top: 7px; padding: 5px; float: right; }
+
+#modifyForm form table tbody tr .modifyName a:hover { background-color: #e4e4e4; }
+
+#modifyForm form table tbody tr .modifyPhBox .modifyPh { padding: 5px; border: 1px solid #d1d5d9; border-radius: 5px; color: #808991; }
+
+#modifyForm form table tbody tr .modifyPhBox .short { height: 17px; padding: 5px; border: 1px solid #d1d5d9; border-radius: 5px; color: #808991; outline-color: #1F8CE6; }
+
+#modifyForm form table tbody tr .modifyPwBox ul .modify_pw input { height: 17px; padding: 5px; border: 1px solid #d1d5d9; border-radius: 5px; color: #808991; outline-color: #1F8CE6; margin: 10px 0; }
+
+#modifyForm form table tbody tr .modifyPwBox ul .modify_pw2 input { height: 17px; padding: 5px; border: 1px solid #d1d5d9; border-radius: 5px; color: #808991; outline-color: #1F8CE6; }
+
+#modifyForm form table tbody tr .modifyAdd .zipcodeBox { margin: 10px 0; height: 17px; padding: 5px; border: 1px solid #d1d5d9; border-radius: 5px; color: #808991; }
+
+#modifyForm form table tbody tr .modifyAdd .zipcodeBtn { border: none; margin-left: 5px; background-color: #1F8CE6; color: #fff; padding: 5px; border-radius: 5px; cursor: pointer; }
+
+#modifyForm form table tbody tr .modifyAdd .zipcodeBtn:hover { background-color: #fff; color: #1F8CE6; border: 1px solid #1F8CE6; }
+
+#modifyForm form table tbody tr .modifyAdd .modify_box1 { height: 17px; padding: 5px; border: 1px solid #d1d5d9; border-radius: 5px; color: #808991; outline-color: #1F8CE6; }
+
+#modifyForm form table tbody tr .modifyAdd .modify_box2 { height: 17px; padding: 5px; border: 1px solid #d1d5d9; border-radius: 5px; color: #808991; margin-bottom: 10px; outline-color: #1F8CE6; }
+
+#modifyForm form .modifyBtnBox { margin-top: 25px; text-align: center; }
+
+#modifyForm form .modifyBtnBox .modifyBtn { border: none; color: #fff; background: #7d8e9e; border: 1px solid #636c73; font-size: 15px; padding: 8px 10px; border-radius: 5px; }
+
+#modifyForm form .modifyBtnBox .modifyBtn:hover { background: #636c73; }
+
+#modifyForm form .modifyBtnBox .modifyCancel { border: 1px solid #636c73; font-size: 15px; padding: 8px 10px; border-radius: 5px; color: #636c73; }
 
 .join_body { width: 100%; height: 100%; background-color: #EBF6FF; }
 

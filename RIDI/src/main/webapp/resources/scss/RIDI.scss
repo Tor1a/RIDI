@@ -192,7 +192,7 @@ a { text-decoration: none; color: #333;}
         margin: 0 auto;
         width: 1200px;
         .infoSub {
-            margin-right: 80px;
+            margin-right: 30px;
             width: 235px;
             margin-left: 24px;
             .infoTableLine {
@@ -263,7 +263,186 @@ a { text-decoration: none; color: #333;}
     }
 }
 //modify
+#modify_check {
+    h4 {
+        font-size: 20px;
+        margin-bottom: 17px;
+    }
+    p {
+        font-weight: bold;
+        margin-bottom: 10px;
+        font-size: 13px;
+    }
+    .modifyChInput {
+        padding: 7px 10px;
+        width: 200px;
+        outline-color: #1F8CE6;
+    }
+    .modifyChBtn {
+        border: none;
+        cursor: pointer;
+        font-size: 12px;
+        background-color: #1F8CE6;
+        color: #fff;
+        border-radius: 5px;
+        padding: 8px 18px;
+    }
+}
 
+//modify_form
+#modifyForm {
+    width: 65%;
+    h4 {
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+    form {
+        table {
+            width: 100%;
+            border-top: 1px solid #e6e8eb;
+            border-collapse: collapse;
+            tbody {
+                border-bottom: 1px solid #e6e8eb;
+                tr {
+                    border-bottom: 1px solid #e6e8eb;
+                    th {
+                        width: 130px;
+                        background-color:#f2f4f5;
+                        color: #808991;
+                        text-align: right;
+                        padding: 13px 10px;
+                    }
+                    td {
+                        padding-left: 15px;
+                    }
+                    .modifyName {
+                        span {
+                            line-height: 45px;
+                            font-weight: bold;
+                        }
+                        a {
+                            border: 1px solid #d1d5d9;
+                            color: #808991;
+                            border-radius: 5px;
+                            margin-right: 10px;
+                            margin-top: 7px;
+                            padding: 5px;
+                            float: right;
+                            &:hover {
+                                background-color: rgb(228, 228, 228);
+                            }
+                        }
+                    }
+                    .modifyPhBox {
+                        .modifyPh {
+                            padding: 5px;
+                            border: 1px solid #d1d5d9;
+                            border-radius: 5px;
+                            color: #808991;
+                        }
+                        .short {
+                            height: 17px;
+                            padding: 5px;
+                            border: 1px solid #d1d5d9;
+                            border-radius: 5px;
+                            color: #808991;
+                            outline-color: #1F8CE6;
+                        }
+                    }
+                    .modifyPwBox {
+                        ul {
+                            .modify_pw {
+                                input {
+                                    height: 17px;
+                                    padding: 5px;
+                                    border: 1px solid #d1d5d9;
+                                    border-radius: 5px;
+                                    color: #808991;
+                                    outline-color: #1F8CE6;
+                                    margin: 10px 0;
+                                }
+                            }
+                            .modify_pw2 {
+                                input {
+                                    height: 17px;
+                                    padding: 5px;
+                                    border: 1px solid #d1d5d9;
+                                    border-radius: 5px;
+                                    color: #808991;
+                                    outline-color: #1F8CE6;
+                                }
+                            }
+                        }
+                    }
+                    .modifyAdd {
+                        .zipcodeBox {
+                            margin: 10px 0;
+                            height: 17px;
+                            padding: 5px;
+                            border: 1px solid #d1d5d9;
+                            border-radius: 5px;
+                            color: #808991;
+                        }
+                        .zipcodeBtn {
+                            border: none;
+                            margin-left: 5px;
+                            background-color: #1F8CE6;
+                            color: #fff;
+                            padding: 5px;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            &:hover {
+                                background-color: #fff;
+                                color: #1F8CE6;
+                                border: 1px solid #1F8CE6;
+                            }
+                        }
+                        .modify_box1 {
+                            height: 17px;
+                            padding: 5px;
+                            border: 1px solid #d1d5d9;
+                            border-radius: 5px;
+                            color: #808991;
+                            outline-color: #1F8CE6;
+                        }
+                        .modify_box2 {
+                            height: 17px;
+                            padding: 5px;
+                            border: 1px solid #d1d5d9;
+                            border-radius: 5px;
+                            color: #808991;
+                            margin-bottom: 10px;
+                            outline-color: #1F8CE6;
+                        }
+                    }
+                }
+            }
+        }
+        .modifyBtnBox {
+            margin-top: 25px;
+            text-align: center;
+            .modifyBtn {
+                border: none;
+                color: #fff;
+                background: #7d8e9e;
+                border: 1px solid #636c73;
+                font-size: 15px;
+                padding: 8px 10px;
+                border-radius: 5px;
+                &:hover {
+                    background: #636c73;
+                }
+            }
+            .modifyCancel {
+                border: 1px solid #636c73;
+                font-size: 15px;
+                padding: 8px 10px;
+                border-radius: 5px;
+                color: #636c73;
+            }
+        }
+    }
+}
 
 //join_form
 .join_body {
