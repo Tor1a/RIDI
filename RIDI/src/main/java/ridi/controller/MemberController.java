@@ -48,6 +48,20 @@ public class MemberController {
      return "member/member_Join";
   }
   
+  @RequestMapping("/MemberJoin.do")
+  public void memberJoin(MemberDto memberDto,HttpServletRequest request, HttpServletResponse response) throws IOException {
+	  memberDto.setRRN(memberDto.getRrn_First()+"-"+memberDto.getRrn_Last());
+	  memberDto.setAddress(memberDto.getAddress01()+" / "+memberDto.getAddress02());
+	  memberDto.setHp(memberDto.getPhoneNumber()+"-"+memberDto.getPhoneMiddleNumber()+"-"+memberDto.getPhoneLastNumber());
+	  
+	  int result = memberDao.insertMember(memberDto);
+	  if(result > 0) {
+		  ScriptWriterUtil.alertAndNext(response, "회원가입이 완료 되었습니다.", "/RIDI");
+	  } else {
+		  ScriptWriterUtil.alertAndBack(response, "회원가입 실패");
+	  }
+  }
+  
   @RequestMapping("/MemberLoginForm.do")
   public String memberLoginForm() {
 	  return "member/member_Login";
@@ -72,19 +86,20 @@ public class MemberController {
 	  return "index";
   }
   
-  @RequestMapping("/MemberJoin.do")
-  public void memberJoin(MemberDto memberDto,HttpServletRequest request, HttpServletResponse response) throws IOException {
-	  memberDto.setRRN(memberDto.getRrn_first()+"-"+memberDto.getRrn_last());
-	  memberDto.setAddress(memberDto.getAddress01()+" / "+memberDto.getAddress02());
-	  memberDto.setHp(memberDto.getPhoneNumber()+"-"+memberDto.getPhoneMiddleNumber()+"-"+memberDto.getPhoneLastNumber());
-	  
-	  int result = memberDao.insertMember(memberDto);
+  @RequestMapping("/MemberModify.do")
+  public void memberModify(MemberDto memberDto,HttpServletResponse response,HttpSession session) throws IOException {
+	  int result = 0;
+	  log.info("memberDto================================{}",memberDto);
+	  result = memberDao.modifyMember(memberDto);
 	  if(result > 0) {
-		  ScriptWriterUtil.alertAndNext(response, "회원가입이 완료 되었습니다.", "/RIDI");
+		  loggedMemberDto = memberDao.getLoggedMember(memberDto);
+		  session.setAttribute("loggedMember", loggedMemberDto);
+		  ScriptWriterUtil.alertAndNext(response, "로그인되었습니다.", "/RIDI");
 	  } else {
-		  ScriptWriterUtil.alertAndBack(response, "회원가입 실패");
+		  ScriptWriterUtil.alertAndBack(response, "아이디 또는 비밀번호가 맞지 않습니다.");
 	  }
   }
+  
   
  
 }
