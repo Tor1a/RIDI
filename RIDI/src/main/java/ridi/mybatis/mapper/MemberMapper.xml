@@ -19,12 +19,12 @@
 									SYSDATE
 		)
 	</insert>
-	<select id="getOneMember" resultType="MemberDto">
-		SELECT * FROM MEMBER
-	</select>
 	<select id="getLoggedMember" resultType="MemberDto">
 		SELECT * FROM MEMBER WHERE ID=#{id} AND PASSWORD = #{password}
 	</select>
+	<insert id="modifyMember" parameterType="MemberDto">
+		UPDATE MEMBER SET PASSWORD = #{wishPassword}, EMAIL = #{email}, ZIPCODE = #{zipcode}, ADDRESS = #{address}, HP = #{hp} WHERE ID = #{id} AND PASSWORD = #{password}
+	</insert>
 </mapper>
 
 

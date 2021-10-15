@@ -29,20 +29,26 @@ public class MemberDto {
 	private String phoneMiddleNumber;
 	private String phoneLastNumber;
 	private String creation_Date;
+	private String wishPassword;
 	public MemberDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	public MemberDto(int no, String name, String rRN, String rrn_first, String rrn_last, String id, String password,
+	public MemberDto(int no, String name, String rRN, String rrn_First, String rrn_Last, String id, String password,
 			String email, String gender, int zipcode, String address, String address01, String address02, String hp,
-			String phoneNumber, String phoneMiddleNumber, String phoneLastNumber, String creation_Date) {
+			String phoneNumber, String phoneMiddleNumber, String phoneLastNumber, String creation_Date,
+			String wishPassword) {
 		super();
 		this.no = no;
 		this.name = name;
 		RRN = rRN;
+<<<<<<< HEAD
+		this.rrn_First = rrn_First;
+		this.rrn_Last = rrn_Last;
+=======
 		this.rrn_First = rrn_first;
 		this.rrn_Last = rrn_last;
+>>>>>>> master
 		this.id = id;
 		this.password = password;
 		this.email = email;
@@ -56,17 +62,21 @@ public class MemberDto {
 		this.phoneMiddleNumber = phoneMiddleNumber;
 		this.phoneLastNumber = phoneLastNumber;
 		this.creation_Date = creation_Date;
+		this.wishPassword = wishPassword;
 	}
-
 	@Override
 	public String toString() {
+<<<<<<< HEAD
+		return "MemberDto [no=" + no + ", name=" + name + ", RRN=" + RRN + ", rrn_First=" + rrn_First + ", rrn_Last="
+=======
 		return "MemberDto [no=" + no + ", name=" + name + ", RRN=" + RRN + ", rrn_first=" + rrn_First + ", rrn_last="
+>>>>>>> master
 				+ rrn_Last + ", id=" + id + ", password=" + password + ", email=" + email + ", gender=" + gender
 				+ ", zipcode=" + zipcode + ", address=" + address + ", address01=" + address01 + ", address02="
 				+ address02 + ", hp=" + hp + ", phoneNumber=" + phoneNumber + ", phoneMiddleNumber=" + phoneMiddleNumber
-				+ ", phoneLastNumber=" + phoneLastNumber + ", creation_Date=" + creation_Date + "]";
+				+ ", phoneLastNumber=" + phoneLastNumber + ", creation_Date=" + creation_Date + ", wishPassword="
+				+ wishPassword + "]";
 	}
-
 	public int getNo() {
 		return no;
 	}
@@ -85,6 +95,19 @@ public class MemberDto {
 	public void setRRN(String rRN) {
 		RRN = rRN;
 	}
+<<<<<<< HEAD
+	public String getRrn_First() {
+		return rrn_First;
+	}
+	public void setRrn_First(String rrn_First) {
+		this.rrn_First = rrn_First;
+	}
+	public String getRrn_Last() {
+		return rrn_Last;
+	}
+	public void setRrn_Last(String rrn_Last) {
+		this.rrn_Last = rrn_Last;
+=======
 	public String getRrn_first() {
 		return rrn_First;
 	}
@@ -96,6 +119,7 @@ public class MemberDto {
 	}
 	public void setRrn_last(String rrn_last) {
 		this.rrn_Last = rrn_last;
+>>>>>>> master
 	}
 	public String getId() {
 		return id;
@@ -175,5 +199,12 @@ public class MemberDto {
 	public void setCreation_Date(String creation_Date) {
 		this.creation_Date = creation_Date;
 	}
+	public String getWishPassword() {
+		return wishPassword;
+	}
+	public void setWishPassword(String wishPassword) {
+		this.wishPassword = wishPassword;
+	}
+	
 	
 }
