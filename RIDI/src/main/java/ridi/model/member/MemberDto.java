@@ -14,8 +14,8 @@ public class MemberDto {
 	private int no;
 	private String name;
 	private String RRN;
-	private String rrn_first;
-	private String rrn_last;
+	private String rrn_First;
+	private String rrn_Last;
 	private String id; 
 	private String password;
 	private String email;
@@ -41,8 +41,8 @@ public class MemberDto {
 		this.no = no;
 		this.name = name;
 		RRN = rRN;
-		this.rrn_first = rrn_first;
-		this.rrn_last = rrn_last;
+		this.rrn_First = rrn_first;
+		this.rrn_Last = rrn_last;
 		this.id = id;
 		this.password = password;
 		this.email = email;
@@ -60,8 +60,8 @@ public class MemberDto {
 
 	@Override
 	public String toString() {
-		return "MemberDto [no=" + no + ", name=" + name + ", RRN=" + RRN + ", rrn_first=" + rrn_first + ", rrn_last="
-				+ rrn_last + ", id=" + id + ", password=" + password + ", email=" + email + ", gender=" + gender
+		return "MemberDto [no=" + no + ", name=" + name + ", RRN=" + RRN + ", rrn_first=" + rrn_First + ", rrn_last="
+				+ rrn_Last + ", id=" + id + ", password=" + password + ", email=" + email + ", gender=" + gender
 				+ ", zipcode=" + zipcode + ", address=" + address + ", address01=" + address01 + ", address02="
 				+ address02 + ", hp=" + hp + ", phoneNumber=" + phoneNumber + ", phoneMiddleNumber=" + phoneMiddleNumber
 				+ ", phoneLastNumber=" + phoneLastNumber + ", creation_Date=" + creation_Date + "]";
@@ -86,16 +86,16 @@ public class MemberDto {
 		RRN = rRN;
 	}
 	public String getRrn_first() {
-		return rrn_first;
+		return rrn_First;
 	}
 	public void setRrn_first(String rrn_first) {
-		this.rrn_first = rrn_first;
+		this.rrn_First = rrn_first;
 	}
 	public String getRrn_last() {
-		return rrn_last;
+		return rrn_Last;
 	}
 	public void setRrn_last(String rrn_last) {
-		this.rrn_last = rrn_last;
+		this.rrn_Last = rrn_last;
 	}
 	public String getId() {
 		return id;

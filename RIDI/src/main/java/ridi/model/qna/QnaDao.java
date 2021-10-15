@@ -21,18 +21,18 @@ public class QnaDao {
 	@Autowired
 	private SqlSessionFactory sqlSessionFactory;
 	
-	public List<QnaDto> getAllList(int start, int end){
-		HashMap<String, Integer> page = new HashMap<String, Integer>();
-		page.put("start", start);
-		page.put("end", end);
-		
-		List<QnaDto> qnaList = null;
-		
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-		qnaList = sqlSession.selectList("getAllList",page);
-		sqlSession.close();
-		return qnaList;
-	}
+//	public List<QnaDto> getAllList(int start, int end){
+//		HashMap<String, Integer> page = new HashMap<String, Integer>();
+//		page.put("start", start);
+//		page.put("end", end);
+//		
+//		List<QnaDto> qnaList = null;
+//		
+//		SqlSession sqlSession = sqlSessionFactory.openSession();
+//		qnaList = sqlSession.selectList("getAllList",page);
+//		sqlSession.close();
+//		return qnaList;
+//	}
 	public int insertQna(QnaDto qnaDto) {
 		int result = 0 ;
 		SqlSession sqlSession = sqlSessionFactory.openSession();

@@ -33,8 +33,8 @@
                     </li>
                     <li class="join_rrd">
                             <div class="rrd-container">
-                                <input type="text" name="rrn_first" placeholder="주민번호 앞자리"> -
-                                <input type="text" name="rrn_last" placeholder="주민번호 뒷자리">
+                                <input type="text" name="rrn_First" placeholder="주민번호 앞자리"> -
+                                <input type="text" name="rrn_Last" placeholder="주민번호 뒷자리">
                             </div>
                     </li>
                     <li class="join_gender">
