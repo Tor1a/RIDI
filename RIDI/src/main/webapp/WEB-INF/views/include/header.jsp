@@ -19,20 +19,26 @@
             <div class="headerInner">
                 <div class="headerTop">
                     <div class="logoSearch">
-                        <h1 class="logo"><a href="#">RIDI <span class="headerToneDown">RIDI</span></a></h1>
+                        <h1 class="logo"><a href="/RIDI">RIDI <span class="headerToneDown">RIDI</span></a></h1>
                         <form action="" method="POST">
                             <input type="text" name="searchBox" id="searchBox" placeholder="제목, 저자, 출판사검색">
                             <!--<input type="submit" class="btn"  value="검색">--><!--어떤식으로할지 고민해보고 바꾸기-->
                         </form>
                     </div>
                     <div id="logJoin">
-                        <a href="MemberJoinForm.do" class="HDJoin">회원가입</a>
-                        <a href="MemberLoginForm.do" class="HDLogin">로그인</a>
+                    	<c:if test="${empty sessionScope.loggedMember }">
+                    		<a href="MemberJoinForm.do" class="HDJoin">회원가입</a>
+                        	<a href="MemberLoginForm.do" class="HDLogin">로그인</a>
+                    	</c:if>
+                    	<c:if test="${!empty sessionScope.loggedMember }">
+                    		<a style="color:#fff">${loggedMember.name }님 환영합니다</a>
+                    		<a href="MemberLogout.do" class="HDLogin">로그아웃</a>
+                    	</c:if>
                     </div>
                 </div>
                 <nav>
                     <ul class="headerMenu">
-                        <li><a href="#"><i class="fas fa-home"></i>홈</a></li>
+                        <li><a href="/RIDI"><i class="fas fa-home"></i>홈</a></li>
                         <li><a href="#"><i class="fas fa-shopping-cart"></i>카트</a></li>
                         <li><a href="#"><i class="fas fa-box"></i>주문/배송조회</a></li>
                         <li><a href="#"><i class="fas fa-book"></i>책 판매</a></li>
