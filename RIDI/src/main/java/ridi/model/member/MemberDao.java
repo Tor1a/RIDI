@@ -32,14 +32,14 @@ public class MemberDao {
 	      return loggedMember;
 	   }
 	   
-	   public int modifyMember(MemberDto memberDto) {
-		   int result = 0;
+	   //오성식이 임시 생성
+	   public MemberDto getOneMember() {
+		   MemberDto memberDto = null;
 		   SqlSession sqlSession = sqlSessionFactory.openSession();
-		   result = sqlSession.insert("modifyMember",memberDto);
-		   sqlSession.commit();
+		   memberDto = sqlSession.selectOne("getOneMember");
+		   log.info("memberDto ========================================= {}",memberDto);
 		   sqlSession.close();
-		   return result;
+		   return memberDto;
 	   }
-	   
 
 }

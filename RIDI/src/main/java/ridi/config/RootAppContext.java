@@ -27,10 +27,9 @@ public class RootAppContext {
 		hikariConfig.setUsername("TEST");
 		hikariConfig.setPassword("1234");
 		
-		// ���μ���
+		
 		hikariConfig.setMaximumPoolSize(10);
-		hikariConfig.setConnectionTimeout(50000); // 30��
-		//hikariConfig.setLeakDetectionThreshold(300000);
+		hikariConfig.setConnectionTimeout(50000); 
 		
 		HikariDataSource dataSource = new HikariDataSource(hikariConfig);
 		return dataSource;
@@ -43,6 +42,7 @@ public class RootAppContext {
 		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 		sqlSessionFactoryBean.setConfigLocation(resolver.getResource("classpath:ridi/mybatis/config.xml"));
 		sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:ridi/mybatis/mapper/*.xml"));
+
 		
 		return (SqlSessionFactory)sqlSessionFactoryBean.getObject();
 	}

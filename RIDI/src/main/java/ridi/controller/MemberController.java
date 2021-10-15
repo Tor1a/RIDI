@@ -29,37 +29,10 @@ public class MemberController {
      MemberDto loggedMemberDto;
 
 
-//  @RequestMapping("/MemberJoin.do")
-//  public String memberJoin(@ModelAttribute MemberDto memberDto, HttpServletResponse response) throws IOException {
-//     //logger.info("memberDto==={}", memberDto.toString());
-//     memberDto.setAddress(memberDto.getAddress01()+" "+memberDto.getAddress02());
-//     memberDto.setHp(memberDto.getPhoneNumber()+"-"+memberDto.getPhoneMiddleNumber()+"-"+memberDto.getPhoneLastNumber());
-//     int result = memberDao.insertMember(memberDto);
-//     if(result>0) {
-//        ScriptWriterUtil.alertAndNext(response, "ȸ�������� �Ǿ����ϴ�.", "index");
-//     } else {
-//        ScriptWriterUtil.alertAndBack(response, "ȸ�����Կ� �����Ͽ����ϴ�.");
-//     }
-//     return null;
-//  }
   
   @RequestMapping("/MemberJoinForm.do")
   public String memberWriteForm() {
      return "member/member_Join";
-  }
-  
-  @RequestMapping("/MemberJoin.do")
-  public void memberJoin(MemberDto memberDto,HttpServletRequest request, HttpServletResponse response) throws IOException {
-	  memberDto.setRRN(memberDto.getRrn_First()+"-"+memberDto.getRrn_Last());
-	  memberDto.setAddress(memberDto.getAddress01()+" / "+memberDto.getAddress02());
-	  memberDto.setHp(memberDto.getPhoneNumber()+"-"+memberDto.getPhoneMiddleNumber()+"-"+memberDto.getPhoneLastNumber());
-	  
-	  int result = memberDao.insertMember(memberDto);
-	  if(result > 0) {
-		  ScriptWriterUtil.alertAndNext(response, "회원가입이 완료 되었습니다.", "/RIDI");
-	  } else {
-		  ScriptWriterUtil.alertAndBack(response, "회원가입 실패");
-	  }
   }
   
   @RequestMapping("/MemberLoginForm.do")
@@ -86,20 +59,19 @@ public class MemberController {
 	  return "index";
   }
   
-  @RequestMapping("/MemberModify.do")
-  public void memberModify(MemberDto memberDto,HttpServletResponse response,HttpSession session) throws IOException {
-	  int result = 0;
-	  log.info("memberDto================================{}",memberDto);
-	  result = memberDao.modifyMember(memberDto);
+  @RequestMapping("/MemberJoin.do")
+  public void memberJoin(MemberDto memberDto,HttpServletRequest request, HttpServletResponse response) throws IOException {
+	  memberDto.setRRN(memberDto.getRrn_first()+"-"+memberDto.getRrn_last());
+	  memberDto.setAddress(memberDto.getAddress01()+" / "+memberDto.getAddress02());
+	  memberDto.setHp(memberDto.getPhoneNumber()+"-"+memberDto.getPhoneMiddleNumber()+"-"+memberDto.getPhoneLastNumber());
+	  
+	  int result = memberDao.insertMember(memberDto);
 	  if(result > 0) {
-		  loggedMemberDto = memberDao.getLoggedMember(memberDto);
-		  session.setAttribute("loggedMember", loggedMemberDto);
-		  ScriptWriterUtil.alertAndNext(response, "로그인되었습니다.", "/RIDI");
+		  ScriptWriterUtil.alertAndNext(response, "회원가입이 완료 되었습니다.", "/RIDI");
 	  } else {
-		  ScriptWriterUtil.alertAndBack(response, "아이디 또는 비밀번호가 맞지 않습니다.");
+		  ScriptWriterUtil.alertAndBack(response, "회원가입 실패");
 	  }
   }
-  
   
  
 }
