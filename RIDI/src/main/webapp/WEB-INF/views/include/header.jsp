@@ -42,7 +42,9 @@
                         <li><a href="#"><i class="fas fa-shopping-cart"></i>카트</a></li>
                         <li><a href="#"><i class="fas fa-box"></i>주문/배송조회</a></li>
                         <li><a href="#"><i class="fas fa-book"></i>책 판매</a></li>
-                        <li><a href="#"><i class="far fa-user"></i>마이리디</a></li>
+                        <c:if test="${!empty sessionScope.loggedMember }">
+	                        <li><a href="MemberInfoModify.do"><i class="far fa-user"></i>마이리디</a></li>
+                    	</c:if>
                         <li><a href="#"><i class="fab fa-quora"></i>QnA</a></li>
                     </ul>
                 </nav>

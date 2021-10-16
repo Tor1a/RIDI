@@ -19,15 +19,15 @@
                         <tbody>
                             <tr>
                                 <th>이름</th>
-                                <td class="modifyName"><span>초콜릿</span><a href="#" class="deleteBtn">회원탈퇴</a></td>
+                                <td class="modifyName"><span>${sessionScope.loggedMember.name }</span><a href="#" class="deleteBtn">회원탈퇴</a></td>
                             </tr>
                             <tr>
                                 <th>아이디</th>
-                                <td><span>abc555</span></td>
+                                <td><span>${sessionScope.loggedMember.id }</span></td>
                             </tr>
                             <tr>
                                 <th>이메일</th>
-                                <td><span>abc555@naver.com</span></td>
+                                <td><span>${sessionScope.loggedMember.email }</span></td>
                             </tr>
                             <tr>
                                 <th>휴대폰 번호</th>
@@ -57,7 +57,7 @@
                                 <th>주소변경</th>
                                 <td class="modifyAdd">
                                     <div class="zipcode_container">
-                                        <input type="number" name="zipcode" class="zipcodeBox" id="zipcode" placeholder="우편번호" > 
+                                        <input type="number" name="zipcode" class="zipcodeBox" id="zipcode" value="${sessionScope.loggedMember.zipcode }" > 
                                         <input type="button" name="zipCodeBtn" value="우편번호 검색" id="btnZip" class="zipcodeBtn" >
                                     </div>
                                     <div class="address_container">
