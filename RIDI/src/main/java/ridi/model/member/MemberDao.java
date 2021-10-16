@@ -24,22 +24,15 @@ public class MemberDao {
 	      
 	      return result;
 	   }
+	   
+	   
+	   
 	   public MemberDto getLoggedMember(MemberDto memberDto) {
 	      MemberDto loggedMember = null;
 	      SqlSession sqlSession = sqlSessionFactory.openSession();
 	      loggedMember = sqlSession.selectOne("getLoggedMember", memberDto);
 	      sqlSession.close();
 	      return loggedMember;
-	   }
-	   
-	   //오성식이 임시 생성
-	   public MemberDto getOneMember() {
-		   MemberDto memberDto = null;
-		   SqlSession sqlSession = sqlSessionFactory.openSession();
-		   memberDto = sqlSession.selectOne("getOneMember");
-		   log.info("memberDto ========================================= {}",memberDto);
-		   sqlSession.close();
-		   return memberDto;
 	   }
 
 }

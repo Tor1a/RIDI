@@ -44,7 +44,6 @@ public class MemberController {
   public void memberLogin(MemberDto memberDto,HttpServletResponse response,HttpServletRequest request,HttpSession session) throws IOException {
 	  
 	  loggedMemberDto = memberDao.getLoggedMember(memberDto);
-	  log.info("loggedMemberDto ======================================{}",loggedMemberDto);
 	  if(loggedMemberDto != null) {
 		  session.setAttribute("loggedMember", loggedMemberDto);
 		  ScriptWriterUtil.alertAndNext(response, "로그인되었습니다.", "/RIDI");
@@ -61,7 +60,7 @@ public class MemberController {
   
   @RequestMapping("/MemberJoin.do")
   public void memberJoin(MemberDto memberDto,HttpServletRequest request, HttpServletResponse response) throws IOException {
-	  memberDto.setRRN(memberDto.getRrn_first()+"-"+memberDto.getRrn_last());
+	  memberDto.setRRN(memberDto.getRrn_First()+"-"+memberDto.getRrn_Last());
 	  memberDto.setAddress(memberDto.getAddress01()+" / "+memberDto.getAddress02());
 	  memberDto.setHp(memberDto.getPhoneNumber()+"-"+memberDto.getPhoneMiddleNumber()+"-"+memberDto.getPhoneLastNumber());
 	  
