@@ -38,6 +38,7 @@
 		<junit-version>4.13.2</junit-version>
 		<commons-io-version>2.11.0</commons-io-version>
 		<commons-fileupload-version>1.4</commons-fileupload-version>
+		<com.sun.mail>1.6.2</com.sun.mail>
 	</properties>
 
 	<!-- dependencies 추가 -->
@@ -156,6 +157,10 @@
 			<artifactId>commons-fileupload</artifactId>
 			<version>${commons-fileupload-version}</version>
 		</dependency>
-
+		<dependency>  <!-- Mail -->
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>${com.sun.mail}</version>
+		</dependency>
 	</dependencies>
 </project>

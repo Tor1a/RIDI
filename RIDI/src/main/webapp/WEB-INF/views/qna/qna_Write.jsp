@@ -36,15 +36,5 @@
 		</div>
 	</form>
 </div>
-<script>
-$("#summernote").summernote({
-	height : 400,
-	callbacks : {
-		onImageUpload : function(files) {
-			//$summernote.summernote('insertNode', imgNode);
-			uploadImg(files[0],this);
-		}
-	}
-});
-</script>
+
 <%@ include file="../include/footer.jsp" %>

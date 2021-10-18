@@ -577,6 +577,155 @@ a { text-decoration: none; color: #333;}
     font-weight: bold;
     }
 
+
+//list page
+
+
+
+.qnaList_body {
+    .qnaList_wrap {
+        .qnaList_form {
+            width: 1200px;
+            margin: 0 auto;
+                    h1 {
+                        width: 183px;
+                        margin: 0 auto;
+                        padding: 90px 0;
+                        color: #1f8ce6;
+                        .title_line {
+                            display: inline-block;
+                            width: 183px;
+                            height:4px;
+                            background-color:#1f8ce6;
+                            margin-bottom: 20px;
+                        }
+                    }
+                        .qnaList_subject {
+                        color: #fff;
+                        background-color: #1F8CE6;
+                        height: 60px;
+                        border-collapse: collapse;
+                        th {
+                        
+                        font-size: 18px;
+                        border: 1px solid #1f8ce6;
+                        &:first-child {width: 100px;}
+                        &:nth-child(2) {width: 200px;}  
+                        &:nth-child(3) {width: 800px;}    
+                        &:nth-child(4) {width: 200px;}
+                        &:nth-child(5) {width: 150px;}
+                        }
+                }
+
+                    .contentsContainer {
+                        background-color: rgb(245, 244, 244);
+                        text-align: center;
+                        height: 40px;
+                        .qnaList_replyOk {
+                            display: inline-block;
+                            width: 100px;
+                            height: 30px;
+                            border:2px solid #1f8ce6;
+                            border-radius: 5px;
+                            text-align: center;
+                            line-height: 30px;
+                            color: #ff2828;
+                        }
+                    }
+        }
+
+        .qnaList_btn {
+                display: flex;
+                justify-content: flex-end;
+                margin-right: 3px;
+            .qnaList_write {
+                background-color: #1f8ce6;
+                display: inline-block;
+                justify-content: center;
+                width: 100px;
+                height: 30px;
+                border:2px solid #1f8ce6;
+                border-radius: 5px;
+                text-align: center;
+                line-height: 30px;
+                color: #fff;
+                margin: 20px 0;
+                font-weight: bold;
+            }
+        }
+
+        .qnaList_page {
+            font-size: 18px;
+            .pageContainer {
+                display: flex;
+                justify-content: center;
+                margin-right: 28px;
+                font-weight: 18px;
+                padding-bottom: 100px;
+                a {
+                    color: #000000;
+                    margin: 0 2px;
+                }
+            }
+        }
+    }
+    .qnaList_search {
+        display: flex;
+        justify-content: center;
+        .searchContainer{
+            font-size: 18px;
+            margin-bottom: 30px;
+            .searchSelect {
+                width: 100px;
+                height: 34px;
+                border: 1px solid #1f8ce6; 
+                border-radius: 3px;
+            }
+            .search_world {
+                width: 490px;
+                height: 30px;
+                border: 1px solid #1f8ce6; 
+                border-radius: 3px;
+            }
+            .search_btn {
+                width: 90px;
+                height: 34px;
+                border-radius: 3px;
+                border: 1px solid #1f8ce6; 
+                background-color: #1f8ce6;
+                color: #fff;
+                padding-bottom: 4px;
+            }
+           
+         }
+    }
+}
+
+
+.qnaList_replyNo { //답변 예정 
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    border:2px solid #1f8ce6;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 30px;
+    color: #738096;
+}
+
+/* .qnaList_replyOk {  //답변 완료
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    border:2px solid #1f8ce6;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 30px;
+    color: #ff2828;
+}
+
+*/
+
 //footer
 footer {
     padding-top: 20px;
@@ -631,3 +780,5 @@ footer {
         }  
     }
 }
+
+

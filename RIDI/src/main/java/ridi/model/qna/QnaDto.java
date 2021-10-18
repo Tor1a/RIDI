@@ -1,5 +1,6 @@
 package ridi.model.qna;
 
+
 import java.sql.Date;
 
 import org.springframework.stereotype.Repository;
@@ -25,7 +26,7 @@ public class QnaDto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public QnaDto(int no, String write_Id, String subject, String password, Date regDate, int reGroup, int reStep,
+	public QnaDto(int no, String writerId,  String subject, String password, Date regDate, int reGroup, int reStep,
 			int reLevel, int readCount, String contents, int num) {
 		super();
 		this.no = no;

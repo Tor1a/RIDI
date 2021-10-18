@@ -2,12 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="./css/RIDI.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="shortcut icon" href="./images/favicon.ico">
@@ -45,7 +47,7 @@
                         <c:if test="${!empty sessionScope.loggedMember }">
 	                        <li><a href="MemberInfoModify.do"><i class="far fa-user"></i>마이리디</a></li>
                     	</c:if>
-                        <li><a href="#"><i class="fab fa-quora"></i>QnA</a></li>
+                        <li><a href="QnaList.do"><i class="fab fa-quora"></i>QnA</a></li>
                     </ul>
                 </nav>
             </div>

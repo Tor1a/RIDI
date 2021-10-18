@@ -25,8 +25,6 @@ public class MemberDao {
 	      return result;
 	   }
 	   
-	   
-	   
 	   public MemberDto getLoggedMember(MemberDto memberDto) {
 	      MemberDto loggedMember = null;
 	      SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -34,5 +32,32 @@ public class MemberDao {
 	      sqlSession.close();
 	      return loggedMember;
 	   }
+	   
+	   public int modifyMember(MemberDto memberDto) {
+		   int result = 0;
+		   
+		   SqlSession sqlSession = sqlSessionFactory.openSession();
+		   result = sqlSession.update("modifyMember",memberDto);
+		   sqlSession.commit();
+		   sqlSession.close();
+		   return result;
+	   }
+	   
+	   public int deleteMember(MemberDto memberDto) {
+		   int result = 0;
+		   
+		   SqlSession sqlSession = sqlSessionFactory.openSession();
+		   result = sqlSession.delete("deleteMember",memberDto);
+		   sqlSession.commit();
+		   sqlSession.close();
+		   
+		   return result;
+	   }
 
+	   public MemberDto idDuplicationCheck(MemberDto memberDto) {
+		   SqlSession sqlSession = sqlSessionFactory.openSession();
+		   
+		   MemberDto tempMemberDto = sqlSession.selectOne("idDuplicationCheck",memberDto);
+		   return tempMemberDto;
+	   }
 }

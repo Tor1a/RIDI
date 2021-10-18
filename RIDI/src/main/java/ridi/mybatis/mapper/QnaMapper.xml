@@ -15,12 +15,77 @@
 							#{contents})
 		
 	</insert>
-	<!-- <select id="getAllList" parameterType="HashMap" resultType="QnaDto">
-		SELECT * FROM (SELECT B.*,ROWNUM AS NUM FROM ( SELECT * FROM QNA ORDER BY REGROUP DESC, RELEVEL ASC ) B	) 
-		WHERE NUM  <![CDATA[>=]]>  #{start} AND NUM  <![CDATA[<]]>  #{end}
+	<select id="getMaxReGroup" resultType="Integer" >
+			SELECT NVL(MAX(REGROUP),1) AS REGROUPMAX FROM QNA
 	</select>
-	 -->
-</mapper>
+	
+	<select id="getAllList" parameterType="HashMap" resultType="QnaDto">
+		SELECT * FROM (SELECT B.*,ROWNUM AS NUM FROM ( SELECT * FROM QNA ORDER BY REGROUP DESC, RELEVEL ASC ) B	) 
+		WHERE NUM  <![CDATA[>=]]>  #{start} AND NUM  <![CDATA[<]]> #{end}
+	</select>
+	 
+	 <select id="getSearchAllList" parameterType="SearchDto" resultType="QnaDto">
+	 	SELECT * FROM 
+					(SELECT B.*,ROWNUM AS NUM FROM 
+					( SELECT * FROM QNA WHERE 
+					${field} LIKE 
+					'%' || #{searchWord} || '%' 
+					ORDER BY REGROUP DESC, RELEVEL ASC ) B )
+				WHERE NUM  <![CDATA[>=]]>  
+				#{start}' AND NUM <![CDATA[<]]> #{end}
+	 </select>
+	 
+	 <select id="getSearchTotal" parameterType="HashMap" resultType="Integer">
+	 	SELECT COUNT(*) AS TOTAL FROM 
+		QNA WHERE ${field} 
+		LIKE '%' || #{searchWord} || '%' 
+	 </select>
+
+	 <select id="getTotal" resultType="Integer" >
+	 		SELECT COUNT(*) AS TOTAL FROM QNA
+	 </select>
+	 
+	 <update id="updateReadCount" parameterType="Integer">
+	 	UPDATE QNA SET READCOUNT = 
+		READCOUNT + 1 WHERE NO = #{no}
+	 </update>
+	 
+	 <select id="getQnaSelectOne" parameterType="Integer" resultType="QnaDto">
+	 	SELECT * FROM QNA WHERE NO = #{no}
+	 </select>
+	 
+	 <update id="updateReLevel" parameterType="QnaDto">
+	 	UPDATE QNA SET RELEVEL = RELEVEL + 1 
+		WHERE REGROUP = #{reGroup} AND 
+		RELEVEL  <![CDATA[ > ]]> #{reLevel}
+	 </update>
+	 
+	 <insert id="insertReplyQna" parameterType="QnaDto" >
+	 	INSERT INTO QNA VALUES (
+							SEQ_QNA.NEXTVAL,
+							#{writerId},
+							#{subject},
+							#{password},
+							SYSDATE,
+							#{reGroup},
+							#{reStep},
+							#{reLevel},
+							0,
+							#{contents})
+	 </insert>
+	 
+	 <select id="getSelectPrev" parameterType="Integer" resultType="QnaDto">
+	 	SELECT * FROM (SELECT B.*,ROWNUM AS NUM FROM 
+						( SELECT * FROM QNA ORDER BY REGROUP DESC, RELEVEL ASC ) B)
+					WHERE NUM = #{num} - 1
+	 </select>
+	 
+	 <select id="getSelectNext" parameterType="Integer" resultType="QnaDto">
+	 	SELECT * FROM (SELECT B.*,ROWNUM AS NUM FROM 
+						( SELECT * FROM QNA ORDER BY REGROUP DESC, RELEVEL ASC ) B)
+					WHERE NUM = #{num} + 1
+	 </select>
+	 </mapper>
 
 
 

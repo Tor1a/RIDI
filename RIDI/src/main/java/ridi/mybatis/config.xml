@@ -7,6 +7,7 @@
 		<typeAlias type="ridi.model.member.MemberDto" alias="MemberDto" />
 		<typeAlias type="ridi.model.orders.OrdersDto" alias="OrdersDto" />
 		<typeAlias type="ridi.model.qna.QnaDto" alias="QnaDto" />
+		<typeAlias type="ridi.model.qna.SearchDto" alias="SearchDto" />
 		<typeAlias type="ridi.model.review.ReviewDto" alias="ReviewDto" />
 	</typeAliases>
 </configuration>

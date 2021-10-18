@@ -16,14 +16,31 @@
 									#{zipcode},
 									#{address},
 									#{hp},
-									SYSDATE
-		)
+									SYSDATE)
 	</insert>
+	
 	<select id="getOneMember" resultType="MemberDto">
 		SELECT * FROM MEMBER
 	</select>
+	
 	<select id="getLoggedMember" resultType="MemberDto">
 		SELECT * FROM MEMBER WHERE ID=#{id} AND PASSWORD = #{password}
+	</select>
+	
+	<update id="modifyMember" parameterType="MemberDto">
+		UPDATE MEMBER SET HP = #{hp}, 
+						  PASSWORD = #{password}, 
+						  ZIPCODE = #{zipcode}, 
+						  ADDRESS = #{address} 
+						  								WHERE ID = #{id}
+	</update>
+	
+	<delete id="deleteMember" parameterType="MemberDto">
+		DELETE FROM MEMBER WHERE ID = #{id} AND PASSWORD = #{password}
+	</delete>
+	
+	<select id="idDuplicationCheck" resultType="MemberDto">
+		SELECT ID FROM MEMBER WHERE ID = #{id}
 	</select>
 </mapper>
 
