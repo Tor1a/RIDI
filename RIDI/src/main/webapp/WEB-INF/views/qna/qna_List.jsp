@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
-<body class="qnaList_body">
+<div class="qnaList_body">
 <div id="qnaList_container" class="qnaList_wrap">
 	<form method="POST" action="QnaList.do" class="qnaList_form">
 		 <table class="qnaList">
@@ -10,51 +10,52 @@
 				  <tr class="qnaList_subject">
 					<th>No</th>
 					<th>작성자</th>
-					<th class="left">제목</th>
+					<th>제목</th>
 					<th>작성일자</th>
 					<th>상태</th>
 				</tr>
 			</thead>
+			<!-- 리스트 -->
 			<tbody class="qnaList_contents">
-				<c:forEach var="qnaDto" items="${qnaList }" >
+				<c:forEach var="qnaDto" items="${qnaList }" varStatus = "status">
 					 <tr class="contentsContainer">
-						<!-- <td>${replyDto.no }</td> -->
 						<td>${total - (currentPage-1)*listPerCount - status.index }</td>
 						<td>${qnaDto.writerId}</td>
-						<td class="left space">${qnaDto.reStep }
-							<c:if test="${qnaDto.reStep > 1 }">
-								<span class="material-icons"></span>
-							</c:if>
+						<td>
 							<a href="QnaView.do?no=${qnaDto.no }&clickedPage=${currentPage}&num=${qnaDto.num}">${qnaDto.subject }</a>
 						</td>
 						<td>
-							<fmt:formatDate pattern="yy-MM-dd hh:mm:ss" value="${qnaDto.regDate }" />
-							<p>${qnaDto.regDate}</p>
+							<fmt:formatDate pattern="yy-MM-dd" value="${qnaDto.regDate }" />
 						</td>
 						<td>${qnaDto.readCount }</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
+		<!-- 페이지 넘기기 기능 -->
 		<div class="qnaList_page">
 			<ul class="pageContainer">
 				<c:if test="${startPage!=1 }">
 					<li>
 						<a href="QnaList.do?clickedPage=${startPage - pageGroupCount }">
-							<span class="far fa-caret-square-left"></span>
 						</a>
 					</li>
 				</c:if>
 				<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1" varStatus="status">
 					<li class="${currentPage == i ? 'active':'' }">
-					<a href="QnaList.do?clickedPage=${i }">${i }</a></li>
+						<a href="QnaList.do?clickedPage=${i }">
+							<span class="far fa-caret-square-left"></span>
+							${i }
+						</a>
+					</li>
 				</c:forEach>
 				<c:if test="${endPage != lastPage}">
 					<li><a href="QnaList.do?clickedPage=${startPage + pageGroupCount }">
-					<span class="far fa-caret-square-right"></span></a></li>
+					<span class="far fa-caret-square-right"></span>
 				</c:if>
 			</ul>
 		</div>
+		<!-- 검색기능 -->
 		<form class="searchForm" method="GET" action="QnaSearchList.do">
 			<select name="searchSelect" class="searchSelect">
 				<option value="name"     ${param.searchSelect=="name"?"selected":"" }  >작성자</option>

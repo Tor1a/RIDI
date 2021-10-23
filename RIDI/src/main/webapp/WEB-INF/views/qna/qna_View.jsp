@@ -1,45 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
-<div id="contents">
-	<h2 class="contentsTitle">VIEW</h2>
-	<div class="form">
-		<table class="tdLeft">
-			<tbody>
-				<tr>
-					<th>writerId</th>
-					<td>${qnaDto.writerId }</td>
-					<th>hit</th>
-					<td>${qnaDto.readCount }</td>
-				</tr>
-				<tr>
-					<th>subject</th>
-					<td colspan="3">${qnaDto.subject }</td>
-				</tr>
-				<tr>
-					<th>contents</th>
-					<td class="txtContents" colspan="3">${qnaDto.contents }</td>
-				</tr>
-			</tbody>
-		</table>
-		
-		<div class="prevAndNext">
-			<div class="item">
-				<span class="inner">PREV <span class="material-icons">expand_less</span></span>
-				<a href="QnaView02.do?no=${prevQnaDto.no}&num=${prevQnaDto.num}">${prevQnaDto.subject }</a>
-			</div>
-			<div class="item"><span class="inner">NEXT <span class="material-icons">expand_more</span></span>
-				<a href="QnaView02.do?no=${nextQnaDto.no}&num=${nextQnaDto.num}">${nextQnaDto.subject }</a>
-			</div>
-		</div>
-		<div class="btns center">
-			<a href="QnaReplyForm02.do?no=${qnaDto.no }&reGroup=${qnaDto.reGroup}&reStep=${qnaDto.reStep}&reLevel=${qnaDto.reLevel}">답글달기</a>
-			<a href="">삭제</a>
-			<a href="">수정</a>
-			<a href="QnaList02.do?clickedPage=1">목록</a>
-		</div>
-	</div>
-</div>
+<div class="qnaView_body">	
+	<div id="qna_View" class="qna_View">
+	        <div class="qnaView_form">
+	            <div class="qnaView_container">
+	                <ul class="qnaView_inner">
+	                    <li>
+	                    	<div><sapn>제목</sapn></div>
+	                        <div>${qnaDto.subject}</div>
+	                    </li>
+	                    <li>
+	                        <div><span>조회수</span></div>
+	                        <div>${qnaDto.readCount}</div>
+	                    </li>
+	                    <li>
+	                        <div><span>작성일자</span></div>
+	                        <div>${qnaDto.regDate}</div>
+	                    </li>
+	                    <li>
+	                        <div><span>작성자</span></div>
+	                        <div>${qnaDto.writerId}</div>
+	                    </li>
+	                    <li>
+	                        <div class="txtContents"><span>내용</span></div>
+	                        <div>${qnaDto.contents}</div>
+	                    </li>
+	                </ul>
+	            </div>
+	            <div class="prevAndNext">
+	                <div class="item">
+	                    <span class="inner">PREV&nbsp;<span class="fas fa-angle-up"></span></span>
+	                     <a href="QnaView.do?no=${prevQnaDto.no}&clickedPage=1&num=${prevQnaDto.num}">${prevQnaDto.subject }</a>
+	                </div>
+	                <div class="item"><span class="inner">NEXT <span class="fas fa-angle-down"></span></span>
+	                   <a href="QnaView.do?no=${nextQnaDto.no}&clickedPage=1&num=${nextQnaDto.num}">${nextQnaDto.subject }</a>
+	                </div>
+	            </div>
+	            <div class="qnaView_btn">
+	                <a href="QnaReplyForm02.do?no=${qnaDto.no }&reGroup=${qnaDto.reGroup}&reStep=${qnaDto.reStep}&reLevel=${qnaDto.reLevel}">답글달기</a>
+	                <a href="QnaList.do?clickedPage=1">목록</a>
+	               <a href="#" id="qnaDeleteBtn" onclick="return qnaPassword(${qnaDto.no})">삭제</a>
+	            </div>
+	        </div>
+    </div>
+</div>    
+<script src="./js/qna/qna_View.js"></script>
 <%@ include file="../include/footer.jsp"%>
 
 

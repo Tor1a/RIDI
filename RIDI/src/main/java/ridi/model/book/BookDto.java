@@ -16,10 +16,10 @@ public class BookDto {
 	private int price;
 	private int stock;
 	private int star_Rating;
-	private Date estimated_Time;
+	private String estimated_Time;
 	private int shipping_Price;
 	private String category;
-	private Date publicataion_Date;
+	private String publication_Date;
 	private int pages;
 	private String author;
 	private String book_Intro;
@@ -29,8 +29,8 @@ public class BookDto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public BookDto(int no, String book_Name, int price, int stock, int star_Rating, Date estimated_Time,
-			int shipping_Price, String category, Date publicataion_Date, int pages, String author, String book_Intro,
+	public BookDto(int no, String book_Name, int price, int stock, int star_Rating, String estimated_Time,
+			int shipping_Price, String category, String publication_Date, int pages, String author, String book_Intro,
 			String book_Image, String book_RealImage) {
 		super();
 		this.no = no;
@@ -41,7 +41,7 @@ public class BookDto {
 		this.estimated_Time = estimated_Time;
 		this.shipping_Price = shipping_Price;
 		this.category = category;
-		this.publicataion_Date = publicataion_Date;
+		this.publication_Date = publication_Date;
 		this.pages = pages;
 		this.author = author;
 		this.book_Intro = book_Intro;
@@ -52,7 +52,7 @@ public class BookDto {
 	public String toString() {
 		return "BookDto [no=" + no + ", book_Name=" + book_Name + ", price=" + price + ", stock=" + stock
 				+ ", star_Rating=" + star_Rating + ", estimated_Time=" + estimated_Time + ", shipping_Price="
-				+ shipping_Price + ", category=" + category + ", publicataion_Date=" + publicataion_Date + ", pages="
+				+ shipping_Price + ", category=" + category + ", publication_Date=" + publication_Date + ", pages="
 				+ pages + ", author=" + author + ", book_Intro=" + book_Intro + ", book_Image=" + book_Image
 				+ ", book_RealImage=" + book_RealImage + "]";
 	}
@@ -86,10 +86,10 @@ public class BookDto {
 	public void setStar_Rating(int star_Rating) {
 		this.star_Rating = star_Rating;
 	}
-	public Date getEstimated_Time() {
+	public String getEstimated_Time() {
 		return estimated_Time;
 	}
-	public void setEstimated_Time(Date estimated_Time) {
+	public void setEstimated_Time(String estimated_Time) {
 		this.estimated_Time = estimated_Time;
 	}
 	public int getShipping_Price() {
@@ -104,11 +104,11 @@ public class BookDto {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public Date getPublicataion_Date() {
-		return publicataion_Date;
+	public String getPublication_Date() {
+		return publication_Date;
 	}
-	public void setPublicataion_Date(Date publicataion_Date) {
-		this.publicataion_Date = publicataion_Date;
+	public void setPublication_Date(String publication_Date) {
+		this.publication_Date = publication_Date;
 	}
 	public int getPages() {
 		return pages;
@@ -140,5 +140,5 @@ public class BookDto {
 	public void setBook_RealImage(String book_RealImage) {
 		this.book_RealImage = book_RealImage;
 	}
-	
+		
 }

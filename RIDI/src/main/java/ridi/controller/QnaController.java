@@ -57,8 +57,8 @@ public class QnaController {
 			int currentPage = Integer.parseInt(clickedPage);
 			
 			int total= 0 ;
-			int listPerCount = 10;
-			int pageGroupCount = 3;
+			int listPerCount = 5;
+			int pageGroupCount = 10;
 			
 			total = qnaDao.getTotal();
 			int lastPage = (int)(total / listPerCount) + 1;
@@ -85,6 +85,11 @@ public class QnaController {
 			model.addAttribute("currentPage",currentPage);
 			model.addAttribute("pageGroupCount",pageGroupCount);
 			model.addAttribute("total",total);
+//			System.out.println("total==="+total);
+//			System.out.println("startPage==="+startPage);
+//			System.out.println("endPage==="+endPage);
+//			System.out.println("qnaList==="+qnaList);
+			
 			
 		return "qna/qna_List";
 		}
@@ -101,23 +106,50 @@ public class QnaController {
 	}
 
 	@RequestMapping("/QnaView.do")
-		public String qnaView(int no, int clickedPage, int num, Model model) {
+		public String qnaView(int no, int clickedPage, int num, Model model,HttpServletRequest request) {
 			
 		qnaDto = qnaDao.getQnaSelectOne(no);
 		
-		prevQnaDto = qnaDao.getSelectPrev(num);
-		nextQnaDto = qnaDao.getSelectNext(num);
 		
+		prevQnaDto = qnaDao.prevQnaDto(num);
+		nextQnaDto = qnaDao.nextQnaDto(num);	
 		model.addAttribute("clickedPage",clickedPage);
 		model.addAttribute("qnaDto", qnaDto);
 		model.addAttribute("prevQnaDto",prevQnaDto);
 		model.addAttribute("nextQnaDto",nextQnaDto);
 		
+		System.out.println("clickedPage=="+clickedPage);
+		System.out.println("qnaDto=="+qnaDto);
+		
 		return "qna/qna_View";
 		
 	}
 	
+	@RequestMapping("/QnaReply.do")
+	public String qnaReply() {
+		
+		return "qna/qna_Reply";
+	}
 	
+	
+	@RequestMapping("/QndDelete.do")
+	   public String qnaDelete(HttpServletResponse response,HttpServletRequest request) throws IOException {
+	      int no = Integer.parseInt(request.getParameter("no"));
+	      String password = request.getParameter("password");
+	      String userPassword = qnaDao.getPassword(no);
+	      System.out.println(no+"================================"+password);
+	      if(userPassword.equals(password)) {
+	         int result = qnaDao.deleteQna(no);
+	         if(result > 0) {
+	            ScriptWriterUtil.alertAndNext(response, "질문이삭제되었습니다", "QnaList.do");
+	         }else {
+	            ScriptWriterUtil.alertAndBack(response, "질문삭제가 안되었습니다.");
+	         }
+	      }else {
+	         ScriptWriterUtil.alertAndBack(response, "비밀번호를 확인해 주세요");
+	      }
+	      return null;
+	   }
 	
 /////////////////////////////섬머노트////////////////////////
 @RequestMapping("/SummerNoteFileUpload.do")

@@ -1,49 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8"%>
-<%@ include file="../include/header.jsp"%>
-<div>
-	<h2>Book</h2>
-	<form method="POST" action="BookWrite.do" class="form" 
-	id="book" name="signUp" enctype="multipart/form-data">
-		<table class="tdLeft">
-			<cols>
-			<col style="width: 150px;">
-			<col>
-			</cols>
-			<tbody>
-				<tr>
-					<th>name</th>
-					<td><input type="text" name="name" placeholder="이름을 쓰세요"></td>
-				</tr>
-				<tr>
-					<th>email</th>
-					<td><input type="text" name="email" placeholder="메일을 쓰세요"></td>
-				</tr>
-				<tr>
-					<th>subject</th>
-					<td><input type="text" name="subject" placeholder="제목을 쓰세요"></td>
-				</tr>
-				<tr>
-					<th>password</th>
-					<td><input type="password" name="password"
-						placeholder="패스워드를 쓰세요"></td>
-				</tr>
-				<tr>
-					<th>contents</th>
-					<td><textarea rows="" cols="" name="contents"
-							placeholder="내용을 쓰세요" id="summernote"></textarea></td>
-				</tr>
-				<tr>
-                  <th>책 이미지</th>
-                  <td><input type="file" name="multipartFile" id="bookImg"></td>
-               </tr>
-			</tbody>
-		</table>
-		<div class="btns center">
-			<input type="submit" value="확인"> <input type="button"
-				value="취소">
-		</div>
-	</form>
-</div>
-	
-	
-<%@ include file="../include/footer.jsp"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/RIDI.css">
+    <title>Book</title>
+</head>
+<body id="book_bg">
+    <header id="book_Form_Header">
+        <div class="book_fFrm_Header_Inner">
+                <h1 class="book_form_Logo"><a href="/RIDI">RIDI</a></h1>
+        </div>
+    </header>
+    <div id="content_Book">
+        <div id="book_Form_Inner">
+          <form method="POST" action="BookWrite.do" class="book_Form" id="book" name="signUp" enctype="multipart/form-data">
+            <div class="book_Form_Input">
+                <div class="book_Form_Category">
+                    <span>category</span>
+                    <select name="category">
+                        <option value="재태크">재태크</option>
+                        <option value="만화">만화</option>
+                        <option value="에세이">에세이</option>
+                        <option value="mainadv">메인</option>
+                    </select>
+                </div>
+                <input type="text" name="book_Name" placeholder="책 제목을 입력하세요">
+                <input type="text" name="author" placeholder="저자를 입력하세요">
+                <input type="date" name="publication_Date" placeholder="출간일을 입력하세요">
+                <input type="number" name="pages" placeholder="쪽수를 입력하세요">
+                <input type="number" name="stock" placeholder="재고수를 입력하세요">
+                <input type="number" name="price" placeholder="가격을 입력하세요">
+                <input type="number" name="shipping_Price" placeholder="배송비를 입력하세요">
+                <input type="text" name="estimated_Time" placeholder="배송예상시간을 입력하세요">
+                <textarea name="book_Intro" id="" cols="30" rows="10" placeholder="책 내용을 입력하세요" style="resize: none;"></textarea>
+                <div class="book_Form_File">
+                    <span>이미지파일</span><input type="file" name="multipartFile" id="book_Img">
+                </div>
+            </form>
+            <div class="bookBtns">
+                <input type="submit" value="확인" id="bookSign_Up">
+                <input type="reset" value="취소" id="cancel">
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

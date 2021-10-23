@@ -13,7 +13,7 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
-@ComponentScan("ridi.model.books")
+@ComponentScan("ridi.model.book")
 @ComponentScan("ridi.model.member")
 @ComponentScan("ridi.model.orders")
 @ComponentScan("ridi.model.qna")
@@ -28,8 +28,11 @@ public class RootAppContext {
 		hikariConfig.setPassword("1234");
 		
 		
-		hikariConfig.setMaximumPoolSize(10);
-		hikariConfig.setConnectionTimeout(50000); 
+		hikariConfig.setMaximumPoolSize(20);
+//		hikariConfig.setConnectionTimeout(5000000);
+//		hikariConfig.setIdleTimeout(6000000);
+		hikariConfig.setKeepaliveTime(240000);
+		
 		
 		HikariDataSource dataSource = new HikariDataSource(hikariConfig);
 		return dataSource;

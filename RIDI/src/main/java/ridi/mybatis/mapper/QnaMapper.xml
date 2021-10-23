@@ -74,19 +74,22 @@
 							#{contents})
 	 </insert>
 	 
-	 <select id="getSelectPrev" parameterType="Integer" resultType="QnaDto">
+	 <select id="prevQnaDto" parameterType="Integer" resultType="QnaDto">
 	 	SELECT * FROM (SELECT B.*,ROWNUM AS NUM FROM 
 						( SELECT * FROM QNA ORDER BY REGROUP DESC, RELEVEL ASC ) B)
 					WHERE NUM = #{num} - 1
 	 </select>
 	 
-	 <select id="getSelectNext" parameterType="Integer" resultType="QnaDto">
+	 <select id="nextQnaDto" parameterType="Integer" resultType="QnaDto">
 	 	SELECT * FROM (SELECT B.*,ROWNUM AS NUM FROM 
 						( SELECT * FROM QNA ORDER BY REGROUP DESC, RELEVEL ASC ) B)
 					WHERE NUM = #{num} + 1
 	 </select>
-	 </mapper>
-
-
-
-
+	 <select id="getPassword" parameterType="Integer" resultType="String">
+	 	SELECT PASSWORD FROM QNA WHERE NO = #{no}
+	 </select>
+	 
+	 <delete id="deleteQna" parameterType="Integer">
+	 	DELETE FROM QNA WHERE NO = #{no}
+	 </delete>
+</mapper>

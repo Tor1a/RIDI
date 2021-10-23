@@ -70,28 +70,45 @@ public class QnaDao {
 		QnaDto qnaDto = null;
 		updateReadCount(no);
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		qnaDto = sqlSession.selectOne("getQnaSelectOne");
+		qnaDto = sqlSession.selectOne("getQnaSelectOne",no);
 		sqlSession.close();
 		
 		return qnaDto;
 	}
 	
-	public QnaDto getSelectPrev(int num) {
+	public QnaDto prevQnaDto(int num) {
 		QnaDto qnaDto = null;
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		qnaDto = sqlSession.selectOne("getSelectPrev");
+		qnaDto = sqlSession.selectOne("prevQnaDto",num);
 		sqlSession.close();
 		
 		return qnaDto;
 	}
-	public QnaDto getSelectNext(int num) {
+	public QnaDto nextQnaDto(int num) {
 		QnaDto qnaDto = null;
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		qnaDto = sqlSession.selectOne("getSelectNext");
+		qnaDto = sqlSession.selectOne("nextQnaDto",num);
 		sqlSession.close();
 		
 		return qnaDto;		
 	}
 	
+	public String getPassword(int no) {
+		String password = null;
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		password = sqlSession.selectOne("getPassword", no);
+		sqlSession.close();
+		return password;
+	}
+	
+	public int deleteQna(int no) {
+		int result = 0;
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		result = sqlSession.delete("deleteQna",no);
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return result;
+	}
 	
 }

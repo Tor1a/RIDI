@@ -17,7 +17,7 @@ public class Mail {
 		// smtp 기본 세팅
 		Properties p = System.getProperties();
 		p.put("mail.smtp.starttls.enable", "true");
-		p.put("mail.smtp.host", "smtp.naver.com");
+		p.put("mail.smtp.host", "smtp.gmail.com");
 		p.put("mail.smtp.auth", "true");
 		p.put("mail.smtp.port", "587");
 
@@ -29,7 +29,7 @@ public class Mail {
 			msg.setSentDate(new Date());
 			InternetAddress from = new InternetAddress();
 			// 보내는 사람 메일
-			from = new InternetAddress("lkoosss@naver.com");
+			from = new InternetAddress("lkoosss20@gmail.com");
 			msg.setFrom(from);
 
 			InternetAddress to = new InternetAddress(userEmail);
@@ -54,9 +54,9 @@ class MyAuthentication extends Authenticator {
 
 	public MyAuthentication() {
 		// 보내는 사람 메일 아이디 (네이버)
-		String id = "lkoosss";
+		String id = "lkoosss20@gmail.com";
 		// 보내는 사람 메일 비밀번호
-		String pw = "ruddus22";
+		String pw = "tjdtlr20";
 		account = new PasswordAuthentication(id, pw);
 	}
 
