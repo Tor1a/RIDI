@@ -1,6 +1,7 @@
 package ridi.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -8,4 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class OrdersController {
 
+	@RequestMapping("/CartListForm.do")
+	public String eight() {
+		return "orders/cartList";
+	}
 }

@@ -51,4 +51,5 @@ public class HomeController {
 	public String six() {
 		return "qna/qna_Write";
 	}
+	
 }

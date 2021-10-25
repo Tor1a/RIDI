@@ -54,7 +54,7 @@
                 <nav>
                     <ul class="headerMenu">
                         <li><a href="/RIDI"><i class="fas fa-home"></i>홈</a></li>
-                        <li><a href="#"><i class="fas fa-shopping-cart"></i>카트</a></li>
+                        <li><a href="CartListForm.do"><i class="fas fa-shopping-cart"></i>카트</a></li>
                         <li><a href="BookOrderForm.do"><i class="fas fa-box"></i>주문/배송조회</a></li>
                         <li><a href="BookWriteForm.do"><i class="fas fa-book"></i>책 판매</a></li>
                         <c:if test="${!empty sessionScope.loggedMember }">
