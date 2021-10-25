@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
-<div id="order_Content">
+<div id="order_Content" style="height: 100%">
         <div class="order_Inner">
             <div id="order_Form">
                 <h4 class="order_Title">주문/결제</h4>

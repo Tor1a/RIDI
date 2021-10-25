@@ -21,15 +21,16 @@ public class ReviewDao {
 		int result = 0;
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		result = sqlSession.insert("reviewWrite",reviewDto);
+		sqlSession.commit();
 		sqlSession.close();
 		return result;
 	}
 	
 	// 리뷰 목록들을 출력한다.
-	public List<ReviewDto> getAllReview(){
+	public List<ReviewDto> getAllReview(ReviewDto reviewDto){
 		List<ReviewDto> reviewList = null;
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		reviewList = sqlSession.selectList("getAllReview");
+		reviewList = sqlSession.selectList("getAllReview",reviewDto);
 		return reviewList;
 	}
 	
@@ -38,7 +39,17 @@ public class ReviewDao {
 		int result = 0;
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		result = sqlSession.delete("deleteReview",reviewDto);
+		sqlSession.commit();
+		sqlSession.close();
 		return result;
+	}
+	
+	// 책의 평균별점을 BOOK 테이블에 업데이트한다.
+	public void updateStarRatingAvg(ReviewDto reviewDto) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.update("updateStarRatingAvg",reviewDto);
+		sqlSession.commit();
+		sqlSession.close();
 	}
 }
 

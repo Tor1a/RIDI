@@ -185,6 +185,20 @@ public class BookController {
 		return hashMap;
 	}
 	
+	// 베스트 셀러를 출력한다.
+	// 오성식 추가
+	@RequestMapping("/BestSellerJsonList.do")
+	@ResponseBody
+	public Map<String,Object> getBestSeller(){
+		Map<String, Object> hashMap = new HashMap<String,Object>();
+		
+		List<BookDto> bestSellerList = bookDao.getBestSeller();
+		hashMap.put("bestSellerList", bestSellerList);
+		return hashMap;
+	}
+	
+	
+	
 	/////////////////////////// 재태크 페이지 ///////////////////
 	
 	// 재태크 페이지 이동

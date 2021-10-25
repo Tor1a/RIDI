@@ -21,7 +21,7 @@ $(document).ready(function(){
 		url:"BookJsonSliderList.do",
 		dataType : 'json',
 		success:function(resultData){
-			console.log(resultData.bookList);
+			//console.log(resultData.bookList);
 			const bookList = resultData.bookList;
 			$(".main_slider").append(`<ul class="list"></ul>`);
 			$.each(bookList, function(i, item){
@@ -56,7 +56,7 @@ $(document).ready(function(){
 		url:"NewBookJsonList.do",
 		dataType : 'json',
 		success:function(resultData){
-			console.log(resultData.newBookList);
+			//console.log(resultData.newBookList);
 			const newBookList = resultData.newBookList;
 			//$(".newBook_Slide").append(`<div class="newBookList"></div>`);
 			$.each(newBookList, function(i, item){
@@ -95,7 +95,7 @@ $(document).ready(function(){
 		url:"MoneyBestBookJsonList.do",
 		dataType : 'json',
 		success:function(resultData){
-			console.log(resultData.moneyBestBookList);
+			//console.log(resultData.moneyBestBookList);
 			const moneyBestBookList = resultData.moneyBestBookList;
 			$(".best_slider").append(`<ul class="list"></ul>`);
 			$.each(moneyBestBookList, function(i, item){
@@ -142,8 +142,8 @@ $.ajax({
 				                                 <span>${item.author}</span>
 				                             </div>
 				                         </div>
-				                     </li>
-											`);
+				                     </li>`
+									);
 			});
 			
 		}
@@ -186,6 +186,49 @@ $(document).ready(function(){
 	});	
 	
 }); 
+
+
+//오성식 추가
+//베스트 셀러를 출력한다.
+$(document).ready(function(){
+	$.ajax({
+		type:"GET",
+		url:"BestSellerJsonList.do",
+		dataType:"json",
+		success:function(result){
+			const bestSellerList = result.bestSellerList;
+			$.each(bestSellerList,function(i,item){
+				$(".grid").append(`<li class="img_Box${i+1}">
+                         <a href="BookInfo.do?no=${item.no}">
+                             <div>
+                                 <img src="${item.book_Image}" alt="">
+                             </div>
+                         </a>
+                         <div>
+                             <h4>${i+1}</h4>
+                             <div>
+                                 <a href="BookInfo.do?no=${item.no}">${item.book_Name}</a>
+                                 <span>${item.author}</span>
+                                 <span></span>
+                             </div>
+                         </div>
+                     </li>`);
+				for(var x=1; x<=5; x++){
+					if(x<=`${item.star_Rating}`){
+						$(`.grid .img_Box${i+1} > div > div span:nth-child(3)`).append("★");
+						$(`.grid .img_Box${i+1} > div > div span:nth-child(3)`).attr("style","font-size:20px; color:gold;");
+					} else {
+						$(`.grid .img_Box${i+1} > div > div span:nth-child(3)`).append("☆");
+						$(`.grid .img_Box${i+1} > div > div span:nth-child(3)`).attr("style","font-size:20px; color:gold;");
+					}
+				}		
+			});
+		},
+		error:function(){
+			alert("실패함");
+		}
+	})
+})
 
 
 

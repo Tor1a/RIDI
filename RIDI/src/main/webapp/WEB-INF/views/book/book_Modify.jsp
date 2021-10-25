@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <%@ include file="../include/header.jsp"%>
 
-<div id="content">
+<div id="content" style="height: 100%;">
         <div id="book_Box">
             <h2>수정페이지</h2>
             <form method="POST" action="BookModify.do" class="book_Form" id="book" name="signUp" enctype="multipart/form-data">

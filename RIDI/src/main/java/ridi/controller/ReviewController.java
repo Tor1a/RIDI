@@ -34,34 +34,35 @@ public class ReviewController {
 	}
 	
 	// 리뷰 작성시 DB에 저장한다.
+	// 책의 평균 별점을 업데이트한다.
 	@RequestMapping("/ReviewWrite.do")
-	public void reviewWrite(ReviewDto reviewDto,HttpServletResponse response) throws IOException {
+	@ResponseBody
+	public int reviewWrite(ReviewDto reviewDto,HttpServletResponse response) throws IOException {
 		int result = 0;
 		result = reviewDao.reviewWrite(reviewDto);
-		
-		if(result > 0) {
-			ScriptWriterUtil.alertAndNext(response, "리뷰가 정상적으로 등록되었습니다.", "ReviewWriteForm.do");
-		} else {
-			ScriptWriterUtil.alertAndBack(response, "리뷰 등록에 실패하였습니다.");
-		}
+		reviewDao.updateStarRatingAvg(reviewDto);
+		return result;
 	}
 	
 	// 리뷰 목록들을 출력한다.
 	@RequestMapping("/ReviewList.do")
 	@ResponseBody
-	public Map<String, Object> getAllReview(){
+	public Map<String, Object> getAllReview(ReviewDto reviewDto){
 		Map<String, Object> hashMap = new HashMap<String, Object>();
-		List<ReviewDto> reviewList =  reviewDao.getAllReview();
+		List<ReviewDto> reviewList =  reviewDao.getAllReview(reviewDto);
 		hashMap.put("reviewList", reviewList);
 		return hashMap;
 	}
 	
 	// 리뷰 삭제를 실행한다.
+	// 책의 평균 별점을 업데이트한다.
 	@RequestMapping("/ReviewDelete.do")
 	@ResponseBody
 	public int deleteReview(ReviewDto reviewDto) {
 		int result = 0;
 		result = reviewDao.deleteReview(reviewDto);
+		reviewDao.updateStarRatingAvg(reviewDto);
 		return result;
 	}
+
 }

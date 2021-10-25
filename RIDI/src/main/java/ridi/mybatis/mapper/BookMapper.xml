@@ -86,5 +86,10 @@
 		SELECT * FROM BOOK WHERE CATEGORY = '재태크'
 	</select>
 	
+	<!-- 오성식 추가 -->
+	<!-- 베스트셀러 9개 책 출력 -->
+	<select id="getBestSeller" resultType="BookDto">
+		SELECT * FROM (SELECT * FROM BOOK ORDER BY STAR_RATING DESC) WHERE ROWNUM <![CDATA[<]]>= 9
+	</select>
 
 </mapper>
