@@ -15,7 +15,7 @@
                                 <li>${bookDto.book_Name}</li>
                                 <li>${bookDto.star_Rating}</li>
                                 <li>${bookDto.author}</li>
-                                <li>${bookDto.publication_Date }</li>
+                                <li style="width:100px; height:20px; text-overflow: clip; overflow: hidden;">${bookDto.publication_Date }</li>
                             </ul>
                         </div>
                          <div class="book_parcel_Box">

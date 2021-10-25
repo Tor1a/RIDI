@@ -1,5 +1,6 @@
 let sendNo;
 let clickedItem;
+let plusNum;
 //$(document).ready(function(){ $(".slick-sample").slick({ }); }); 
 /*var $opts = 
            { 
@@ -87,64 +88,111 @@ $(document).ready(function(){
 }); 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-/*$.ajax({
-	url:"BookJsonList.do",
-	success:function(resultData){
-		console.log(resultData.bookList);
-		const bookList = resultData.bookList;
-		$("#bookList").append(`<ul class="list"></ul>`);
-		$.each(bookList, function(i, item){
-			const categories = item.category.replaceAll(",", " "); // 배열로 들어올때 콤마(,)를 공백으로 처리
-			$("#bookList ul").append(`
-										<li class="item ${categories}" data-no=${item.no}>
-											<div class="imgBox">
-												<a href="BookInfo.do?no=${item.no}">
-													<img src="${item.book_Image}">
-												</a>
-											</div>
-											<div class="info">
-												<h2>${item.book_Name}</h2>
-												<p>${item.price}</p>
-												<p>${item.stock}</p>
-												<p>${item.star_Rating}</p>
-												<p>${item.estimated_Time}</p>
-												<p>${item.shipping_Price}</p>
-												<p>${item.publication_Date}</p>
-												<p>${item.pages}</p>
-												<p>${item.author}</p>
-												<p>${item.book_Intro}</p>
-											</div>
-										</li>
-										`);
-		});
-		/*$("#bookList").imagesLoaded( function() {
-			const grid = $("#bookList .list").isotope({
-			  itemSelector: '.item',
-			  layoutMode: 'masonry'
+/* 재태크페이지 메인 베스트 슬라이더 출력(미완) */
+$(document).ready(function(){
+	$.ajax({
+		type : 'GET',
+		url:"MoneyBestBookJsonList.do",
+		dataType : 'json',
+		success:function(resultData){
+			console.log(resultData.moneyBestBookList);
+			const moneyBestBookList = resultData.moneyBestBookList;
+			$(".best_slider").append(`<ul class="list"></ul>`);
+			$.each(moneyBestBookList, function(i, item){
+				$(".best_slider .list").append(`	<li>	
+														<a href="BookInfo.do?no=${item.no}">
+															<img src="${item.book_Image}">
+														</a>
+													</li>
+											`);
 			});
-			$("#filterList li").on("click", function(){
-				$(this).addClass("on").siblings().removeClass("on");
-				const selectedClass = $(this).data("filter");
-				grid.isotope({ filter: `.${selectedClass}` });
+			$(".best_slider").removeClass("slick-initialized slick-slider");
+			
+			$(".best_slider .list").slick({
+	            slidesToShow: 1,
+                slidesToScroll: 1,
+                infinite : true,
+                autoplay: true,
+                autoplaySpeed: 1000,
+                arrows: false,
+                dots: true
+	         });
+		}
+	});
+ }); 
+/* 재태크페이지 지금시간페이지 출력(미완) */
+$.ajax({
+		type : 'GET',
+		url:"MoneyTimeBookJsonList.do",
+		dataType : 'json',
+		success:function(resultData){
+			console.log(resultData.moneyTimeBookList);
+			const moneyTimeBookList = resultData.moneyTimeBookList;
+			$.each(moneyTimeBookList, function(i, item){
+				$(".gridMoney").append(`	<li class="img_Box${i+1}">
+				                         <a href="BookInfo.do?no=${item.no}">
+				                             <div>
+				                                 <img src="${item.book_Image}">
+				                             </div>
+				                         </a>
+				                         <div>
+				                             <h4>${i+1}</h4>
+				                             <div>
+				                                 <a href="BookInfo.do?no=${item.no}">${item.book_Name}</a>
+				                                 <span>${item.author}</span>
+				                             </div>
+				                         </div>
+				                     </li>
+											`);
 			});
 			
-		});
-	}
-});*/
+		}
+	});
+
+/* 재태크페이지 리디 추천 슬라이더 출력(미완) */
+
+$(document).ready(function(){
+	$.ajax({
+		type : 'GET',
+		url:"MoneyRecomBookJsonList.do",
+		dataType : 'json',
+		success:function(resultData){
+			console.log(resultData.moneyRecomBookList);
+			const moneyRecomBookList = resultData.moneyRecomBookList;
+			$.each(moneyRecomBookList, function(i, item){
+				$(".recomBook_Slide").append(`
+													<div class="recomBookList">
+														<a href="BookInfo.do?no=${item.no}">
+															<img src="${item.book_Image}">
+															<div class="recom_Book_Line">
+																<span>${item.book_Name}</span>
+																<span>${item.author}</span>
+															</div>
+														</a>
+													</div>
+											`);
+			});
+			 $(".recomBook_Slide").removeClass("slick-initialized slick-slider");
+			
+	         $(".recomBook_Slide").slick({
+	            dots: false,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 6,
+                slidesToScroll: 6,
+                arrows: true
+	         });	
+		}
+	});	
+	
+}); 
 
 
 
-/*<a href="BookInfo.do?no=${item.no}"></a>
-<li class="item ${categories}" data-no=${item.no}>*/
+
+
+
+
+
+
+

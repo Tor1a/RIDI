@@ -39,6 +39,8 @@ public class BookController {
 	@Autowired
 	BookDao bookDao;
 	
+	///////////////////// 기본 기능///////////////////////////
+	
 	@RequestMapping("/BookWriteForm.do")
 	public String bookWriteForm() {
 		return "book/book_Write";
@@ -79,50 +81,6 @@ public class BookController {
 		
 		return null;
 	}
-	
-	/*
-	 * @RequestMapping("/BookList.do") public String BookList() { return
-	 * "book/book_List"; }
-	 */
-	
-	// 메인 SLIDER 띄우는 json
-	@RequestMapping("/BookJsonSliderList.do")
-	@ResponseBody
-	public Map<String, List<BookDto>> BookJsonSliderList(){
-		Map<String, List<BookDto>> hashMap = null;
-		
-		List<BookDto> bookList = bookDao.getAdvSlider();
-		hashMap = new HashMap<String, List<BookDto>>();
-		hashMap.put("bookList", bookList);
-		
-		return hashMap;
-	}
-	// 신작 추천 controller
-	@RequestMapping("/NewBookJsonList.do")
-	@ResponseBody
-	public Map<String, List<BookDto>> NewBookJsonList(){
-		Map<String, List<BookDto>> hashMap = null;
-		
-		List<BookDto> newBookList = bookDao.getNewBook();
-		hashMap = new HashMap<String, List<BookDto>>();
-		hashMap.put("newBookList", newBookList);
-		
-		return hashMap;
-	}
-	
-	// 전부 띄우는 json
-	@RequestMapping("/BookJsonList.do")
-	@ResponseBody
-	public Map<String, List<BookDto>> BookJsonList(){
-		Map<String, List<BookDto>> hashMap = null;
-		
-		List<BookDto> bookList = bookDao.getAllBook();
-		hashMap = new HashMap<String, List<BookDto>>();
-		hashMap.put("bookList", bookList);
-		
-		return hashMap;
-	}
-	
 	
 	@RequestMapping("/BookInfo.do")
 	public String getOneBook(int no, Model model) {
@@ -187,5 +145,93 @@ public class BookController {
 		return null;
 	}
 	
+	////////////////// 메인 페이지 //////////////////////////////
+	
+	// 메인 SLIDER 띄우는 json
+	@RequestMapping("/BookJsonSliderList.do")
+	@ResponseBody
+	public Map<String, List<BookDto>> BookJsonSliderList(){
+		Map<String, List<BookDto>> hashMap = null;
+		
+		List<BookDto> bookList = bookDao.getAdvSlider();
+		hashMap = new HashMap<String, List<BookDto>>();
+		hashMap.put("bookList", bookList);
+		
+		return hashMap;
+	}
+	// 신작 추천 controller
+	@RequestMapping("/NewBookJsonList.do")
+	@ResponseBody
+	public Map<String, List<BookDto>> NewBookJsonList(){
+		Map<String, List<BookDto>> hashMap = null;
+		
+		List<BookDto> newBookList = bookDao.getNewBook();
+		hashMap = new HashMap<String, List<BookDto>>();
+		hashMap.put("newBookList", newBookList);
+		
+		return hashMap;
+	}
+	
+	// 전부 띄우는 json
+	@RequestMapping("/BookJsonList.do")
+	@ResponseBody
+	public Map<String, List<BookDto>> BookJsonList(){
+		Map<String, List<BookDto>> hashMap = null;
+		
+		List<BookDto> bookList = bookDao.getAllBook();
+		hashMap = new HashMap<String, List<BookDto>>();
+		hashMap.put("bookList", bookList);
+		
+		return hashMap;
+	}
+	
+	/////////////////////////// 재태크 페이지 ///////////////////
+	
+	// 재태크 페이지 이동
+		@RequestMapping("/MoneyBookForm.do")
+		public String moneyBookForm() {
+			return "book/book_Money";
+		}
+		
+	// 재태크 페이지 베스트셀러 페이지 controller
+	@RequestMapping("/MoneyBestBookJsonList.do")
+	@ResponseBody
+	public Map<String, List<BookDto>> moneyBestBookJsonList(){
+		Map<String, List<BookDto>> hashMap = null;
+		
+		List<BookDto> moneyBestBookList = bookDao.getMoneyBestSlider();
+		hashMap = new HashMap<String, List<BookDto>>();
+		hashMap.put("moneyBestBookList", moneyBestBookList);
+		
+		return hashMap;
+	}	
+		
+		
+	// 재태크 페이지 시간추천 페이지 controller
+	@RequestMapping("/MoneyTimeBookJsonList.do")
+	@ResponseBody
+	public Map<String, List<BookDto>> moneyTimeBookJsonList(){
+		Map<String, List<BookDto>> hashMap = null;
+		
+		List<BookDto> moneyTimeBookList = bookDao.getMoneyTimeBook();
+		hashMap = new HashMap<String, List<BookDto>>();
+		hashMap.put("moneyTimeBookList", moneyTimeBookList);
+		
+		return hashMap;
+	}
+	
+	// 재태크 페이지 리디추천 슬라이더 controller
+	@RequestMapping("/MoneyRecomBookJsonList.do")
+	@ResponseBody
+	public Map<String, List<BookDto>> moneyRecomBookJsonList(){
+		Map<String, List<BookDto>> hashMap = null;
+		
+		List<BookDto> moneyRecomBookList = bookDao.getMoneyRecomBook();
+		hashMap = new HashMap<String, List<BookDto>>();
+		hashMap.put("moneyRecomBookList", moneyRecomBookList);
+		
+		return hashMap;
+	}	
+
 	
 }

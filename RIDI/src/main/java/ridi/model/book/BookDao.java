@@ -22,6 +22,7 @@ public class BookDao {
 	private SqlSessionFactory sqlSessionFactory;
 	
 	
+	/////////////////////////// 기본 기능 ///////////////////////
 	public int insertBook(BookDto bookDto) {
 		
 		int result = 0;
@@ -44,6 +45,40 @@ public class BookDao {
 		
 		return bookList;
 	}
+	// info 페이지
+		public BookDto getOneBook(int no) {
+			BookDto bookDto = null;
+			
+			SqlSession sqlSession = sqlSessionFactory.openSession();
+			bookDto = sqlSession.selectOne("getOneBook", no);
+			sqlSession.close();
+			
+			return bookDto;
+		}
+		// 책 수정 페이지
+		public int modifyBook(BookDto bookDto) {
+			int result = 0;
+			
+			SqlSession sqlSession = sqlSessionFactory.openSession();
+			result = sqlSession.update("modifyBook", bookDto);
+			sqlSession.commit();
+		    sqlSession.close();
+			
+			return result;
+		}
+		// 책 삭제 페이지
+		public int deleteBook(int no) {
+			int result = 0;
+			
+			SqlSession sqlSession = sqlSessionFactory.openSession();
+			result = sqlSession.delete("deleteBook", no);
+			sqlSession.commit();
+		    sqlSession.close();
+			
+			return result;
+		}
+	/////////////////////////////메인 페이지/////////////////////////
+		
 	// 메인 슬라이더
 	public List<BookDto> getAdvSlider(){
 		List<BookDto> bookList = null;
@@ -54,6 +89,8 @@ public class BookDao {
 		
 		return bookList;
 	}
+	
+	// 신작 추천 슬라이더
 	public List<BookDto> getNewBook(){
 		List<BookDto> newBookList = null;
 		
@@ -63,37 +100,41 @@ public class BookDao {
 		
 		return newBookList;
 	}
-	// info 페이지
-	public BookDto getOneBook(int no) {
-		BookDto bookDto = null;
+	
+	
+	//////////////////////재태크///////////////////////////////
+	
+	// 재태크 메인 베스트셀러 슬라이더
+	public List<BookDto> getMoneyBestSlider(){
+		List<BookDto> moneyBestBookList = null;
 		
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		bookDto = sqlSession.selectOne("getOneBook", no);
+		moneyBestBookList = sqlSession.selectList("getMoneyBestSlider");
 		sqlSession.close();
 		
-		return bookDto;
+		return moneyBestBookList;
 	}
-	// 책 수정 페이지
-	public int modifyBook(BookDto bookDto) {
-		int result = 0;
+	
+	// 재태크 시간추천
+	public List<BookDto> getMoneyTimeBook(){
+		List<BookDto> moneyTimeBookList = null;
 		
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		result = sqlSession.update("modifyBook", bookDto);
-		sqlSession.commit();
-	    sqlSession.close();
+		moneyTimeBookList = sqlSession.selectList("getMoneyTimeBook");
+		sqlSession.close();
 		
-		return result;
+		return moneyTimeBookList;
 	}
-	// 책 삭제 페이지
-	public int deleteBook(int no) {
-		int result = 0;
+		
+	// 재태크 리디추천 슬라이더	
+	public List<BookDto> getMoneyRecomBook(){
+		List<BookDto> moneyRecomBookList = null;
 		
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		result = sqlSession.delete("deleteBook", no);
-		sqlSession.commit();
-	    sqlSession.close();
+		moneyRecomBookList = sqlSession.selectList("getMoneyRecomBook");
+		sqlSession.close();
 		
-		return result;
+		return moneyRecomBookList;
 	}
 	
 }

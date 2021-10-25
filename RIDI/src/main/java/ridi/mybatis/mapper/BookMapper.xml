@@ -25,21 +25,7 @@
 	<select id="getAllBook" resultType="BookDto">
 		SELECT * FROM BOOK ORDER BY NO DESC
 	</select>
-	
-	<!-- 메인 슬라이더 페이지 출력 -->
-	<select id="getAdvSlider" resultType="BookDto">
-		SELECT * FROM BOOK WHERE CATEGORY = 'mainadv' ORDER BY NO DESC
-	</select>
-	
-	<!-- 신작 슬라이더 페이지 출력 -->
-	<select id="getNewBook" resultType="BookDto">
-		SELECT * FROM BOOK 
-							WHERE 
-							PUBLICATION_DATE <![CDATA[>]]> SYSDATE - (INTERVAL '21' DAY) 
-							AND CATEGORY NOT IN('mainadv') 
-							ORDER BY PUBLICATION_DATE DESC
-	</select>
-	
+		
 	<!-- 책 info 페이지 출력 -->
 	<select id="getOneBook" parameterType="Integer" resultType="BookDto">
 		SELECT * FROM BOOK WHERE NO = #{no}
@@ -65,6 +51,40 @@
 	<delete id="deleteBook" parameterType="Integer">
 		DELETE FROM BOOK WHERE NO = #{no}
 	</delete>
+	
+	<!-- 메인 페이지 -->
+	
+	
+	<!-- 메인 슬라이더 페이지 출력 -->
+	<select id="getAdvSlider" resultType="BookDto">
+		SELECT * FROM BOOK WHERE CATEGORY = 'mainadv' ORDER BY NO DESC
+	</select>
+	
+	<!-- 신작 슬라이더 페이지 출력 -->
+	<select id="getNewBook" resultType="BookDto">
+		SELECT * FROM BOOK 
+							WHERE 
+							PUBLICATION_DATE <![CDATA[>]]> SYSDATE - (INTERVAL '21' DAY) 
+							AND CATEGORY NOT IN('mainadv') 
+							ORDER BY PUBLICATION_DATE DESC
+	</select>
+	
+	<!-- 재태크 페이지 -->
+	
+	<!-- 재태크페이지 베스트셀러 슬라이더 출력(아직 미설계, sql 수정해야함) -->
+	<select id="getMoneyBestSlider" resultType="BookDto">
+		SELECT * FROM BOOK WHERE CATEGORY = 'mainadv' ORDER BY NO DESC
+	</select>
+	
+	<!-- 재태크페이지 현재시간, 사람들이 많이 읽고있는 페이지 출력 (아직 미설계, sql 수정해야함) -->
+	<select id="getMoneyTimeBook" resultType="BookDto">
+		SELECT * FROM BOOK WHERE CATEGORY = '재태크'
+	</select>
+	
+	<!-- 재태크페이지 리디추천 출력 (아직 미설계, sql 수정해야함)-->
+	<select id="getMoneyRecomBook" resultType="BookDto">
+		SELECT * FROM BOOK WHERE CATEGORY = '재태크'
+	</select>
+	
+
 </mapper>
-
-

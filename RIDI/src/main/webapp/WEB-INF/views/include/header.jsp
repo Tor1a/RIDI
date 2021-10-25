@@ -69,9 +69,9 @@
             <nav class="headerCategoryInner">
                 <ul class="headerCategory">
                     <li><i class="fas fa-caret-right"></i></li>
-                    <li><a href="#">재태크</a></li>
-                    <li><a href="#">만화</a></li>
-                    <li><a href="#">에세이</a></li>
+                    <li><a href="MoneyBookForm.do">재태크</a></li>
+                    <li><a href="ComicBookForm.do">만화</a></li>
+                    <li><a href="EssayBookForm.do">에세이</a></li>
                 </ul>
             </nav>
         </div>
