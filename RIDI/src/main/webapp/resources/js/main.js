@@ -121,6 +121,14 @@ $(document).ready(function(){
 	});
  }); 
 /* 재태크페이지 지금시간페이지 출력(미완) */
+
+/* 현재 시간 출력 */
+let now = new Date();
+const hour = now.getHours();
+const minutes = now.getMinutes();
+let time = hour + "시 " + minutes + "분";
+console.log(time);
+
 $.ajax({
 		type : 'GET',
 		url:"MoneyTimeBookJsonList.do",
@@ -128,6 +136,7 @@ $.ajax({
 		success:function(resultData){
 			console.log(resultData.moneyTimeBookList);
 			const moneyTimeBookList = resultData.moneyTimeBookList;
+			$(".time").append(time);
 			$.each(moneyTimeBookList, function(i, item){
 				$(".gridMoney").append(`	<li class="img_Box${i+1}">
 				                         <a href="BookInfo.do?no=${item.no}">
