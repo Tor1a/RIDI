@@ -2364,6 +2364,8 @@ footer {
     background-repeat: no-repeat;
     background-position: center;
     filter: invert(100%);
+    // 오성식 추가(21.10.26)
+    left:-70px;
 }
 .slick-next {
     position: absolute;
@@ -2373,6 +2375,8 @@ footer {
     background-repeat: no-repeat;
     background-position: center;
     filter: invert(100%);
+    // 오성식 추가(21.10.26)
+    right:-60px;
 }
 
 // 재테크, 만화, 에세이 페이지 공통 슬라이더 추가 

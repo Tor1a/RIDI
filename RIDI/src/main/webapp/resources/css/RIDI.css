@@ -848,9 +848,9 @@ footer div p { text-align: center; color: #fff; }
 
 .slick-arrow:hover { background-color: #c4c4c793; }
 
-.slick-prev { position: absolute; top: 100px; background-image: url("../images/prev.png"); background-repeat: no-repeat; background-position: center; filter: invert(100%); }
+.slick-prev { position: absolute; top: 100px; background-image: url("../images/prev.png"); background-repeat: no-repeat; background-position: center; filter: invert(100%); left: -70px; }
 
-.slick-next { position: absolute; top: 100px; right: 15px; background-image: url("../images/next.png"); background-repeat: no-repeat; background-position: center; filter: invert(100%); }
+.slick-next { position: absolute; top: 100px; right: 15px; background-image: url("../images/next.png"); background-repeat: no-repeat; background-position: center; filter: invert(100%); right: -60px; }
 
 #sub_Content { height: 100%; }
 
