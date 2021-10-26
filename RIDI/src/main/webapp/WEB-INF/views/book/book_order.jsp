@@ -8,29 +8,27 @@
                 <div class="order_Form_Inner">
                     <form action="" method="post">
                         <div class="order_Input">
-                            <input type="text" name="name" placeholder="이름" class="order_Name">
-                            <input type="text" name="email" placeholder="이메일" class="join_Email">
+                            <input type="text" name="name" value="${sessionScope.loggedMember.name }" class="order_Name" readonly>
+                            <input type="text" name="email" value="${sessionScope.loggedMember.email }" class="join_Email" readonly>
                             <div class="order_Ph_Box">
                                 <select name="hp" class="order_Ph">
                                     <option value="010">010</option>
                                     <option value="011">011</option>
                                     <option value="017">017</option>
-                                </select><p>-</p><input type="number" name="hp_Middel" class="short" placeholder="번호 앞자리">
-                                <p>-</p><input type="number" name="hp_Last" class="short" placeholder="번호 뒷자리">
+                                </select><p>-</p><input type="number" name="hp_Middel" class="short" value="${ fn:substring(sessionScope.loggedMember.hp,4,8)}">
+                                <p>-</p><input type="number" name="hp_Last" class="short" value="${ fn:substring(sessionScope.loggedMember.hp,9,13)}">
                             </div>
-                            <input type="text" name="id" class="login_Id" placeholder="아이디">
-                            <input type="password" name="password" placeholder="비밀번호" id="userPw" class="join_Password">
-                            <input type="password" name="password02" placeholder="비밀번호 확인" id="userPw02" class="join_Password">
+                            <input type="text" name="id" class="login_Id" value="${sessionScope.loggedMember.id }">
                             <div class="zipcode_Container">
-                                <input type="number" name="zipcode" class="zipcode_Box" id="zipcode" placeholder="우편번호">
+                                <input type="number" name="zipcode" class="zipcode_Box" id="zipcode" value="${sessionScope.loggedMember.zipcode }">
                                 <input type="button" name="zipCode_Btn" value="우편번호 검색" id="btnZip" class="zipcode_Btn" >
                             </div>
                             <div class="address_Container">
                                 <div class="address01_Container">
-                                    <input type="text" name="address01" id="address01" placeholder="기본주소" class="order_box1">
+                                    <input type="text" name="address01" id="address01" value="${fn:substringBefore(sessionScope.loggedMember.address,'/') }" class="order_box1">
                                 </div>
                                 <div class="address02_Container">
-                                    <input type="text" name="address02" id="address02" placeholder="나머지주소" class="order_box2">
+                                    <input type="text" name="address02" id="address02" value="${fn:substringAfter(sessionScope.loggedMember.address,'/') }" class="order_box2">
                                 </div>
                             </div>
                         </div>

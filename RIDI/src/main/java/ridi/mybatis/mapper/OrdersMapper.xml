@@ -11,4 +11,9 @@
 	 <select id="getAllCartList" parameterType="string" resultType="OrdersDto">
 	 	SELECT * FROM ORDERS WHERE ORDER_PERSON = #{id}
 	 </select>
+	 
+	 <!-- 찜한 내용을 1개 삭제 -->
+	 <delete id="deleteOrder" parameterType="string">
+	 	DELETE FROM ORDERS WHERE NO = #{itemNo}
+	 </delete>
 </mapper>

@@ -23,7 +23,7 @@ function getAllCartList(){
                             <li>
                                 <div><span>${item.book_Name}</span></div>
                                 <div><span>${item.seller}</span></div>
-                                <div><button>삭제</button></div>
+                                <div><button onclick="deleteCartItem(${item.no})">삭제</button></div>
                             </li>
                             <li>
                                 <div><span class="bookPrice" id="bookPrice${i}">${item.price}원</span></div>
@@ -63,13 +63,21 @@ function calCheckedCartList(){
 	$(".cartList_sum > div:nth-of-type(1) span").text(`${selectCartListNum}권을 선택하셨습니다.`);
 	$(".cartList_sum > div:nth-of-type(3) span").text(`${priceSum}원`);
 	$(".select_btm > div:nth-of-type(2) span").text(`${priceSum}원`);
-	
-	//var test = $(".cartList_btm li:nth-child(4) span").toArray();
-	//$.each(test,function(i,item){
-	//	console.log(item);
-	//})
-	
-	//$(".cartList_btm li:nth-child(4) span").each(function(i,item){
-	//	item.addClass("i");
-	//})
+}
+
+function deleteCartItem(itemNo){
+	const _parent = $(this).parent().parent();
+	const sendData = {
+		itemNo:itemNo
+	}
+	$.ajax({
+		url:"DeleteShoppingCart.do",
+		data:sendData,
+		type:"POST",
+		success:function(result){
+			$(".cartList_btm").remove();
+			getAllCartList();
+			calCheckedCartList();
+		}
+	})
 }

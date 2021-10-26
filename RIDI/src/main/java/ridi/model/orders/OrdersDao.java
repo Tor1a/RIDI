@@ -34,6 +34,16 @@ public class OrdersDao {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		shoppingCartList = sqlSession.selectList("getAllCartList",id);
 		sqlSession.close();
+		
 		return shoppingCartList;
+	}
+	
+	// 찜한 내용을 1개 삭제
+	public int deleteOrder(String itemNo) {
+		int result = 0;
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		result = sqlSession.delete("deleteOrder",itemNo);
+		
+		return result;
 	}
 }

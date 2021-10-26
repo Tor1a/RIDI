@@ -1,8 +1,12 @@
 package ridi.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.slf4j.Slf4j;
+import ridi.model.member.MemberDto;
 import ridi.model.orders.OrdersDao;
 import ridi.model.orders.OrdersDto;
+import ridi.utlils.ScriptWriterUtil;
 
 @Controller
 @Slf4j
@@ -24,9 +30,17 @@ public class OrdersController {
 	@Autowired
 	OrdersDao ordersDao;
 	
+	@Autowired
+	MemberDto memberDto;
+	
 	//유저 카트 페이지로 이동한다.
 	@RequestMapping("/CartListForm.do")
-	public String eight() {
+	public String eight(HttpSession session, HttpServletResponse response) throws IOException {
+		memberDto = (MemberDto)session.getAttribute("loggedMember");
+		
+		if(memberDto == null) {
+			ScriptWriterUtil.alertAndBack(response, "로그인 후 이용해주세요");
+		}
 		return "orders/cartList";
 	}
 	
@@ -40,15 +54,26 @@ public class OrdersController {
 		return result;
 	}
 	
+	// 유저별 카트리스트를 DB에서 가져온다
 	@RequestMapping("/GetShoppingCartList.do")
 	@ResponseBody
 	public Map<String,Object> getShoppingCartList(@RequestParam Map<String,Object> map){
 		String id = (String)map.get("id");
-		log.info("id======================================================================{}",id);
 		Map<String,Object> hashMap = new HashMap<String,Object>();
 		List<OrdersDto> shoppingCartList = ordersDao.getAllCartList(id);
 		hashMap.put("shoppingCartList", shoppingCartList);
 		
 		return hashMap;
+	}
+	
+	// 찜한 내용을 1개 삭제한다.
+	@RequestMapping("/DeleteShoppingCart.do")
+	@ResponseBody
+	public int deleteShoppingCart(@RequestParam Map<String,Object> map) {
+		int result = 0;
+		String itemNo = (String)map.get("itemNo");
+		result = ordersDao.deleteOrder(itemNo);
+		
+		return result;
 	}
 }
