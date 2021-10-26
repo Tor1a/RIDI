@@ -2419,6 +2419,7 @@ footer {
 }
 
 // 재테크, 만화, 에세이 페이지 공통 슬라이더 추가 
+// 재테크 슬라이더 추가 
 #sub_Content {
     height: 100%;
     .best_slider {
@@ -2432,11 +2433,27 @@ footer {
     }
     .main_Time {
         width: 1200px;
-        height: 550px;
+        height: 580px;
         margin: 0 auto;
         h3 {
             font-size: 25px;
-            margin-top: 30px;
+            margin-top: 20px;
+        }
+        .time {
+                display: flex;
+                align-items: center;
+                width: 102px;
+                height: 30px;
+                padding: 4px;
+                padding-right: 13px;
+                margin-top: 20px;
+                margin-bottom: 2px;
+                justify-content: space-around;
+                background-image: linear-gradient(255deg, #0077d9 4%, #72d2e0);
+                border-radius: 14px;
+                font-size: 14px;
+                font-weight: bold;
+                color: white;
         }
         .main_Time_Inner {
             margin-top: 15px;
@@ -2535,7 +2552,334 @@ footer {
                     .recom_Book_Line {
                         display: flex;
                         flex-direction: column;
-                        margin-right:5px;
+                        span {
+                            &:nth-child(1) {
+                                color: #fff;
+                                font-size: 15px;
+                            }
+                            &:nth-child(2) {
+                                font-size: 18px;
+                                font-size: 16px;
+                                color: rgba(255, 255, 255, 0.479);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .main_movie {
+        // border: 1px solid rgb(130, 36, 192);
+         height: 400px;
+         margin: 70px 0;
+         .ad_inner {
+             iframe {
+                 display: block;
+                 border: none;   
+                 height: 400px;
+                 width: 100vw;
+             }
+         }
+     }
+}
+
+// 만화 슬라이더 추가 
+#sub_Content_Comic {
+    height: 100%;
+    .best_slider_Comic {
+        display: block;
+        li {
+            img {
+                width: 100%;
+                //height: 105.8px;
+            }
+        }
+    }
+    .main_Time_Comic {
+        width: 1200px;
+        height: 580px;
+        margin: 0 auto;
+        h3 {
+            font-size: 25px;
+            margin-top: 20px;
+        }
+        .comic_Time {
+                display: flex;
+                align-items: center;
+                width: 102px;
+                height: 30px;
+                padding: 4px;
+                padding-right: 13px;
+                margin-top: 20px;
+                margin-bottom: 2px;
+                justify-content: space-around;
+                background-image: linear-gradient(255deg, #0077d9 4%, #72d2e0);
+                border-radius: 14px;
+                font-size: 14px;
+                font-weight: bold;
+                color: white;
+        }
+        .main_Time_Inner {
+            margin-top: 15px;
+            .gridComic {
+                // display: grid;
+                // grid-template-columns: repeat(3,1fr);
+                // grid-template-rows: repeat(3,auto);
+                // grid-gap: 1vw;
+                // padding: 0;
+                display: -ms-grid;
+                display: grid;
+                -ms-grid-columns: 1fr 1vw 1fr 1vw 1fr;
+                grid-template-columns: repeat(3,1fr);
+                -ms-grid-rows: auto 1vw auto 1vw auto;
+                grid-template-rows: repeat(3,auto);
+                grid-gap: 1vw;
+                padding: 0;
+                li {
+                    display: flex;
+                    align-items: center;
+                    height: 138px;
+                    border-bottom: 1px solid #d6d7d8;
+                    a {
+                        margin-right: 15px;
+                        div {
+                            img {
+                                width: 80px;
+                                max-height: 114px;
+                            }
+                        }
+                    }
+                    div {
+                        display: flex;
+                        align-items: center;
+                        h4 {
+                            font-size: 25px;
+                            margin-right: 15px;
+                        }
+                        div {
+                            align-items: flex-start;
+                            flex-direction: column;
+                            a {
+                                margin-bottom: 7px;
+                                font-weight: bold;
+                            }
+                            span {
+                                margin-bottom: 7px;
+                                color: #626364;
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                }
+                .img_Box2 {
+                    grid-column: 1 / 2;
+                    grid-row: 2 / 3;
+                }
+                .img_Box3 {
+                    grid-column: 1 / 2;
+                    grid-row: 3 / 4;
+                }
+                .img_Box5 {
+                    grid-column: 2 / 3;
+                    grid-row: 2 / 3;
+                }
+                .img_Box6 {
+                    grid-column: 2 / 3;
+                    grid-row: 3 / 4;
+                }
+                .img_Box9 {
+                    grid-column: 3 / 4;
+                    grid-row: 3 / 4;
+                }
+            }
+        }
+    }
+    .main_Recom_Comic {
+        height: 500px;
+        background-color: #17202e;
+        .main_Recom_Inner {
+            margin: 0 auto;
+            width: 1200px;
+            h4 {
+                color: #fff;
+                font-size: 25px;
+                padding: 20px 0;
+            }
+            .comic_RecomBook_Slide {
+                margin-top: 40px;
+                div {
+                    img {
+                        width: 185px;
+                        height: 240px;
+                        margin-bottom: 10px;
+                    }
+                    .recom_Book_Line {
+                        display: flex;
+                        flex-direction: column;
+                        span {
+                            &:nth-child(1) {
+                                color: #fff;
+                                font-size: 15px;
+                            }
+                            &:nth-child(2) {
+                                font-size: 18px;
+                                font-size: 16px;
+                                color: rgba(255, 255, 255, 0.479);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .main_movie {
+        // border: 1px solid rgb(130, 36, 192);
+         height: 400px;
+         margin: 70px 0;
+         .ad_inner {
+             iframe {
+                 display: block;
+                 border: none;   
+                 height: 400px;
+                 width: 100vw;
+             }
+         }
+     }
+}
+
+// 에세이 슬라이더 추가 
+#sub_Content_Essay {
+    height: 100%;
+    .best_slider_Essay {
+        display: block;
+        li {
+            img {
+                width: 100%;
+                //height: 105.8px;
+            }
+        }
+    }
+    .main_Time_Essay {
+        width: 1200px;
+        height: 580px;
+        margin: 0 auto;
+        h3 {
+            font-size: 25px;
+            margin-top: 20px;
+        }
+        .essay_Time {
+                display: flex;
+                align-items: center;
+                width: 102px;
+                height: 30px;
+                padding: 4px;
+                padding-right: 13px;
+                margin-top: 20px;
+                margin-bottom: 2px;
+                justify-content: space-around;
+                background-image: linear-gradient(255deg, #0077d9 4%, #72d2e0);
+                border-radius: 14px;
+                font-size: 14px;
+                font-weight: bold;
+                color: white;
+        }
+        .main_Time_Inner {
+            margin-top: 15px;
+            .gridEssay {
+                // display: grid;
+                // grid-template-columns: repeat(3,1fr);
+                // grid-template-rows: repeat(3,auto);
+                // grid-gap: 1vw;
+                // padding: 0;
+                display: -ms-grid;
+                display: grid;
+                -ms-grid-columns: 1fr 1vw 1fr 1vw 1fr;
+                grid-template-columns: repeat(3,1fr);
+                -ms-grid-rows: auto 1vw auto 1vw auto;
+                grid-template-rows: repeat(3,auto);
+                grid-gap: 1vw;
+                padding: 0;
+                li {
+                    display: flex;
+                    align-items: center;
+                    height: 138px;
+                    border-bottom: 1px solid #d6d7d8;
+                    a {
+                        margin-right: 15px;
+                        div {
+                            img {
+                                width: 80px;
+                                max-height: 114px;
+                            }
+                        }
+                    }
+                    div {
+                        display: flex;
+                        align-items: center;
+                        h4 {
+                            font-size: 25px;
+                            margin-right: 15px;
+                        }
+                        div {
+                            align-items: flex-start;
+                            flex-direction: column;
+                            a {
+                                margin-bottom: 7px;
+                                font-weight: bold;
+                            }
+                            span {
+                                margin-bottom: 7px;
+                                color: #626364;
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                }
+                .img_Box2 {
+                    grid-column: 1 / 2;
+                    grid-row: 2 / 3;
+                }
+                .img_Box3 {
+                    grid-column: 1 / 2;
+                    grid-row: 3 / 4;
+                }
+                .img_Box5 {
+                    grid-column: 2 / 3;
+                    grid-row: 2 / 3;
+                }
+                .img_Box6 {
+                    grid-column: 2 / 3;
+                    grid-row: 3 / 4;
+                }
+                .img_Box9 {
+                    grid-column: 3 / 4;
+                    grid-row: 3 / 4;
+                }
+            }
+        }
+    }
+    .main_Recom_Essay {
+        height: 500px;
+        background-color: #17202e;
+        .main_Recom_Inner {
+            margin: 0 auto;
+            width: 1200px;
+            h4 {
+                color: #fff;
+                font-size: 25px;
+                padding: 20px 0;
+            }
+            .Essay_RecomBook_Slide {
+                margin-top: 40px;
+                div {
+                    img {
+                        width: 185px;
+                        height: 240px;
+                        margin-bottom: 10px;
+                    }
+                    .recom_Book_Line {
+                        display: flex;
+                        flex-direction: column;
                         span {
                             &:nth-child(1) {
                                 color: #fff;

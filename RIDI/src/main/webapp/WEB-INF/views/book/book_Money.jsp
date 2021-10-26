@@ -28,7 +28,7 @@
 	<div class="main_Recom">
 		<div class="main_Recom">
 			<div class="main_Recom_Inner">
-				<h4>오늘의 추천</h4>
+				<h4>오늘의 제테크 추천</h4>
 				<div class="recomBook_Slide"></div>
 			</div>
 		</div>
@@ -45,6 +45,6 @@
 </div>
 
 <script defer>
-$(".headerCategory li:nth-child(2) a").addClass("on");
+	$(".headerCategory li:nth-child(2) a").addClass("on");
 </script>
 <%@ include file="../include/footer.jsp"%>

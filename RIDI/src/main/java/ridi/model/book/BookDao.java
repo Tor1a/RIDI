@@ -147,5 +147,75 @@ public class BookDao {
 
 		return moneyRecomBookList;
 	}
+	
+	//////////////////////// 만화 페이지 //////////////////
+	
+	// 만화 메인 베스트셀러 슬라이더
+	public List<BookDto> getComicBestSlider() {
+		List<BookDto> comicBestBookList = null;
 
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		comicBestBookList = sqlSession.selectList("getComicBestSlider");
+		sqlSession.close();
+
+		return comicBestBookList;
+	}
+
+	// 만화 시간추천
+	public List<BookDto> getComicTimeBook() {
+		List<BookDto> comicTimeBookList = null;
+
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		comicTimeBookList = sqlSession.selectList("getComicTimeBook");
+		sqlSession.close();
+
+		return comicTimeBookList;
+	}
+	
+	// 재태크 리디추천 슬라이더
+	public List<BookDto> getComicRecomBook() {
+		List<BookDto> comicRecomBookList = null;
+
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		comicRecomBookList = sqlSession.selectList("getComicRecomBook");
+		sqlSession.close();
+
+		return comicRecomBookList;
+	}
+	
+	////////////////////// 에세이 페이지 ///////////////////////
+	
+	// 만화 메인 베스트셀러 슬라이더
+	public List<BookDto> getEssayBestSlider() {
+		List<BookDto> essayBestBookList = null;
+
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		essayBestBookList = sqlSession.selectList("getEssayBestSlider");
+		sqlSession.close();
+
+		return essayBestBookList;
+	}
+	
+	// 만화 시간추천
+	public List<BookDto> getEssayTimeBook() {
+		List<BookDto> essayTimeBookList = null;
+
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		essayTimeBookList = sqlSession.selectList("getEssayTimeBook");
+		sqlSession.close();
+
+		return essayTimeBookList;
+	}
+	
+	// 만화 리디추천 슬라이더
+	public List<BookDto> getEssayRecomBook() {
+		List<BookDto> essayRecomBookList = null;
+
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		essayRecomBookList = sqlSession.selectList("getEssayRecomBook");
+		sqlSession.close();
+
+		return essayRecomBookList;
+	}
+	
 }

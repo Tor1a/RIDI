@@ -246,6 +246,101 @@ public class BookController {
 		
 		return hashMap;
 	}	
-
+	
+	///////////////////// 만화 controller ////////////////
+	
+	// 만화 페이지 이동
+	@RequestMapping("/ComicBookForm.do")
+	public String comicBookForm() {
+		return "book/book_Comic";
+	}
+	
+	// 만화 페이지 베스트셀러 페이지 controller
+	@RequestMapping("/ComicBestBookJsonList.do")
+	@ResponseBody
+	public Map<String, List<BookDto>> comicBestBookJsonList(){
+		Map<String, List<BookDto>> hashMap = null;
+		
+		List<BookDto> comicBestBookList = bookDao.getComicBestSlider();
+		hashMap = new HashMap<String, List<BookDto>>();
+		hashMap.put("comicBestBookList", comicBestBookList);
+		
+		return hashMap;
+	}	
+	
+	
+	// 만화 페이지 시간추천 페이지 controller
+	@RequestMapping("/ComicTimeBookJsonList.do")
+	@ResponseBody
+	public Map<String, List<BookDto>> comicTimeBookJsonList(){
+		Map<String, List<BookDto>> hashMap = null;
+		
+		List<BookDto> comicTimeBookList = bookDao.getComicTimeBook();
+		hashMap = new HashMap<String, List<BookDto>>();
+		hashMap.put("comicTimeBookList", comicTimeBookList);
+		
+		return hashMap;
+	}
+	
+	// 만화 페이지 리디추천 슬라이더 controller
+	@RequestMapping("/ComicRecomBookJsonList.do")
+	@ResponseBody
+	public Map<String, List<BookDto>> comicRecomBookJsonList(){
+		Map<String, List<BookDto>> hashMap = null;
+		
+		List<BookDto> comicRecomBookList = bookDao.getComicRecomBook();
+		hashMap = new HashMap<String, List<BookDto>>();
+		hashMap.put("comicRecomBookList", comicRecomBookList);
+		
+		return hashMap;
+	}	
+	
+	
+		///////////////////// 에세이 controller ////////////////
+	
+	// 에세이 페이지 이동
+	@RequestMapping("/EssayBookForm.do")
+	public String essayBookForm() {
+		return "book/book_Essay";
+	}
+	
+	// 에세이 페이지 베스트셀러 페이지 controller
+	@RequestMapping("/EssayBestBookJsonList.do")
+	@ResponseBody
+	public Map<String, List<BookDto>> essayBestBookJsonList(){
+		Map<String, List<BookDto>> hashMap = null;
+		
+		List<BookDto> essayBestBookList = bookDao.getEssayBestSlider();
+		hashMap = new HashMap<String, List<BookDto>>();
+		hashMap.put("essayBestBookList", essayBestBookList);
+		
+		return hashMap;
+	}	
+	
+	// 에세이 페이지 시간추천 페이지 controller
+	@RequestMapping("/EssayTimeBookJsonList.do")
+	@ResponseBody
+	public Map<String, List<BookDto>> essayTimeBookJsonList(){
+		Map<String, List<BookDto>> hashMap = null;
+		
+		List<BookDto> essayTimeBookList = bookDao.getEssayTimeBook();
+		hashMap = new HashMap<String, List<BookDto>>();
+		hashMap.put("essayTimeBookList", essayTimeBookList);
+		
+		return hashMap;
+	}
+	
+	// 에세이 페이지 리디추천 슬라이더 controller
+	@RequestMapping("/EssayRecomBookJsonList.do")
+	@ResponseBody
+	public Map<String, List<BookDto>> essayRecomBookJsonList(){
+		Map<String, List<BookDto>> hashMap = null;
+		
+		List<BookDto> essayRecomBookList = bookDao.getEssayRecomBook();
+		hashMap = new HashMap<String, List<BookDto>>();
+		hashMap.put("essayRecomBookList", essayRecomBookList);
+		
+		return hashMap;
+	}	
 	
 }

@@ -24,9 +24,8 @@
 							<li>${bookDto.category}</li>
 							<li>${bookDto.book_Name}</li>
 							<li id="starRating">${bookDto.star_Rating}</li>
-							<li>${bookDto.author}</li>
-							<li
-								style="width: 100px; height: 20px; text-overflow: clip; overflow: hidden;">${bookDto.publication_Date }</li>
+							<li>${bookDto.author}<span style="font-weight:normal;"> 저</span></li>
+							<li style="width: 150px; height: 20px; text-overflow: clip; overflow: hidden;"><span>출간일 </span>${bookDto.publication_Date }</li>
 						</ul>
 					</div>
 					<div class="book_parcel_Box">
@@ -36,21 +35,21 @@
 									<th>구매</th>
 									<td>
 										<div>
-											<span>판매가</span><span>${bookDto.price }원</span>
+											<span>판매가</span><span><fmt:formatNumber value="${bookDto.price}" pattern="#,###"/>원</span>
 										</div>
 									</td>
 								</tr>
 								<tr>
 									<th>배송비</th>
-									<td>${bookDto.shipping_Price }</td>
+									<td><span><fmt:formatNumber value="${bookDto.shipping_Price }" pattern="#,###"/>원</td>
 								</tr>
 								<tr>
 									<th>배송예정시간</th>
-									<td>${bookDto.estimated_Time }</td>
+									<td><span>${bookDto.estimated_Time }시간</span></td>
 								</tr>
 								<tr>
 									<th>재고수</th>
-									<td>${bookDto.stock }</td>
+									<td><span><fmt:formatNumber value="${bookDto.stock }" pattern="#,###"/>권</span></td>
 								</tr>
 							</tbody>
 						</table>
@@ -77,25 +76,18 @@
 						<span>평점</span>
 					</div>
 					<div class="star-rating space-x-4 mx-auto">
-						<input type="radio" id="5-stars" name="star_Rating" value="5"
-							v-model="ratings" /> <label for="5-stars" class="star pr-4">★</label>
-						<input type="radio" id="4-stars" name="star_Rating" value="4"
-							v-model="ratings" /> <label for="4-stars" class="star">★</label>
-						<input type="radio" id="3-stars" name="star_Rating" value="3"
-							v-model="ratings" /> <label for="3-stars" class="star">★</label>
-						<input type="radio" id="2-stars" name="star_Rating" value="2"
-							v-model="ratings" /> <label for="2-stars" class="star">★</label>
-						<input type="radio" id="1-star" name="star_Rating" value="1"
-							v-model="ratings" /> <label for="1-star" class="star">★</label>
+						<input type="radio" id="5-stars" name="star_Rating" value="5" v-model="ratings" /> <label for="5-stars" class="star pr-4">★</label>
+						<input type="radio" id="4-stars" name="star_Rating" value="4" v-model="ratings" /> <label for="4-stars" class="star">★</label>
+						<input type="radio" id="3-stars" name="star_Rating" value="3" v-model="ratings" /> <label for="3-stars" class="star">★</label>
+						<input type="radio" id="2-stars" name="star_Rating" value="2" v-model="ratings" /> <label for="2-stars" class="star">★</label>
+						<input type="radio" id="1-star" name="star_Rating" value="1" v-model="ratings" /> <label for="1-star" class="star">★</label>
 					</div>
 				</div>
 				<div class="starRating_contents">
-					<textarea name="contents" placeholder="리뷰를 입력해주세요."
-						style="resize: none;"></textarea>
+					<textarea name="contents" placeholder="리뷰를 입력해주세요." style="resize: none;"></textarea>
 				</div>
 				<div class="starRating_btn">
-					<button
-						onclick="return reviewWrite('${sessionScope.loggedMember.id}','${bookDto.no }')">리뷰등록</button>
+					<button onclick="return reviewWrite('${sessionScope.loggedMember.id}','${bookDto.no }')">리뷰등록</button>
 				</div>
 			</div>
 		</div>
@@ -107,8 +99,8 @@
 	<!--book_Review-->
 
 	<div class="book_Bottom_Btn">
-		<a href="BookDelete.do?no=${ bookDto.no }">삭제</a> <a
-			href="BookModifyForm.do?no=${ bookDto.no }&book_Name=${bookDto.book_Name}">수정</a>
+		<a href="BookDelete.do?no=${ bookDto.no }">삭제</a> 
+		<a href="BookModifyForm.do?no=${ bookDto.no }&book_Name=${bookDto.book_Name}">수정</a>
 	</div>
 </div>
 
