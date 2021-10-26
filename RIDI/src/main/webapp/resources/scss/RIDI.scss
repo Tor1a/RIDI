@@ -19,6 +19,7 @@ input[type="number"]::-webkit-inner-spin-button {
     .header_Inner {
         width: 1200px;
         margin: 0 auto;
+        height: 117px;
         .header_Top {
             display: flex;
             justify-content: space-between;
@@ -83,13 +84,44 @@ input[type="number"]::-webkit-inner-spin-button {
                     font-size: 16px;
                     font-weight: bold;
                     i {
-                        padding: 10px;
+                        padding: 10px 10px 10px 0;
                         font-size: 20px;
+                    }
+                    //menu_Under 추가
+                    .menu_Under {
+                        display: block;
+                        background: transparent;
+                        height: 3px;
+                        width: 0;
+                        background: inherit;
+                        width: 100%;
+                        position: relative;
+                        top: 1px;
+                    }
+                    .menu_Under.on {
+                        display: block;
+                        background: transparent;
+                        height: 3px;
+                        width: 0;
+                        background-color: #cde9ff;
+                        width: 100%;
+                        position: relative;
+                        top: 1px;
                     }
                 }
             }
             li:hover a{
                 color: #8DBFEB;
+                .menu_Under {
+                    display: block;
+                    background: transparent;
+                    height: 3px;
+                    width: 0;
+                    background-color: #8DBFEB;
+                    width: 100%;
+                    position: relative;
+                    top: 1px;
+                }
             }
         }
     }
@@ -112,6 +144,11 @@ input[type="number"]::-webkit-inner-spin-button {
                 padding-right: 50px;
                 a {
                     color: #555;
+                    font-size: 16px;
+                    line-height: 48px;
+                }
+                a.on { 
+                    color: #0077d9;
                     font-size: 16px;
                     line-height: 48px;
                 }
@@ -795,6 +832,7 @@ input[type="number"]::-webkit-inner-spin-button {
                 color: #fff;
                 height: 44px;
                 margin-top: 5px;
+                margin-bottom: 30px;
             }
         }
     }
@@ -2287,6 +2325,7 @@ footer {
                     .new_Book_Line {
                         display: flex;
                         flex-direction: column;
+                        margin-right: 5px;
                         span {
                             &:nth-child(1) {
                                 color: #fff;
@@ -2496,6 +2535,7 @@ footer {
                     .recom_Book_Line {
                         display: flex;
                         flex-direction: column;
+                        margin-right:5px;
                         span {
                             &:nth-child(1) {
                                 color: #fff;
