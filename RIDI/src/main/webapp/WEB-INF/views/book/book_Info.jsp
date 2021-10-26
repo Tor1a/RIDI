@@ -45,7 +45,9 @@
 						</table>
 					</div>
 					<div class="book_Btn">
-						<a href="#"><i class="fas fa-shopping-cart"></i></a> <a href="#">구매하기</a>
+						<!-- 오성식 수정(21.10.26) -->
+						<a style="cursor:pointer;" id="dibs"><i class="fas fa-shopping-cart"></i></a> 
+						<a href="#">구매하기</a>
 					</div>
 				</div>
 			</div>
@@ -103,5 +105,6 @@
 <div style="display: none" id="bootDtoBookNo">${bookDto.no }</div>
 <div style="display: none" id="loggedMemberId">${sessionScope.loggedMember.id }</div>
 <script src="./js/review/review_Write.js" defer></script>
+<script src="./js/order/book_Info.js" defer></script>
 <!-- 오성식 생성 -->
 <%@ include file="../include/footer.jsp"%>

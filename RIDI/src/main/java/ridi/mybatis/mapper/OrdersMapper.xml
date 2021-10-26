@@ -2,6 +2,10 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ridi.mybatis.mapper.OrdersMapper">
 	
+	<!-- 찜한 내용들을 출력한다. -->
+	<insert id="insertOrder" parameterType="OrderDto">
+		INSERT INTO ORDERS VALUES(SEQ_ORDERS.NEXTVAL,NULL,#{book_Name},#{QTY},#{price},#{order_Person},#{shipping_Address},#{shipping_Stage},SYSDATE,#{seller},#{paycheck})
+	</insert>
 </mapper>
 
 
