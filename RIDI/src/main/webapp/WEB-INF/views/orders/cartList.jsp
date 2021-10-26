@@ -9,10 +9,11 @@
                         </div>
                         <div class="cartList_middle">
                             <div class="cartList_checkbox">
-                                <div><input type="checkbox" checked></div>
+                                <div><input type="checkbox" checked="false"></div>
                                 <div><span>전체선택</span></div>
                             </div>
                         </div>
+                        <!-- 
                         <ul class="cartList_btm">
                             <li>
                                 <div><input type="checkbox" checked></div>
@@ -29,6 +30,7 @@
                                 <div><span>9600원</span></div>
                             </li>
                         </ul>
+                         -->
                     </div>
                     <div class="cartList_right">
                         <div class="cartList_select">
@@ -50,4 +52,7 @@
         </div>   <!--cartList_inner-->
 </div> <!--cartList_wrapper-->
 <link rel="stylesheet" property="stylesheet" href="./css/cartList.css"></link>
+<!-- 오성식 추가(21.10.26) -->
+<script src="./js/order/cartList.js" defer></script>
+<div style="display: none" id="loggedMemberId">${sessionScope.loggedMember.id }</div>
 <%@ include file="../include/footer.jsp"%>

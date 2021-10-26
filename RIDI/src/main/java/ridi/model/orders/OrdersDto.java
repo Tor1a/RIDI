@@ -20,15 +20,17 @@ public class OrdersDto {
 	private String order_Person;
 	private String shipping_Address;
 	private String shipping_Stage;
-	private Date order_Date;
+	private String order_Date;
 	private String seller;
 	private String payCheck;
+	private String book_Image;
 	public OrdersDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public OrdersDto(int no, int order_Group_No, String book_Name, int qTY, int price, String order_Person,
-			String shipping_Address, String shipping_Stage, Date order_Date, String seller, String payCheck) {
+			String shipping_Address, String shipping_Stage, String order_Date, String seller, String payCheck,
+			String book_Image) {
 		super();
 		this.no = no;
 		this.order_Group_No = order_Group_No;
@@ -41,6 +43,7 @@ public class OrdersDto {
 		this.order_Date = order_Date;
 		this.seller = seller;
 		this.payCheck = payCheck;
+		this.book_Image = book_Image;
 	}
 	public int getNo() {
 		return no;
@@ -72,10 +75,10 @@ public class OrdersDto {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public String getorder_Person() {
+	public String getOrder_Person() {
 		return order_Person;
 	}
-	public void setorder_Person(String order_Person) {
+	public void setOrder_Person(String order_Person) {
 		this.order_Person = order_Person;
 	}
 	public String getShipping_Address() {
@@ -90,10 +93,10 @@ public class OrdersDto {
 	public void setShipping_Stage(String shipping_Stage) {
 		this.shipping_Stage = shipping_Stage;
 	}
-	public Date getOrder_Date() {
+	public String getOrder_Date() {
 		return order_Date;
 	}
-	public void setOrder_Date(Date order_Date) {
+	public void setOrder_Date(String order_Date) {
 		this.order_Date = order_Date;
 	}
 	public String getSeller() {
@@ -108,6 +111,13 @@ public class OrdersDto {
 	public void setPayCheck(String payCheck) {
 		this.payCheck = payCheck;
 	}
+	public String getBook_Image() {
+		return book_Image;
+	}
+	public void setBook_Image(String book_Image) {
+		this.book_Image = book_Image;
+	}
+	
 	
 	
 }
