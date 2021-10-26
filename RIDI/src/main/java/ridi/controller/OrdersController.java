@@ -35,7 +35,7 @@ public class OrdersController {
 	
 	//유저 카트 페이지로 이동한다.
 	@RequestMapping("/CartListForm.do")
-	public String eight(HttpSession session, HttpServletResponse response) throws IOException {
+	public String cartListForm(HttpSession session, HttpServletResponse response) throws IOException {
 		memberDto = (MemberDto)session.getAttribute("loggedMember");
 		
 		if(memberDto == null) {
@@ -75,5 +75,15 @@ public class OrdersController {
 		result = ordersDao.deleteOrder(itemNo);
 		
 		return result;
+	}
+	
+	// 주문 결제페이지로 이동한다
+	@RequestMapping("/OrderPayForm.do")
+	public String orderPayForm(HttpSession session, HttpServletResponse response) throws IOException {
+		memberDto = (MemberDto)session.getAttribute("loggedMember");
+		if(memberDto == null) {
+			ScriptWriterUtil.alertAndBack(response, "로그인 후 이용해주세요");
+		}
+		return "orders/orders_pay";
 	}
 }

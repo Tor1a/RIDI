@@ -66,10 +66,10 @@
 					<ul class="headerMenu">
 						<li><a href="/RIDI"><i class="fas fa-home"></i>홈<span class="menu_Under"></span></a></li>
 						<li><a href="CartListForm.do"><i class="fas fa-shopping-cart"></i>카트<span class="menu_Under"></span></a></li>
-						<li><a href="BookOrderForm.do"><i class="fas fa-box"></i>주문/배송조회<span class="menu_Under"></span></a></li>
+						<li><a href="OrderPayForm.do"><i class="fas fa-box"></i>주문/배송조회<span class="menu_Under"></span></a></li>
 						<li><a href="BookWriteForm.do"><i class="fas fa-book"></i>책 판매<span class="menu_Under"></span></a></li>
 						<c:if test="${!empty sessionScope.loggedMember }">
-							<li><a href="MemberInfoModifyForm.do"><i class="far fa-user"></i>마이리디<span class="menu_Under"></span></a></li>
+							<li><a href="MemberHomeForm.do"><i class="far fa-user"></i>마이리디<span class="menu_Under"></span></a></li>
 						</c:if>
 						<li><a href="QnaList.do"><i class="fab fa-quora"></i>QnA<span class="menu_Under"></span></a></li>
 					</ul>
