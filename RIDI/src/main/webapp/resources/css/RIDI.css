@@ -13,7 +13,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 #header { position: relative; padding-top: 20px; background-color: #1F8CE6; }
 
-#header .header_Inner { width: 1200px; margin: 0 auto; }
+#header .header_Inner { width: 1200px; margin: 0 auto; height: 117px; }
 
 #header .header_Inner .header_Top { display: flex; justify-content: space-between; align-items: center; }
 
@@ -41,9 +41,15 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 #header .header_Inner .headerMenu li a { color: #fff; font-size: 16px; font-weight: bold; }
 
-#header .header_Inner .headerMenu li a i { padding: 10px; font-size: 20px; }
+#header .header_Inner .headerMenu li a i { padding: 10px 10px 10px 0; font-size: 20px; }
+
+#header .header_Inner .headerMenu li a .menu_Under { display: block; background: transparent; height: 3px; width: 0; background: inherit; width: 100%; position: relative; top: 1px; }
+
+#header .header_Inner .headerMenu li a .menu_Under.on { display: block; background: transparent; height: 3px; width: 0; background-color: #cde9ff; width: 100%; position: relative; top: 1px; }
 
 #header .header_Inner .headerMenu li:hover a { color: #8DBFEB; }
+
+#header .header_Inner .headerMenu li:hover a .menu_Under { display: block; background: transparent; height: 3px; width: 0; background-color: #8DBFEB; width: 100%; position: relative; top: 1px; }
 
 #login_Bg, #join_Bg { background-color: #ebf6ff; }
 
@@ -56,6 +62,8 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 .headerCategoryLine .headerCategoryInner .headerCategory li { padding-right: 50px; }
 
 .headerCategoryLine .headerCategoryInner .headerCategory li a { color: #555; font-size: 16px; line-height: 48px; }
+
+.headerCategoryLine .headerCategoryInner .headerCategory li a.on { color: #0077d9; font-size: 16px; line-height: 48px; }
 
 .headerCategoryLine .headerCategoryInner .headerCategory li i { color: #555; font-size: 20px; line-height: 48px; }
 
@@ -289,7 +297,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 .join_Form_Inner .join_Form .join_Input .emailCheckBtn { cursor: pointer; background-color: #1F8CE6; color: #fff; height: 44px; margin-top: 5px; }
 
-.join_Form_Inner .join_Form .join_Input .join_Btn_Box { cursor: pointer; background-color: #1F8CE6; color: #fff; height: 44px; margin-top: 5px; }
+.join_Form_Inner .join_Form .join_Input .join_Btn_Box { cursor: pointer; background-color: #1F8CE6; color: #fff; height: 44px; margin-top: 5px; margin-bottom: 30px; }
 
 #join_Line { display: flex; justify-content: space-between; margin: 5px 0; }
 
@@ -826,7 +834,7 @@ footer div p { text-align: center; color: #fff; }
 
 #main_Content .main_New .main_New_Inner .newBook_Slide div img { width: 185px; height: 240px; margin-bottom: 10px; }
 
-#main_Content .main_New .main_New_Inner .newBook_Slide div .new_Book_Line { display: flex; flex-direction: column; }
+#main_Content .main_New .main_New_Inner .newBook_Slide div .new_Book_Line { display: flex; flex-direction: column; margin-right: 5px; }
 
 #main_Content .main_New .main_New_Inner .newBook_Slide div .new_Book_Line span:nth-child(1) { color: #fff; font-size: 15px; }
 
@@ -848,9 +856,9 @@ footer div p { text-align: center; color: #fff; }
 
 .slick-arrow:hover { background-color: #c4c4c793; }
 
-.slick-prev { position: absolute; top: 100px; background-image: url("../images/prev.png"); background-repeat: no-repeat; background-position: center; filter: invert(100%); }
+.slick-prev { position: absolute; top: 100px; background-image: url("../images/prev.png"); background-repeat: no-repeat; background-position: center; filter: invert(100%); left: -70px; }
 
-.slick-next { position: absolute; top: 100px; right: 15px; background-image: url("../images/next.png"); background-repeat: no-repeat; background-position: center; filter: invert(100%); }
+.slick-next { position: absolute; top: 100px; right: 15px; background-image: url("../images/next.png"); background-repeat: no-repeat; background-position: center; filter: invert(100%); right: -60px; }
 
 #sub_Content { height: 100%; }
 
@@ -858,9 +866,11 @@ footer div p { text-align: center; color: #fff; }
 
 #sub_Content .best_slider li img { width: 100%; }
 
-#sub_Content .main_Time { width: 1200px; height: 550px; margin: 0 auto; }
+#sub_Content .main_Time { width: 1200px; height: 580px; margin: 0 auto; }
 
-#sub_Content .main_Time h3 { font-size: 25px; margin-top: 30px; }
+#sub_Content .main_Time h3 { font-size: 25px; margin-top: 20px; }
+
+#sub_Content .main_Time .time { display: flex; align-items: center; width: 102px; height: 30px; padding: 4px; padding-right: 13px; margin-top: 20px; margin-bottom: 2px; justify-content: space-around; background-image: linear-gradient(255deg, #0077d9 4%, #72d2e0); border-radius: 14px; font-size: 14px; font-weight: bold; color: white; }
 
 #sub_Content .main_Time .main_Time_Inner { margin-top: 15px; }
 
@@ -911,3 +921,127 @@ footer div p { text-align: center; color: #fff; }
 #sub_Content .main_movie { height: 400px; margin: 70px 0; }
 
 #sub_Content .main_movie .ad_inner iframe { display: block; border: none; height: 400px; width: 100vw; }
+
+#sub_Content_Comic { height: 100%; }
+
+#sub_Content_Comic .best_slider_Comic { display: block; }
+
+#sub_Content_Comic .best_slider_Comic li img { width: 100%; }
+
+#sub_Content_Comic .main_Time_Comic { width: 1200px; height: 580px; margin: 0 auto; }
+
+#sub_Content_Comic .main_Time_Comic h3 { font-size: 25px; margin-top: 20px; }
+
+#sub_Content_Comic .main_Time_Comic .comic_Time { display: flex; align-items: center; width: 102px; height: 30px; padding: 4px; padding-right: 13px; margin-top: 20px; margin-bottom: 2px; justify-content: space-around; background-image: linear-gradient(255deg, #0077d9 4%, #72d2e0); border-radius: 14px; font-size: 14px; font-weight: bold; color: white; }
+
+#sub_Content_Comic .main_Time_Comic .main_Time_Inner { margin-top: 15px; }
+
+#sub_Content_Comic .main_Time_Comic .main_Time_Inner .gridComic { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, auto); grid-gap: 1vw; padding: 0; }
+
+#sub_Content_Comic .main_Time_Comic .main_Time_Inner .gridComic li { display: flex; align-items: center; height: 138px; border-bottom: 1px solid #d6d7d8; }
+
+#sub_Content_Comic .main_Time_Comic .main_Time_Inner .gridComic li a { margin-right: 15px; }
+
+#sub_Content_Comic .main_Time_Comic .main_Time_Inner .gridComic li a div img { width: 80px; max-height: 114px; }
+
+#sub_Content_Comic .main_Time_Comic .main_Time_Inner .gridComic li div { display: flex; align-items: center; }
+
+#sub_Content_Comic .main_Time_Comic .main_Time_Inner .gridComic li div h4 { font-size: 25px; margin-right: 15px; }
+
+#sub_Content_Comic .main_Time_Comic .main_Time_Inner .gridComic li div div { align-items: flex-start; flex-direction: column; }
+
+#sub_Content_Comic .main_Time_Comic .main_Time_Inner .gridComic li div div a { margin-bottom: 7px; font-weight: bold; }
+
+#sub_Content_Comic .main_Time_Comic .main_Time_Inner .gridComic li div div span { margin-bottom: 7px; color: #626364; font-size: 14px; }
+
+#sub_Content_Comic .main_Time_Comic .main_Time_Inner .gridComic .img_Box2 { grid-column: 1 / 2; grid-row: 2 / 3; }
+
+#sub_Content_Comic .main_Time_Comic .main_Time_Inner .gridComic .img_Box3 { grid-column: 1 / 2; grid-row: 3 / 4; }
+
+#sub_Content_Comic .main_Time_Comic .main_Time_Inner .gridComic .img_Box5 { grid-column: 2 / 3; grid-row: 2 / 3; }
+
+#sub_Content_Comic .main_Time_Comic .main_Time_Inner .gridComic .img_Box6 { grid-column: 2 / 3; grid-row: 3 / 4; }
+
+#sub_Content_Comic .main_Time_Comic .main_Time_Inner .gridComic .img_Box9 { grid-column: 3 / 4; grid-row: 3 / 4; }
+
+#sub_Content_Comic .main_Recom_Comic { height: 500px; background-color: #17202e; }
+
+#sub_Content_Comic .main_Recom_Comic .main_Recom_Inner { margin: 0 auto; width: 1200px; }
+
+#sub_Content_Comic .main_Recom_Comic .main_Recom_Inner h4 { color: #fff; font-size: 25px; padding: 20px 0; }
+
+#sub_Content_Comic .main_Recom_Comic .main_Recom_Inner .comic_RecomBook_Slide { margin-top: 40px; }
+
+#sub_Content_Comic .main_Recom_Comic .main_Recom_Inner .comic_RecomBook_Slide div img { width: 185px; height: 240px; margin-bottom: 10px; }
+
+#sub_Content_Comic .main_Recom_Comic .main_Recom_Inner .comic_RecomBook_Slide div .recom_Book_Line { display: flex; flex-direction: column; }
+
+#sub_Content_Comic .main_Recom_Comic .main_Recom_Inner .comic_RecomBook_Slide div .recom_Book_Line span:nth-child(1) { color: #fff; font-size: 15px; }
+
+#sub_Content_Comic .main_Recom_Comic .main_Recom_Inner .comic_RecomBook_Slide div .recom_Book_Line span:nth-child(2) { font-size: 18px; font-size: 16px; color: rgba(255, 255, 255, 0.479); }
+
+#sub_Content_Comic .main_movie { height: 400px; margin: 70px 0; }
+
+#sub_Content_Comic .main_movie .ad_inner iframe { display: block; border: none; height: 400px; width: 100vw; }
+
+#sub_Content_Essay { height: 100%; }
+
+#sub_Content_Essay .best_slider_Essay { display: block; }
+
+#sub_Content_Essay .best_slider_Essay li img { width: 100%; }
+
+#sub_Content_Essay .main_Time_Essay { width: 1200px; height: 580px; margin: 0 auto; }
+
+#sub_Content_Essay .main_Time_Essay h3 { font-size: 25px; margin-top: 20px; }
+
+#sub_Content_Essay .main_Time_Essay .essay_Time { display: flex; align-items: center; width: 102px; height: 30px; padding: 4px; padding-right: 13px; margin-top: 20px; margin-bottom: 2px; justify-content: space-around; background-image: linear-gradient(255deg, #0077d9 4%, #72d2e0); border-radius: 14px; font-size: 14px; font-weight: bold; color: white; }
+
+#sub_Content_Essay .main_Time_Essay .main_Time_Inner { margin-top: 15px; }
+
+#sub_Content_Essay .main_Time_Essay .main_Time_Inner .gridEssay { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, auto); grid-gap: 1vw; padding: 0; }
+
+#sub_Content_Essay .main_Time_Essay .main_Time_Inner .gridEssay li { display: flex; align-items: center; height: 138px; border-bottom: 1px solid #d6d7d8; }
+
+#sub_Content_Essay .main_Time_Essay .main_Time_Inner .gridEssay li a { margin-right: 15px; }
+
+#sub_Content_Essay .main_Time_Essay .main_Time_Inner .gridEssay li a div img { width: 80px; max-height: 114px; }
+
+#sub_Content_Essay .main_Time_Essay .main_Time_Inner .gridEssay li div { display: flex; align-items: center; }
+
+#sub_Content_Essay .main_Time_Essay .main_Time_Inner .gridEssay li div h4 { font-size: 25px; margin-right: 15px; }
+
+#sub_Content_Essay .main_Time_Essay .main_Time_Inner .gridEssay li div div { align-items: flex-start; flex-direction: column; }
+
+#sub_Content_Essay .main_Time_Essay .main_Time_Inner .gridEssay li div div a { margin-bottom: 7px; font-weight: bold; }
+
+#sub_Content_Essay .main_Time_Essay .main_Time_Inner .gridEssay li div div span { margin-bottom: 7px; color: #626364; font-size: 14px; }
+
+#sub_Content_Essay .main_Time_Essay .main_Time_Inner .gridEssay .img_Box2 { grid-column: 1 / 2; grid-row: 2 / 3; }
+
+#sub_Content_Essay .main_Time_Essay .main_Time_Inner .gridEssay .img_Box3 { grid-column: 1 / 2; grid-row: 3 / 4; }
+
+#sub_Content_Essay .main_Time_Essay .main_Time_Inner .gridEssay .img_Box5 { grid-column: 2 / 3; grid-row: 2 / 3; }
+
+#sub_Content_Essay .main_Time_Essay .main_Time_Inner .gridEssay .img_Box6 { grid-column: 2 / 3; grid-row: 3 / 4; }
+
+#sub_Content_Essay .main_Time_Essay .main_Time_Inner .gridEssay .img_Box9 { grid-column: 3 / 4; grid-row: 3 / 4; }
+
+#sub_Content_Essay .main_Recom_Essay { height: 500px; background-color: #17202e; }
+
+#sub_Content_Essay .main_Recom_Essay .main_Recom_Inner { margin: 0 auto; width: 1200px; }
+
+#sub_Content_Essay .main_Recom_Essay .main_Recom_Inner h4 { color: #fff; font-size: 25px; padding: 20px 0; }
+
+#sub_Content_Essay .main_Recom_Essay .main_Recom_Inner .Essay_RecomBook_Slide { margin-top: 40px; }
+
+#sub_Content_Essay .main_Recom_Essay .main_Recom_Inner .Essay_RecomBook_Slide div img { width: 185px; height: 240px; margin-bottom: 10px; }
+
+#sub_Content_Essay .main_Recom_Essay .main_Recom_Inner .Essay_RecomBook_Slide div .recom_Book_Line { display: flex; flex-direction: column; }
+
+#sub_Content_Essay .main_Recom_Essay .main_Recom_Inner .Essay_RecomBook_Slide div .recom_Book_Line span:nth-child(1) { color: #fff; font-size: 15px; }
+
+#sub_Content_Essay .main_Recom_Essay .main_Recom_Inner .Essay_RecomBook_Slide div .recom_Book_Line span:nth-child(2) { font-size: 18px; font-size: 16px; color: rgba(255, 255, 255, 0.479); }
+
+#sub_Content_Essay .main_movie { height: 400px; margin: 70px 0; }
+
+#sub_Content_Essay .main_movie .ad_inner iframe { display: block; border: none; height: 400px; width: 100vw; }

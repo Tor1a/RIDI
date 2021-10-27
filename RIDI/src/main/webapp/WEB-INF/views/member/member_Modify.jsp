@@ -10,7 +10,7 @@
                     </div>
                     <ul class="info_List">
                         <li><a href="MemberHomeForm.do">마이리디홈</a></li>
-                        <li><a href="#">문의하기</a></li>
+                        <li><a href="QnaList.do">문의하기</a></li>
                         <li><a href="MemberInfoModifyForm.do">정보변경</a></li>
                     </ul>
                 </div>

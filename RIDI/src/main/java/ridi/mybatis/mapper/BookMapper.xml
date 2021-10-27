@@ -60,6 +60,12 @@
 		SELECT * FROM BOOK WHERE CATEGORY = 'mainadv' ORDER BY NO DESC
 	</select>
 	
+	<!-- 오성식 추가 -->
+	<!-- 베스트셀러 9개 책 출력 -->
+	<select id="getBestSeller" resultType="BookDto">
+		SELECT * FROM (SELECT * FROM BOOK ORDER BY STAR_RATING DESC) WHERE ROWNUM <![CDATA[<]]>= 9
+	</select>
+	
 	<!-- 신작 슬라이더 페이지 출력 -->
 	<select id="getNewBook" resultType="BookDto">
 		SELECT * FROM BOOK 
@@ -78,7 +84,7 @@
 	
 	<!-- 재태크페이지 현재시간, 사람들이 많이 읽고있는 페이지 출력 (아직 미설계, sql 수정해야함) -->
 	<select id="getMoneyTimeBook" resultType="BookDto">
-		SELECT * FROM BOOK WHERE CATEGORY = '재태크'
+		SELECT * FROM BOOK WHERE CATEGORY = '재태크' AND ROWNUM <![CDATA[<]]>= 9
 	</select>
 	
 	<!-- 재태크페이지 리디추천 출력 (아직 미설계, sql 수정해야함)-->
@@ -86,10 +92,38 @@
 		SELECT * FROM BOOK WHERE CATEGORY = '재태크'
 	</select>
 	
-	<!-- 오성식 추가 -->
-	<!-- 베스트셀러 9개 책 출력 -->
-	<select id="getBestSeller" resultType="BookDto">
-		SELECT * FROM (SELECT * FROM BOOK ORDER BY STAR_RATING DESC) WHERE ROWNUM <![CDATA[<]]>= 9
+	<!-- 만화 페이지 -->
+	
+	<!-- 만화 페이지 베스트셀러 슬라이더 출력( sql 수정해야함) -->
+	<select id="getComicBestSlider" resultType="BookDto">
+		SELECT * FROM BOOK WHERE CATEGORY = 'mainadv' ORDER BY NO DESC
 	</select>
-
+	
+	<!-- 만화 페이지 현재시간, 사람들이 많이 읽고있는 페이지 출력  -->
+	<select id="getComicTimeBook" resultType="BookDto">
+		SELECT * FROM BOOK WHERE CATEGORY = '만화' AND ROWNUM <![CDATA[<]]>= 9
+	</select>
+	
+	<!-- 만화 페이지 리디추천 출력 (아직 미설계, sql 수정해야함)-->
+	<select id="getComicRecomBook" resultType="BookDto">
+		SELECT * FROM BOOK WHERE CATEGORY = '만화'
+	</select>
+	
+	<!-- 에세이 페이지 -->
+	
+	<!-- 에세이 페이지 베스트셀러 슬라이더 출력( sql 수정해야함) -->
+	<select id="getEssayBestSlider" resultType="BookDto">
+		SELECT * FROM BOOK WHERE CATEGORY = 'mainadv' ORDER BY NO DESC
+	</select>
+	
+	<!-- 에세이 페이지 현재시간, 사람들이 많이 읽고있는 페이지 출력  -->
+	<select id="getEssayTimeBook" resultType="BookDto">
+		SELECT * FROM BOOK WHERE CATEGORY = '에세이' AND ROWNUM <![CDATA[<]]>= 9
+	</select>
+	
+	<!-- 에세이 페이지 리디추천 출력 (아직 미설계, sql 수정해야함)-->
+	<select id="getEssayRecomBook" resultType="BookDto">
+		SELECT * FROM BOOK WHERE CATEGORY = '에세이'
+	</select>
+	
 </mapper>

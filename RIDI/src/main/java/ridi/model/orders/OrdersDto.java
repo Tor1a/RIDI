@@ -13,41 +13,37 @@ import ridi.model.member.MemberDao;
 @Repository
 public class OrdersDto {
 	private int no;
-	private int order_No;
+	private int order_Group_No;
 	private String book_Name;
 	private int QTY; // ����
 	private int price;
-	private String ordered;
+	private String order_Person;
 	private String shipping_Address;
 	private String shipping_Stage;
-	private Date order_Date;
+	private String order_Date;
 	private String seller;
 	private String payCheck;
+	private String book_Image;
 	public OrdersDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public OrdersDto(int no, int order_No, String book_Name, int qTY, int price, String ordered,
-			String shipping_Address, String shipping_Stage, Date order_Date, String seller, String payCheck) {
+	public OrdersDto(int no, int order_Group_No, String book_Name, int qTY, int price, String order_Person,
+			String shipping_Address, String shipping_Stage, String order_Date, String seller, String payCheck,
+			String book_Image) {
 		super();
 		this.no = no;
-		this.order_No = order_No;
+		this.order_Group_No = order_Group_No;
 		this.book_Name = book_Name;
 		QTY = qTY;
 		this.price = price;
-		this.ordered = ordered;
+		this.order_Person = order_Person;
 		this.shipping_Address = shipping_Address;
 		this.shipping_Stage = shipping_Stage;
 		this.order_Date = order_Date;
 		this.seller = seller;
 		this.payCheck = payCheck;
-	}
-	@Override
-	public String toString() {
-		return "OrdersDto [no=" + no + ", order_No=" + order_No + ", book_Name=" + book_Name + ", QTY=" + QTY
-				+ ", price=" + price + ", ordered=" + ordered + ", shipping_Address=" + shipping_Address
-				+ ", shipping_Stage=" + shipping_Stage + ", order_Date=" + order_Date + ", seller=" + seller
-				+ ", payCheck=" + payCheck + "]";
+		this.book_Image = book_Image;
 	}
 	public int getNo() {
 		return no;
@@ -55,11 +51,11 @@ public class OrdersDto {
 	public void setNo(int no) {
 		this.no = no;
 	}
-	public int getOrder_No() {
-		return order_No;
+	public int getOrder_Group_No() {
+		return order_Group_No;
 	}
-	public void setOrder_No(int order_No) {
-		this.order_No = order_No;
+	public void setOrder_Group_No(int order_Group_No) {
+		this.order_Group_No = order_Group_No;
 	}
 	public String getBook_Name() {
 		return book_Name;
@@ -79,11 +75,11 @@ public class OrdersDto {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public String getOrdered() {
-		return ordered;
+	public String getOrder_Person() {
+		return order_Person;
 	}
-	public void setOrdered(String ordered) {
-		this.ordered = ordered;
+	public void setOrder_Person(String order_Person) {
+		this.order_Person = order_Person;
 	}
 	public String getShipping_Address() {
 		return shipping_Address;
@@ -97,10 +93,10 @@ public class OrdersDto {
 	public void setShipping_Stage(String shipping_Stage) {
 		this.shipping_Stage = shipping_Stage;
 	}
-	public Date getOrder_Date() {
+	public String getOrder_Date() {
 		return order_Date;
 	}
-	public void setOrder_Date(Date order_Date) {
+	public void setOrder_Date(String order_Date) {
 		this.order_Date = order_Date;
 	}
 	public String getSeller() {
@@ -115,6 +111,13 @@ public class OrdersDto {
 	public void setPayCheck(String payCheck) {
 		this.payCheck = payCheck;
 	}
+	public String getBook_Image() {
+		return book_Image;
+	}
+	public void setBook_Image(String book_Image) {
+		this.book_Image = book_Image;
+	}
+	
 	
 	
 }

@@ -2,8 +2,18 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ridi.mybatis.mapper.OrdersMapper">
 	
+	<!-- 찜한 내용들을 DB에 저장한다.-->
+	<insert id="insertOrder" parameterType="OrdersDto">
+		INSERT INTO ORDERS VALUES(SEQ_ORDERS.NEXTVAL,NULL,#{book_Name},#{QTY},#{price},#{order_Person},#{shipping_Address},#{shipping_Stage},SYSDATE,#{seller},#{payCheck},#{book_Image})
+	</insert>
+	 
+	 <!-- 사용자별 찜한 내용들을 출력한다. -->
+	 <select id="getAllCartList" parameterType="string" resultType="OrdersDto">
+	 	SELECT * FROM ORDERS WHERE ORDER_PERSON = #{id}
+	 </select>
+	 
+	 <!-- 찜한 내용을 1개 삭제 -->
+	 <delete id="deleteOrder" parameterType="string">
+	 	DELETE FROM ORDERS WHERE NO = #{itemNo}
+	 </delete>
 </mapper>
-
-
-
-
