@@ -43,15 +43,7 @@
                                     <th>판매가</th>
                                 </tr>
                             </thead>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <a href="#"><img src="../images/slide/book.JPG" alt=""></a>
-                                        <a href="#">책제목</a>
-                                    </div>
-                                </td>
-                                <td><span>가격원</span><span>수량n개</span></td>
-                            </tr>
+                            <!-- Jquery로 채운다 -->
                         </table>
                     </div>
                 </div>
@@ -69,20 +61,10 @@
                     <div class="order_result_price"><div><span>최종 결제금액</span><span>가격원</span></div></div>
                 </div>
                 <input type="submit" value="결제하기" class="order_Btn">
-                <a href="#" class="cart_Back">장바구니 가기</a>
+                <a href="CartListForm.do" class="cart_Back">장바구니 가기</a>
             </div>
         </div>
     </div>
-    <script>
-        $("#btnZip").on("click",function(){
-            new daum.Postcode({
-                oncomplete: function(data) {
-                    $("#zipcode").val(data.zonecode);
-                    $("#address01").val(data.address);
-                    
-                }
-            }).open();
-            return false;
-        });
-    </script>
+<script src="./js/order/orders_pay.js" defer></script>
+<div style="display:none" id="loggedMemberId">${sessionScope.loggedMember.id }</div>
 <%@ include file="../include/footer.jsp"%>

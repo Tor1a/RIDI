@@ -69,7 +69,7 @@
                                                    background-color: #fff;
                                                    width: 60px;
                                                    padding: 4px;
-                                                   &:hover {background-color: #d1d5d9;}
+                                                   &:hover {background-color: #d1d5d9; cursor:pointer}
                                                }
                                               }
                                        }
@@ -138,6 +138,7 @@
                             font-size: 16px;
                             &:hover {
                                 background-color: #1b72b9;
+                                cursor: pointer;
                             }
                         }
                       }

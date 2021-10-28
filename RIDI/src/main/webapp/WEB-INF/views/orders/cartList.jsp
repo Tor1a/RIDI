@@ -44,7 +44,7 @@
                                 </div>
                             </div>
                             <div class="cartList_selectBtn">
-                                <div><button>선택구매</button></div>
+                                <div><button id="selectedItemPayBtn">선택구매</button></div>
                             </div>
                         </div>
                     </div><!--cartList_right-->

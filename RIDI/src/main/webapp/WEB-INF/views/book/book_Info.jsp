@@ -57,8 +57,8 @@
 					</div>
 					<div class="book_Btn">
 						<!-- 오성식 수정(21.10.26) -->
-						<a style="cursor: pointer;" id="dibs"><i
-							class="fas fa-shopping-cart"></i></a> <a href="#">구매하기</a>
+						<a style="cursor: pointer;" id="dibs"><i class="fas fa-shopping-cart"></i></a> 
+						<a href="#">구매하기</a>
 					</div>
 				</div>
 			</div>
@@ -106,9 +106,9 @@
 </div>
 
 <!-- 오성식 생성 -->
-<div style="display: none" id="bootDtoBookNo">${bookDto.no }</div>
-<div style="display: none" id="bootDtoPrice">${bookDto.price }</div>
-<div style="display: none" id="bootDtoImage">${bookDto.book_Image}</div>
+<div style="display: none" id="bookDtoBookNo">${bookDto.no }</div>
+<div style="display: none" id="bookDtoPrice">${bookDto.price }</div>
+<div style="display: none" id="bookDtoImage">${bookDto.book_Image}</div>
 <div style="display: none" id="loggedMemberId">${sessionScope.loggedMember.id }</div>
 <div style="display: none" id="loggedMemberAddress">${sessionScope.loggedMember.address }</div>
 <script src="./js/review/review_Write.js" defer></script>
