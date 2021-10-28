@@ -111,4 +111,10 @@ public class QnaDao {
 		return result;
 	}
 	
+	public List<Object> getQnaSearchList(QnaDto qnaDto){
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		List<Object> qnaSearchList = sqlSession.selectList("getSearchAllList",qnaDto);
+		return qnaSearchList;
+	}
+	
 }

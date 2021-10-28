@@ -197,7 +197,16 @@ public class BookController {
 		return hashMap;
 	}
 	
-	
+	// 조회수많은 9개 출력
+		@RequestMapping("/PopBookJsonList.do")
+		@ResponseBody
+		public Map<String,Object> getPopBook(){
+			Map<String, Object> hashMap = new HashMap<String,Object>();
+			
+			List<BookDto> popBookList = bookDao.getPopBook();
+			hashMap.put("popBookList", popBookList);
+			return hashMap;
+		}
 	
 	/////////////////////////// 재태크 페이지 ///////////////////
 	

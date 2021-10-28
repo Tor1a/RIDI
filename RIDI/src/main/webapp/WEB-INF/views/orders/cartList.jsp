@@ -16,18 +16,18 @@
                         <!-- 
                         <ul class="cartList_btm">
                             <li>
-                                <div><input type="checkbox" checked></div>
+                                <div><input id="cartCheckBox${i}" type="checkbox" onclick="calCheckedCartList()"></div>
                             </li>
                             <li>
-                                <div><img src="./images/newBookCover02.JPG"></div>
+                                <div><img src="${item.book_Image}"></div>
                             </li>
                             <li>
-                                <div><span>내게 새겨진 장면들</span></div>
-                                <div><span>이음</span></div>
-                                <div><button>삭제</button></div>
+                                <div><span>${item.book_Name}</span></div>
+                                <div><span>${item.seller}</span></div>
+                                <div><button onclick="deleteCartItem(${item.no})">삭제</button></div>
                             </li>
                             <li>
-                                <div><span>9600원</span></div>
+                                <div class="bookPriceBox"><span class="bookPrice" id="bookPrice${i}">${item.price}원</span></div>
                             </li>
                         </ul>
                          -->

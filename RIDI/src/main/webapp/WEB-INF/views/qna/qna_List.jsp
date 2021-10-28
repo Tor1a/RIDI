@@ -3,7 +3,7 @@
 <%@ include file="../include/header.jsp"%>
 <div class="qnaList_body">
 <div id="qnaList_container" class="qnaList_wrap">
-	<form method="POST" action="QnaList.do" class="qnaList_form">
+	<div class="qnaList_form">
 		 <table class="qnaList">
 		<h1 class="qnaList_title">Q&A 게시판<span class="title_line"></span></h1>
 			<thead>
@@ -15,8 +15,9 @@
 					<th>상태</th>
 				</tr>
 			</thead>
+			
 			<!-- 리스트 -->
-			<tbody class="qnaList_contents">
+			<tbody>
 				<c:forEach var="qnaDto" items="${qnaList }" varStatus = "status">
 					 <tr class="contentsContainer">
 						<td>${total - (currentPage-1)*listPerCount - status.index }</td>
@@ -32,46 +33,48 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		
 		<!-- 페이지 넘기기 기능 -->
 		<div class="qnaList_page">
 			<ul class="pageContainer">
 				<c:if test="${startPage!=1 }">
 					<li>
 						<a href="QnaList.do?clickedPage=${startPage - pageGroupCount }">
+							<span class="far fa-caret-square-left"></span>
 						</a>
 					</li>
 				</c:if>
 				<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1" varStatus="status">
 					<li class="${currentPage == i ? 'active':'' }">
-						<a href="QnaList.do?clickedPage=${i }">
-							<span class="far fa-caret-square-left"></span>
-							${i }
-						</a>
-					</li>
+					<a href="QnaList.do?clickedPage=${i }">${i }</a></li>
 				</c:forEach>
 				<c:if test="${endPage != lastPage}">
 					<li><a href="QnaList.do?clickedPage=${startPage + pageGroupCount }">
-					<span class="far fa-caret-square-right"></span>
+					<span class="far fa-caret-square-right"></span></a></li>
 				</c:if>
 			</ul>
 		</div>
+		
 		<!-- 검색기능 -->
-		<form class="searchForm" method="GET" action="QnaSearchList.do">
-			<select name="searchSelect" class="searchSelect">
-				<option value="name"     ${param.searchSelect=="name"?"selected":"" }  >작성자</option>
+		<div>
+		<form class="searchForm" name="searchForm" method="GET" action="QnaSearchList.do">
+			<select name="searchField" class="searchSelect">
+				<option value="writerId" ${param.searchSelect=="writerId"?"selected":"" }  >작성자</option>
 				<option value="contents" ${param.searchSelect=="contents"?"selected":"" }>내용</option>
 				<option value="subject"  ${param.searchSelect=="subject"?"selected":""}>제목</option>
 			</select>
 			<input type="text" name="searchWord" value="${param.searchWord }" placeholder="검색어를 입력하세요.">
-			<input type="submit" class="btn"  value="검색">
+			<input type="submit" id="searchBtn" class="btn"  value="검색">
 		</form>
+		
+		<!-- 글 작성 -->
 		<div class="qnaList_btn">
 			   <a href="QnaWriteForm.do"><span class="qnaList_write">글쓰기</span></a>
 		</div>
-		
+	</div>
 	</div>
 
-      </form>
+      </div>
  </div>   
 <%@ include file="../include/footer.jsp"%>
 

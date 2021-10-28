@@ -26,6 +26,7 @@
 							<li id="starRating">${bookDto.star_Rating}</li>
 							<li>${bookDto.author}<span style="font-weight:normal;"> 저</span></li>
 							<li style="width: 150px; height: 20px; text-overflow: clip; overflow: hidden;"><span>출간일 </span>${bookDto.publication_Date }</li>
+							<li style="display:none;"><span>hit</span>${ bookDto.count }</li>
 						</ul>
 					</div>
 					<div class="book_parcel_Box">

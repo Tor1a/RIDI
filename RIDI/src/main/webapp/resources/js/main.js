@@ -115,6 +115,38 @@ $(document).ready(function(){
 	
 }); 
 
+/* 조회수 많은 순으로 출력 */
+
+$.ajax({
+		type : 'GET',
+		url:"PopBookJsonList.do",
+		dataType : 'json',
+		success:function(resultData){
+			const popBookList = resultData.popBookList;
+			console.log(popBookList);
+			$.each(popBookList, function(i, item){
+				$(".Popgrid").append(`	
+									<li class="img_Box${i+1}">
+				                         <a href="BookInfo.do?no=${item.no}">
+				                             <div>
+				                                 <img src="${item.book_Image}">
+				                             </div>
+				                         </a>
+				                         <div>
+				                             <h4>${i+1}</h4>
+				                             <div>
+				                                 <a href="BookInfo.do?no=${item.no}">${item.book_Name}</a>
+				                                 <span>${item.author}</span>
+				                             </div>
+				                         </div>
+				                     </li>`
+									);
+			});
+			
+		}
+	});
+
+
 
 /* 재태크페이지 메인 베스트 슬라이더 출력(미완) */
 $(document).ready(function(){

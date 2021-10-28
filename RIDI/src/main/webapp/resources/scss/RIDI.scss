@@ -1819,242 +1819,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 //qna_View page 
-.qnaView_body {
-    height: 100%;
-    .qna_View {
-        width: 1200px;
-        margin: 0 auto;
-        .qnaView_form {
-            .qnaView_container {
-                .qnaView_inner {
-                    li {
-                        display: flex;
-                        &:first-child {
-                            font-size: 18px;
-                            font-weight: bold;
-                            width: 1200px;
-                            color: #1f8ce6;
-                            border-bottom: 1px solid #d1d5d9;
-                            border-top: 2px solid #aabdcc;
-                            margin-top: 60px;
-                            div {
-                                &:first-child {
-                                    width: 200px;
-                                    text-align: center;
-                                    padding: 10px 0;
-                                    background-color: #f7f7f7;
-                                    
-                                }
-                                &:nth-child(2) { 
-                                    margin-top: 7px;
-                                    margin-left: 10px;
-                                }
-                            }
-                           
-                        }
-                        &:nth-child(2) {
-                            width: 396px;
-                            float: right;
-                            font-weight: bold;
-                            margin-left: 10px;
-                            font-size: 14px;
-                            div {
-                                &:first-child {
-                                    width: 200px;
-                                    text-align: center;
-                                    padding: 10px 0;
-                                    background-color: #f7f7f7;
-                                }
-                                &:nth-child(2) {
-                                    margin-top: 7px;
-                                    margin-left: 10px;
-                                }
-                            }
-                        
-                        }
-                        &:nth-child(3) {
-                            width: 397px;
-                            float: right;
-                            font-weight: bold;
-                            font-size: 14px;
-                            div {
-                                &:first-child {
-                                    width: 200px;
-                                    text-align: center;
-                                    padding: 10px 0;
-                                    background-color: #f7f7f7;
-                                }
-                                &:nth-child(2) {
-                                    margin-top: 7px;
-                                    margin-left: 10px;
-                                }
-                            }
-                        }
-                        &:nth-child(4) {
-                            width: 397px;
-                            float: right;
-                            font-weight: bold;
-                            font-size: 14px;
-                            div {
-                                &:first-child {
-                                    width: 200px;
-                                    text-align: center;
-                                    padding: 10px 0;
-                                    background-color: #f7f7f7;
-                                }
-                                &:nth-child(2) {
-                                    margin-top: 7px;
-                                    margin-left: 10px;
-                                }
-                            }
-                        }
-                        &:last-child {
-                            width: 1200px;
-                            height: 200px;
-                            border-bottom: 2px solid #d1d5d9;
-                            border-top: 1px solid #d1d5d9;
-                            font-size: 15px;
-                            div {
-                               &:first-child {
-                                width: 200px;
-                                text-align: center;
-                                padding: 10px 0;
-                                background-color: #f7f7f7;
-                               } 
-                               &:nth-child(2) {
-                                margin-top: 7px;
-                                margin-left: 10px;
-                               }
-                            }
-                        }
-                        div {
-                           
-                            &:nth-child(2) {margin-left: 3px;}
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
 
-.prevAndNext {
-    padding: 50px 0;
-    span { 
-        font-weight: bold;
-       
-    }
-}
-
-.qnaView_btn {
-    display: flex;
-    margin: 0 auto;
-    height: 160px;
-    a {
-        border: 1px solid #1f8ce6;
-        height: 30px;
-        border-radius: 5px;
-        padding: 5px 10px;
-        line-height: 30px;
-        &:first-child {
-            background-color: #1f8ce6; color: #fff;
-            font-weight: bold;
-        }
-        &:nth-child(2) {
-            margin-left: 10px;
-            color: #1f8ce6;
-            font-weight: bold;
-        }
-        &:nth-child(3) {
-            margin-left: auto;
-            background-color: #1f8ce6; color: #fff;
-            font-weight: bold;
-        }
-        &:nth-child(4) {
-            margin-left: 10px;
-            color: #1f8ce6;
-            font-weight: bold;
-        }
-    }
-}
-
-
-.qna_Reply {
-    width: 1200px;
-    margin: 0 auto;
-    .qnaReply_title {
-        color:#1f8ce6;
-        padding: 40px 0;
-        width: 200px;
-        margin: 0 auto;
-    }
-        .qnaReply_form {
-            .qnaReply_container {
-                .qnaReply_inner {
-                    li {
-                        background-color: #fbfcfd;
-                        border-bottom : 1px solid  #d1d5d9;
-                        display: flex;
-                       
-                        &:first-child {
-                            border-top: 1px solid #d1d5d9;
-                        }
-                        div {
-                            width: 200px;
-                            padding: 10px;
-                            background-color: #fbfcfd;
-                            font-weight: bold;
-                            font-size: 18px;
-                            color: #555;
-                            border-right: 1px solid #d1d5d9;
-                        }
-                        label {
-                            width: 950px;
-                            input { 
-                                width: 340px;
-                                padding: 5px;
-                                margin: 6px 0px 0px 10px;
-                                border-radius: 4px;
-                                border: 1px solid #d1d5d9;
-                                font-size: 18px;
-                               
-
-                            }
-                            textarea {
-                                width: 680px;
-                                height: 300px;
-                                margin: 10px 0px 7px 10px;
-                                border-radius: 4px;
-                                border: 1px solid #d1d5d9;
-                                font-size: 18px;
-                            }
-                        }
-                    }
-                }
-            }
-
-            .qnaReply_btn {
-               border: #738096;
-               width: 200px;
-               margin: 0 auto;
-               padding: 40px 0;
-               input {
-                   width: 60px;
-                   height: 40px;
-                   margin-right: 20px;
-                   background-color: #1f8ce6;
-                   border-radius: 4px;
-                   color: #fff;
-                   border: 1px solid #fff;
-                   &:last-child {
-                       background-color: #fff;
-                       border: 1px solid #1f8ce6;
-                       color: #1f8ce6;
-                   }
-               }
-            }
-        }
-}
 
 //qna_Search page 
 .qna_Search {
@@ -2252,10 +2017,99 @@ footer {
                     a {
                         margin-right: 15px;
                         div {
+                            width: 80px;
+                            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.55), 0 6px 20px 0 rgba(0, 0, 0, 0.42);
+                            text-align: center;
                             img {
                                 width: 80px;
                                 max-height: 114px;
+                            } 
+                        }
+                    }
+                    div {
+                        display: flex;
+                        align-items: center;
+                        h4 {
+                            font-size: 25px;
+                            margin-right: 15px;
+                        }
+                        div {
+                            align-items: flex-start;
+                            flex-direction: column;
+                            a {
+                                margin-bottom: 7px;
+                                font-weight: bold;
                             }
+                            span {
+                                margin-bottom: 7px;
+                                color: #626364;
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                }
+                .img_Box2 {
+                    grid-column: 1 / 2;
+                    grid-row: 2 / 3;
+                }
+                .img_Box3 {
+                    grid-column: 1 / 2;
+                    grid-row: 3 / 4;
+                }
+                .img_Box5 {
+                    grid-column: 2 / 3;
+                    grid-row: 2 / 3;
+                }
+                .img_Box6 {
+                    grid-column: 2 / 3;
+                    grid-row: 3 / 4;
+                }
+                .img_Box9 {
+                    grid-column: 3 / 4;
+                    grid-row: 3 / 4;
+                }
+            }
+        }
+    }
+    .main_Pop {
+        width: 1200px;
+        height: 550px;
+        margin: 0 auto;
+        h3 {
+            font-size: 25px;
+            margin-top: 30px;
+        }
+        .main_Pop_Inner {
+            margin-top: 15px;
+            .Popgrid {
+                // display: grid;
+                // grid-template-columns: repeat(3,1fr);
+                // grid-template-rows: repeat(3,auto);
+                // grid-gap: 1vw;
+                // padding: 0;
+                display: -ms-grid;
+                display: grid;
+                -ms-grid-columns: 1fr 1vw 1fr 1vw 1fr;
+                grid-template-columns: repeat(3,1fr);
+                -ms-grid-rows: auto 1vw auto 1vw auto;
+                grid-template-rows: repeat(3,auto);
+                grid-gap: 1vw;
+                padding: 0;
+                li {
+                    display: flex;
+                    align-items: center;
+                    height: 138px;
+                    border-bottom: 1px solid #d6d7d8;
+                    a {
+                        margin-right: 15px;
+                        div {
+                            width: 80px;
+                            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.55), 0 6px 20px 0 rgba(0, 0, 0, 0.42);
+                            text-align: center;
+                            img {
+                                width: 80px;
+                                max-height: 114px;
+                            } 
                         }
                     }
                     div {
@@ -2479,6 +2333,9 @@ footer {
                     a {
                         margin-right: 15px;
                         div {
+                            width: 80px;
+                            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.55), 0 6px 20px 0 rgba(0, 0, 0, 0.42);
+                            text-align: center;
                             img {
                                 width: 80px;
                                 max-height: 114px;
@@ -2643,6 +2500,9 @@ footer {
                     a {
                         margin-right: 15px;
                         div {
+                            width: 80px;
+                            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.55), 0 6px 20px 0 rgba(0, 0, 0, 0.42);
+                            text-align: center;
                             img {
                                 width: 80px;
                                 max-height: 114px;
@@ -2807,6 +2667,9 @@ footer {
                     a {
                         margin-right: 15px;
                         div {
+                            width: 80px;
+                            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.55), 0 6px 20px 0 rgba(0, 0, 0, 0.42);
+                            text-align: center;
                             img {
                                 width: 80px;
                                 max-height: 114px;

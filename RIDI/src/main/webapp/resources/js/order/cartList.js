@@ -26,14 +26,55 @@ function getAllCartList(){
                                 <div><button onclick="deleteCartItem(${item.no})">삭제</button></div>
                             </li>
                             <li>
-                                <div><span class="bookPrice" id="bookPrice${i}">${item.price}원</span></div>
+                                <div class="bookPriceBox"><span class="bookPrice" id="bookPrice${i}">${item.price}원</span></div>
                             </li>
                         </ul>`);
 			})
-			
+			calCheckedCartList();
 		}
 	});
 };
+
+//
+
+
+// 체크된 책들의 가격의 합을 구한다.
+function calCheckedCartList(){
+	// let cartListLength = $(".bookPriceBox").length;
+	// console.log(cartListLength);
+	// let priceSum = 0;
+	// let selectCartListNum = 0;
+	// $.each($(".bookPriceBox"),function(i,item){
+	// 	console.log(item);
+	// })
+
+	
+	let cartListLength = $(".bookPrice").length;
+	let priceSum = 0;
+	let selectCartListNum = 0;
+	for(var i = 0; i < cartListLength; i++){
+		if($(`#cartCheckBox${i}`).prop("checked")){
+			let price = Number($(`#bookPrice${i}`).text().slice(0,-1));
+			priceSum = priceSum + price;
+			selectCartListNum++;
+		}
+	};
+	$(".cartList_btm").each(function() {
+		console.log($(this));
+	});
+	$(".cartList_sum > div:nth-of-type(1) span").text(`${selectCartListNum}권을 선택하셨습니다.`);
+	$(".cartList_sum > div:nth-of-type(3) span").text(`${priceSum}원`);
+	$(".select_btm > div:nth-of-type(2) span").text(`${priceSum}원`);
+	
+	console.log($(".bookPrice"));
+	$(".bookPrice").each(function(i,item){
+		if($(this).find("input[type='checkbox']").prop("checked")){
+			console.log($(this).find)
+		}
+	})
+}
+
+
 
 // 카트 리스트 전체 선택/해제 기능을 구현
 $(".cartList_checkbox input").on("click",function(){
@@ -48,22 +89,6 @@ $(".cartList_checkbox input").on("click",function(){
 })
 
 
-// 체크된 책들의 가격의 합을 구한다.
-function calCheckedCartList(){
-	let cartListLength = $(".bookPrice").length;
-	let priceSum = 0;
-	let selectCartListNum = 0;
-	for(var i = 0; i < cartListLength; i++){
-		if($(`#cartCheckBox${i}`).prop("checked")){
-			let price = Number($(`#bookPrice${i}`).text().slice(0,-1));
-			priceSum = priceSum + price;
-			selectCartListNum++;
-		}
-	}
-	$(".cartList_sum > div:nth-of-type(1) span").text(`${selectCartListNum}권을 선택하셨습니다.`);
-	$(".cartList_sum > div:nth-of-type(3) span").text(`${priceSum}원`);
-	$(".select_btm > div:nth-of-type(2) span").text(`${priceSum}원`);
-}
 
 function deleteCartItem(itemNo){
 	const _parent = $(this).parent().parent();
