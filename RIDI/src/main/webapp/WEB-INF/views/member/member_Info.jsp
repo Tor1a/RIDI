@@ -20,6 +20,12 @@
                             <li>${sessionScope.loggedMember.email }</li>
                             <li>${sessionScope.loggedMember.name }</li>
                         </ul>
+                        <ul class="my_cash">
+                        	<li><i class="fas fa-wallet"></i></li>
+                        	<li>리디캐시</li>
+                        	<li>${sessionScope.loggedMember.cash }<span>원</span></li>
+                        	<li><a href="#">리디캐시 충전</a></li>
+                        </ul>
                     </div>
                     <div class="info_Notice_Box">
                         <h3 class="info_Notice_Title">안내사항</h3>

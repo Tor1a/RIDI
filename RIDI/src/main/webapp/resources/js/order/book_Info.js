@@ -9,11 +9,12 @@ $("#dibs").on("click",function(){
 		price: $("#bookDtoPrice").text(),
 		order_Person:$("#loggedMemberId").text(),
 		shipping_Address:$("#loggedMemberAddress").text(),
-		shipping_Stage:"주문 접수중",
+		shipping_Stage:"결제 대기중",
 		seller:"RIDI",
-		payCheck: "nopay",
+		payCheck: "NOPAY",
 		book_Image: $("#bookDtoImage").text(),
-		book_No: $("#bookDtoBookNo").text()
+		book_No: $("#bookDtoBookNo").text(),
+		shipping_Fee:$("#bookDtoShippingPrice").text()
 	}
 
 	$.ajax({

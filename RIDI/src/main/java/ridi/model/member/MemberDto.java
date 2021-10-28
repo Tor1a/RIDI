@@ -26,16 +26,18 @@ public class MemberDto {
 	private String address02;    
 	private String hp;
 	private String hp_First;
-	private String hp_Middel;
+	private String hp_Middle;
 	private String hp_Last;
 	private String creation_Date;
+	private int cash;
+	private int minusCash;
 	public MemberDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public MemberDto(int no, String name, String rRN, String rrn_First, String rrn_Last, String id, String password,
 			String email, String gender, int zipcode, String address, String address01, String address02, String hp,
-			String hp_First, String hp_Middel, String hp_Last, String creation_Date) {
+			String hp_First, String hp_Middle, String hp_Last, String creation_Date, int cash, int minusCash) {
 		super();
 		this.no = no;
 		this.name = name;
@@ -52,9 +54,11 @@ public class MemberDto {
 		this.address02 = address02;
 		this.hp = hp;
 		this.hp_First = hp_First;
-		this.hp_Middel = hp_Middel;
+		this.hp_Middle = hp_Middle;
 		this.hp_Last = hp_Last;
 		this.creation_Date = creation_Date;
+		this.cash = cash;
+		this.minusCash = minusCash;
 	}
 	public int getNo() {
 		return no;
@@ -146,11 +150,11 @@ public class MemberDto {
 	public void setHp_First(String hp_First) {
 		this.hp_First = hp_First;
 	}
-	public String getHp_Middel() {
-		return hp_Middel;
+	public String getHp_Middle() {
+		return hp_Middle;
 	}
-	public void setHp_Middel(String hp_Middel) {
-		this.hp_Middel = hp_Middel;
+	public void setHp_Middle(String hp_Middle) {
+		this.hp_Middle = hp_Middle;
 	}
 	public String getHp_Last() {
 		return hp_Last;
@@ -164,8 +168,18 @@ public class MemberDto {
 	public void setCreation_Date(String creation_Date) {
 		this.creation_Date = creation_Date;
 	}
-	
-	
+	public int getCash() {
+		return cash;
+	}
+	public void setCash(int cash) {
+		this.cash = cash;
+	}
+	public int getMinusCash() {
+		return minusCash;
+	}
+	public void setMinusCash(int minusCash) {
+		this.minusCash = minusCash;
+	}
 	
 	
 	

@@ -25,7 +25,7 @@
 <script src="js/isotope.pkgd.min.js"></script>
 <script src="js/imagesloaded.pkgd.min.js"></script>
 
-<script src="summernote/summernote.min.js"></script>
+<script src="js/summernote/summernote.min.js"></script>
 <script type="text/javascript"
 	src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script

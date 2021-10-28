@@ -159,7 +159,8 @@ public class MemberController {
   public void memberJoin(MemberDto memberDto,HttpServletRequest request, HttpServletResponse response) throws IOException {
 	  memberDto.setRRN(memberDto.getRrn_First()+"-"+memberDto.getRrn_Last());
 	  memberDto.setAddress(memberDto.getAddress01()+"/"+memberDto.getAddress02());
-	  memberDto.setHp(memberDto.getHp_First()+"-"+memberDto.getHp_Middel()+"-"+memberDto.getHp_Last());
+	  memberDto.setHp(memberDto.getHp_First()+"-"+memberDto.getHp_Middle()+"-"+memberDto.getHp_Last());
+
 	  
 	  int result = memberDao.insertMember(memberDto);
 	  if(result > 0) {
@@ -183,7 +184,7 @@ public class MemberController {
 	  
 	  memberDto.setId(loggedMemberDto.getId());
 	  memberDto.setAddress(memberDto.getAddress01()+"/"+memberDto.getAddress02());
-	  memberDto.setHp(memberDto.getHp_First()+"-"+memberDto.getHp_Middel()+"-"+memberDto.getHp_Last());
+	  memberDto.setHp(memberDto.getHp_First()+"-"+memberDto.getHp_Middle()+"-"+memberDto.getHp_Last());
 	  
 	  if(memberDto.getPassword().isBlank()) {
 		  memberDto.setPassword(loggedMemberDto.getPassword());
@@ -225,5 +226,19 @@ public class MemberController {
 	  } else {
 		  ScriptWriterUtil.alertAndNext(response, "비밀번호를 확인해주세요","MemberDeleteForm.do");
 	  }
+  }
+  
+  // 결제한 금액만큼 캐시를 차감하고 member 세션을 다시받는다.
+  @RequestMapping("/minusCash.do")
+  @ResponseBody
+  public int minusCash(MemberDto memberDto, HttpSession session) {
+	  int result = 0;
+	  result = memberDao.minusCash(memberDto);
+	  
+		  loggedMemberDto = memberDao.getOneMember(memberDto);
+		  session.setAttribute("loggedMember", loggedMemberDto);
+
+	  
+	  return result;
   }
 }

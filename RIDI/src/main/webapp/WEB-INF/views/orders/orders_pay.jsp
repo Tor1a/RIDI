@@ -41,6 +41,8 @@
                                 <tr>
                                     <th>상품정보</th>
                                     <th>판매가</th>
+                                    <th>배송비</th>
+                                    <th>수량</th>
                                 </tr>
                             </thead>
                             <!-- Jquery로 채운다 -->
@@ -52,15 +54,15 @@
                 <div class="order_Btn_Box_Inner">
                     <ul>
                         <li>
-                            <div><span>상품금액</span><span>가격원</span></div>
+                            <div><span>상품금액</span><span id="bookPriceSum">원</span></div>
                         </li>
                         <li>
-                            <div><span>배송비</span><span>가격원</span></div>
+                            <div><span>배송비</span><span id="shippingFeeSum">원</span></div>
                         </li>
                     </ul>
-                    <div class="order_result_price"><div><span>최종 결제금액</span><span>가격원</span></div></div>
+                    <div class="order_result_price"><div><span>최종 결제금액</span><span id="totalPirceSum">가격원</span></div></div>
                 </div>
-                <input type="submit" value="결제하기" class="order_Btn">
+                <input type="button" value="결제하기" class="order_Btn">
                 <a href="CartListForm.do" class="cart_Back">장바구니 가기</a>
             </div>
         </div>

@@ -46,7 +46,7 @@
 								</tr>
 								<tr>
 									<th>배송예정시간</th>
-									<td><span>${bookDto.estimated_Time }시간</span></td>
+									<td><span>약 ${bookDto.estimated_Time }일</span></td>
 								</tr>
 								<tr>
 									<th>재고수</th>
@@ -108,6 +108,7 @@
 <!-- 오성식 생성 -->
 <div style="display: none" id="bookDtoBookNo">${bookDto.no }</div>
 <div style="display: none" id="bookDtoPrice">${bookDto.price }</div>
+<div style="display: none" id="bookDtoShippingPrice">${bookDto.shipping_Price }</div>
 <div style="display: none" id="bookDtoImage">${bookDto.book_Image}</div>
 <div style="display: none" id="loggedMemberId">${sessionScope.loggedMember.id }</div>
 <div style="display: none" id="loggedMemberAddress">${sessionScope.loggedMember.address }</div>

@@ -15,7 +15,8 @@
 									#{zipcode},
 									#{address},
 									#{hp},
-									SYSDATE)
+									SYSDATE,
+									1000000)
 	</insert>
 	
 	<!-- ID,Password가 일치하는 회원정보 반환 -->
@@ -51,6 +52,16 @@
 	<update id="memberFindPw" parameterType="MemberDto">
 		UPDATE MEMBER SET PASSWORD = #{password} WHERE ID = #{id} AND EMAIL = #{email}
 	</update>
+	
+	<!--  결제한 금액만큼 캐시를 차감하고 member 세션을 다시받는다. -->
+	<update id="minusCash" parameterType="MemberDto">
+		UPDATE MEMBER SET CASH = (SELECT CASH - #{minusCash} FROM MEMBER WHERE ID = #{id}) WHERE ID = #{id}
+	</update>
+	
+	<!-- id에 해당하는 유저정보를 반환한다 -->
+	 <select id="getOneMember" parameterType="MemberDto" resultType="MemberDto">
+	 	SELECT * FROM MEMBER WHERE ID = #{id}
+	 </select>
 </mapper>
 
 

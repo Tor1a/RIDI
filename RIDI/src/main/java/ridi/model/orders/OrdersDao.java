@@ -69,6 +69,28 @@ public class OrdersDao {
 		return result;
 	}
 	
+	// 결제에서 빠진 찜한 책들의 orderGroupNo를 초기화한다.
+	public int unsetOrderGroupNo(OrdersDto ordersDto) {
+		int result = 0;
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		result = sqlSession.update("unsetOrderGroupNo", ordersDto);
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return result;
+	}
+	
+	//결제한 Order를 결제 처리 표시를 DB에 저장한다.
+	public int setPayCheck(OrdersDto ordersDto) {
+		int result = 0;
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		result = sqlSession.update("setPayCheck", ordersDto);
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return result;
+	}
+	
 	////////////////////////////////결제 관련 ////////////////////////////////
 	public List<OrdersDto> getOrderList(OrdersDto ordersDto){
 		List<OrdersDto> orderList = null;

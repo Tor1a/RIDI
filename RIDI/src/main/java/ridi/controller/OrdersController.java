@@ -95,6 +95,15 @@ public class OrdersController {
 		result = ordersDao.setOrderGroupNo(ordersDto);
 		return result;
 	}
+	
+	// 결제에서 빠진 찜한 책들을 DB에서 orderGroupNo를 초기화 한다.
+	@RequestMapping("/unsetOrderGroupNo.do")
+	@ResponseBody
+	public int unsetOrderGroupNo(OrdersDto ordersDto) {
+		int result = 0;
+		result = ordersDao.unsetOrderGroupNo(ordersDto);
+		return result;
+	}
 
 	//////////////////////////////// 결제 관련 ////////////////////////////////
 	// 주문 결제페이지로 이동한다
@@ -116,6 +125,15 @@ public class OrdersController {
 		 
 		 hashMap.put("orderList", orderList);
 		 return hashMap;
+	}
+	
+	//결제한 Order를 결제 setPayCheck처리 표시를 DB에 저장한다.
+	@RequestMapping("/setPayCheck.do")
+	@ResponseBody
+	public int setPayCheck(OrdersDto ordersDto) {
+		int result = 0;
+		result = ordersDao.setPayCheck(ordersDto);
+		return result;
 	}
 	
 	

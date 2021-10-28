@@ -4,12 +4,12 @@
 	<!-- ################## 카트/찜 관련 ################## -->
 	<!-- 찜한 내용들을 DB에 저장한다.-->
 	<insert id="insertOrder" parameterType="OrdersDto">
-		INSERT INTO ORDERS VALUES(SEQ_ORDERS.NEXTVAL,NULL,#{book_Name},#{QTY},#{price},#{order_Person},#{shipping_Address},#{shipping_Stage},SYSDATE,#{seller},#{payCheck},#{book_Image},#{book_No})
+		INSERT INTO ORDERS VALUES(SEQ_ORDERS.NEXTVAL,NULL,#{book_Name},#{QTY},#{price},#{order_Person},#{shipping_Address},#{shipping_Stage},SYSDATE,#{seller},#{payCheck},#{book_Image},#{book_No},#{shipping_Fee})
 	</insert>
 	 
 	 <!-- 사용자별 찜한 내용들을 출력한다. -->
 	 <select id="getAllCartList" parameterType="string" resultType="OrdersDto">
-	 	SELECT * FROM ORDERS WHERE ORDER_PERSON = #{id}
+	 	SELECT * FROM ORDERS WHERE ORDER_PERSON = #{id} AND PAYCHECK = 'NOPAY'
 	 </select>
 	 
 	 <!-- 찜한 내용을 1개 삭제 -->
@@ -29,8 +29,20 @@
 	 
 	 
 	 <!-- ################## 결제 관련 ################## -->
-	 <!-- 결제하지 않은 Order 정보를 DB에서 받아온다 -->
+	 <!-- 찜한 Order 정보를 DB에서 받아온다 -->
 	 <select id="getOrderList" parameterType="OrdersDto" resultType="OrdersDto">
 	 	SELECT * FROM ORDERS WHERE ORDER_PERSON = #{order_Person} AND PAYCHECK = #{payCheck} AND ORDER_GROUP_NO IS NOT NULL
 	 </select>
+	 
+	 <!-- orderGroupNo를 빈값으로 바꾼다 -->
+	 <update id="unsetOrderGroupNo" parameterType="OrdersDto">
+	 	UPDATE ORDERS SET ORDER_GROUP_NO = NULL WHERE NO = #{no}
+	 </update>
+	 
+	 <!-- 결제한 Order를 결제 처리표시를 DB에 해준다. -->
+	 <update id="setPayCheck" parameterType="OrdersDto">
+	 	UPDATE ORDERS SET PAYCHECK = 'PAY' WHERE ORDER_GROUP_NO = #{order_Group_No}
+	 </update>
+	 
+	 
 </mapper>

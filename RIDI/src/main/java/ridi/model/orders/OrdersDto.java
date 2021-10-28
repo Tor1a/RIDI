@@ -24,14 +24,15 @@ public class OrdersDto {
 	private String seller;
 	private String payCheck;
 	private String book_Image;
-	private String book_No;
+	private int book_No;
+	private int shipping_Fee;
 	public OrdersDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public OrdersDto(int no, int order_Group_No, String book_Name, int qTY, int price, String order_Person,
 			String shipping_Address, String shipping_Stage, String order_Date, String seller, String payCheck,
-			String book_Image, String book_No) {
+			String book_Image, int book_No, int shipping_Fee) {
 		super();
 		this.no = no;
 		this.order_Group_No = order_Group_No;
@@ -46,6 +47,7 @@ public class OrdersDto {
 		this.payCheck = payCheck;
 		this.book_Image = book_Image;
 		this.book_No = book_No;
+		this.shipping_Fee = shipping_Fee;
 	}
 	public int getNo() {
 		return no;
@@ -119,14 +121,18 @@ public class OrdersDto {
 	public void setBook_Image(String book_Image) {
 		this.book_Image = book_Image;
 	}
-	public String getBook_No() {
+	public int getBook_No() {
 		return book_No;
 	}
-	public void setBook_No(String book_No) {
+	public void setBook_No(int book_No) {
 		this.book_No = book_No;
 	}
-	
-	
+	public int getShipping_Fee() {
+		return shipping_Fee;
+	}
+	public void setShipping_Fee(int shipping_Fee) {
+		this.shipping_Fee = shipping_Fee;
+	}
 	
 	
 	

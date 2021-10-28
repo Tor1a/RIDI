@@ -64,6 +64,19 @@ function calCheckedCartList() {
 // 선택한 찜한 아이템을 DB에 업데이트 해주고 결제 페이지로 넘어간다.
 $("#selectedItemPayBtn").on("click", function() {
 	let order_Group_No;
+	let uncheckBoxInspect = 0;
+	
+	$(".cartCheckBox").each(function(){
+		if($(this).prop("checked")){
+			uncheckBoxInspect++;
+		}
+	})
+
+	if(uncheckBoxInspect == 0){
+		alert("최소 1개 이상 체크해주세요");
+		return false;
+	}
+	
 	$.ajax({
 		url: "GetOrderGroupNo.do",
 		type: "POST",
@@ -72,15 +85,21 @@ $("#selectedItemPayBtn").on("click", function() {
 		},
 		complete: function() {
 			$(".cartList_btm").each(function() {
-				if ($(this).find(".cartCheckBox").prop("checked")) {
-					const sendData = {
+				const sendData = {
 						order_Group_No: order_Group_No,
 						no: $(this).data("no")
 					}
+				if ($(this).find(".cartCheckBox").prop("checked")) {
 					$.ajax({
 						url:"setOrderGroupNo.do",
 						type:"POST",
-						data:sendData,
+						data:sendData
+					})
+				} else{
+					$.ajax({
+						url:"unsetOrderGroupNo.do",
+						type:"POST",
+						data:sendData
 					})
 				}
 			})
