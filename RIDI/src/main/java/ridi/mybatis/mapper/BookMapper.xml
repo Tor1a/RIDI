@@ -31,6 +31,7 @@
 		SELECT * FROM BOOK WHERE NO = #{no}
 	</select>
 	
+	
 	<!-- 책 수정 페이지 출력 -->
 	<update id="modifyBook" parameterType="BookDto">
 		UPDATE BOOK SET BOOK_NAME = #{book_Name},
@@ -64,6 +65,18 @@
 	<!-- 베스트셀러 9개 책 출력 -->
 	<select id="getBestSeller" resultType="BookDto">
 		SELECT * FROM (SELECT * FROM BOOK ORDER BY STAR_RATING DESC) WHERE ROWNUM <![CDATA[<]]>= 9
+	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="infoCount" parameterType="Integer">
+		UPDATE BOOK SET COUNT = COUNT + 1 WHERE NO = #{no}
+	</update>
+	<!-- 조회수 많은 책 9개 출력 -->
+	<select id="getPopBook" resultType="BookDto">
+		SELECT * FROM 
+		(SELECT BOOK_NAME, NO, BOOK_IMAGE, AUTHOR, COUNT, ROW_NUMBER()OVER (ORDER BY COUNT DESC) AS RNK
+		 FROM BOOK) 
+		WHERE RNK <![CDATA[<]]>= 9 AND ROWNUM <![CDATA[<]]>= 9
 	</select>
 	
 	<!-- 신작 슬라이더 페이지 출력 -->

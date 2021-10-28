@@ -15,7 +15,9 @@
 	<!--  SLIDER CLASS NAME 변경  -->
 	<div class="best_slider"></div>
 	<div class="main_Time">
-		<div class="time"></div>
+		<div class="time">
+				<i class="far fa-clock"></i>
+			</div>
 		<h3>
 			사람들이 지금 많이 읽고 있는 책 <i class="fas fa-chevron-right"></i>
 		</h3>

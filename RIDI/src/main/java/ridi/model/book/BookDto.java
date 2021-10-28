@@ -25,13 +25,14 @@ public class BookDto {
 	private String book_Intro;
 	private String book_Image;
 	private String book_RealImage;
+	private int count;
 	public BookDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public BookDto(int no, String book_Name, int price, int stock, int star_Rating, String estimated_Time,
 			int shipping_Price, String category, String publication_Date, int pages, String author, String book_Intro,
-			String book_Image, String book_RealImage) {
+			String book_Image, String book_RealImage, int count) {
 		super();
 		this.no = no;
 		this.book_Name = book_Name;
@@ -47,6 +48,7 @@ public class BookDto {
 		this.book_Intro = book_Intro;
 		this.book_Image = book_Image;
 		this.book_RealImage = book_RealImage;
+		this.count = count;
 	}
 	@Override
 	public String toString() {
@@ -54,7 +56,7 @@ public class BookDto {
 				+ ", star_Rating=" + star_Rating + ", estimated_Time=" + estimated_Time + ", shipping_Price="
 				+ shipping_Price + ", category=" + category + ", publication_Date=" + publication_Date + ", pages="
 				+ pages + ", author=" + author + ", book_Intro=" + book_Intro + ", book_Image=" + book_Image
-				+ ", book_RealImage=" + book_RealImage + "]";
+				+ ", book_RealImage=" + book_RealImage + ", count=" + count + "]";
 	}
 	public int getNo() {
 		return no;
@@ -140,5 +142,12 @@ public class BookDto {
 	public void setBook_RealImage(String book_RealImage) {
 		this.book_RealImage = book_RealImage;
 	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
+	
 		
 }

@@ -24,6 +24,16 @@
 			</ul>
 		</div>
 	</div>
+	<div class="main_Pop">
+		<h3>
+			조회수 많은 책 <i class="fas fa-chevron-right"></i>
+		</h3>
+		<div class="main_Pop_Inner">
+			<ul class="Popgrid">
+
+			</ul>
+		</div>
+	</div>
 	<div class="main_New">
 		<div class="main_New">
 			<div class="main_New_Inner">

@@ -49,12 +49,23 @@ public class BookDao {
 	// info 페이지
 	public BookDto getOneBook(int no) {
 		BookDto bookDto = null;
-
+		infoCount(no);
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		bookDto = sqlSession.selectOne("getOneBook", no);
 		sqlSession.close();
 
 		return bookDto;
+	}
+	// info 조회수
+	public int infoCount(int no) {
+		int result = 0;
+
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		result = sqlSession.update("infoCount", no);
+		sqlSession.commit();
+		sqlSession.close();
+
+		return result;
 	}
 
 	// 책 수정 페이지
@@ -112,7 +123,16 @@ public class BookDao {
 		bestSellerList = sqlSession.selectList("getBestSeller");
 		return bestSellerList;
 	}
-
+	
+	// 조회수 많은 9개 책
+	public List<BookDto> getPopBook() {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		List<BookDto> popBookList = null;
+		popBookList = sqlSession.selectList("getPopBook");
+		return popBookList;
+	}
+	
+	
 	////////////////////// 재태크///////////////////////////////
 
 	// 재태크 메인 베스트셀러 슬라이더

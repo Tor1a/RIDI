@@ -25,7 +25,8 @@
 				</ul>
             </div>
 		<div class="qnaWrite_btn">
-                <input type="submit" value="확인"><input type="button" value="취소">
+                <input type="submit" value="확인">
+                <input type="button" onClick="history.go(-1)" value="취소">
             </div>
 	</form>
 </div>
