@@ -23,7 +23,7 @@
                         <ul class="my_cash">
                         	<li><i class="fas fa-wallet"></i></li>
                         	<li>리디캐시</li>
-                        	<li>${sessionScope.loggedMember.cash }<span>원</span></li>
+                        	<li><fmt:formatNumber value="${sessionScope.loggedMember.cash }" pattern="#,###"/><span>원</span></li>
                         	<li><a href="#">리디캐시 충전</a></li>
                         </ul>
                     </div>
