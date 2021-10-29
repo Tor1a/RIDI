@@ -96,7 +96,7 @@ $("#btnZip").on("click", function() {
 
 // 결제를 진행한다.
 $(".order_Btn").on("click",function(){
-	if(confirm("정말로 결제를 진행하시겠습니까?") == true){
+	if(confirm(`최종 결제 금액만큼 캐쉬가 차감됩니다.\n결제를 진행하시겠습니까?`) == true){
 		const sendData = {
 			order_Group_No:$(".orderList").data("no")
 		}
@@ -107,10 +107,9 @@ $(".order_Btn").on("click",function(){
 			success:function(result){
 				if(result > 0){
 					const sendData2={
-						minusCash:$("#totalPirceSum").text().slice(0,-1),
+						minusCash:$("#totalPirceSum").text().slice(0,-1).replace(",",""),
 						id:$("#loggedMemberId").text()
 					}
-					console.log(sendData2);
 					$.ajax({
 						url:"minusCash.do",
 						type:"POST",
