@@ -16,36 +16,11 @@ import ridi.model.member.MemberDao;
 @Repository
 public class QnaDao {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	
-	//session factory 받기
+
 	@Autowired
 	private SqlSessionFactory sqlSessionFactory;
 	
-	public List<QnaDto> getAllList(int start, int end){
-		HashMap<String, Integer> page = new HashMap<String, Integer>();
-		page.put("start", start);
-		page.put("end", end);
-		
-		List<QnaDto> qnaList = null;
-		
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-		qnaList = sqlSession.selectList("getAllList",page);
-		
-
-		
-		sqlSession.close();
-		return qnaList;
-	}
-	
-	public int getTotal() {
-		int result = 0;
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-		result = sqlSession.selectOne("getTotal");
-		sqlSession.close();
-		
-		return result;
-	}
-	
+	// 게시글 작성
 	public int insertQna(QnaDto qnaDto) {
 		int result = 0 ;
 		SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -56,6 +31,30 @@ public class QnaDao {
 		return result;
 	}
 	
+	// 게시글 리스트
+	public List<QnaDto> getAllList(int start, int end){
+		HashMap<String, Integer> page = new HashMap<String, Integer>();
+		page.put("start", start);
+		page.put("end", end);
+		
+		List<QnaDto> qnaList = null;
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		qnaList = sqlSession.selectList("getAllList",page);		
+		sqlSession.close();
+		return qnaList;
+	}
+	
+	// 게시글 총 조회수 
+	public int getTotal() {
+		int result = 0;
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		result = sqlSession.selectOne("getTotal");
+		sqlSession.close();
+		
+		return result;
+	}
+	
+	// 게시글 읽을때 마다 1씩 증가 
 	public int updateReadCount(int no) {
 		int result =0;
 		SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -66,6 +65,7 @@ public class QnaDao {
 		return result;
 	}
 	
+	// 한 페이지 선택
 	public QnaDto getQnaSelectOne(int no) {
 		QnaDto qnaDto = null;
 		updateReadCount(no);
@@ -76,6 +76,7 @@ public class QnaDao {
 		return qnaDto;
 	}
 	
+	// 이전 페이지로 이동
 	public QnaDto prevQnaDto(int num) {
 		QnaDto qnaDto = null;
 		SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -84,6 +85,7 @@ public class QnaDao {
 		
 		return qnaDto;
 	}
+	// 다음 페이지로 이동
 	public QnaDto nextQnaDto(int num) {
 		QnaDto qnaDto = null;
 		SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -92,7 +94,7 @@ public class QnaDao {
 		
 		return qnaDto;		
 	}
-	
+	// 페스워드 입력
 	public String getPassword(int no) {
 		String password = null;
 		SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -101,14 +103,17 @@ public class QnaDao {
 		return password;
 	}
 	
-	public int deleteQna(int no) {
-		int result = 0;
+	// 게시글 삭제 및 게시글 삭제시 게시글에 달려있는 댓글도 삭제
+	public int deleteQna(QnaDto qnaDto) {
+		int result1 = 0;
+		int result2 = 0;
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		result = sqlSession.delete("deleteQna",no);
+		result1 = sqlSession.delete("deleteQna",qnaDto);
+		result2 = sqlSession.delete("deleteAllReply",qnaDto);
 		sqlSession.commit();
 		sqlSession.close();
 		
-		return result;
+		return result1+result2;
 	}
 	
 	public List<Object> getQnaSearchList(QnaDto qnaDto){

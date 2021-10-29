@@ -16,9 +16,6 @@ public class QnaDto {
 	public String subject;
 	public String password;
 	private Date regDate;
-	private int reGroup;
-	private int reStep;
-	private int reLevel;
 	private int readCount;
 	private String contents;
 	private String searchField;
@@ -30,17 +27,14 @@ public class QnaDto {
 		// TODO Auto-generated constructor stub
 	}
 
-	public QnaDto(int no, String writerId, String subject, String password, Date regDate, int reGroup, int reStep,
-			int reLevel, int readCount, String contents, String searchField, String searchWord, int num) {
+	public QnaDto(int no, String writerId, String subject, String password, Date regDate, int readCount,
+			String contents, String searchField, String searchWord, int num) {
 		super();
 		this.no = no;
 		this.writerId = writerId;
 		this.subject = subject;
 		this.password = password;
 		this.regDate = regDate;
-		this.reGroup = reGroup;
-		this.reStep = reStep;
-		this.reLevel = reLevel;
 		this.readCount = readCount;
 		this.contents = contents;
 		this.searchField = searchField;
@@ -88,30 +82,6 @@ public class QnaDto {
 		this.regDate = regDate;
 	}
 
-	public int getReGroup() {
-		return reGroup;
-	}
-
-	public void setReGroup(int reGroup) {
-		this.reGroup = reGroup;
-	}
-
-	public int getReStep() {
-		return reStep;
-	}
-
-	public void setReStep(int reStep) {
-		this.reStep = reStep;
-	}
-
-	public int getReLevel() {
-		return reLevel;
-	}
-
-	public void setReLevel(int reLevel) {
-		this.reLevel = reLevel;
-	}
-
 	public int getReadCount() {
 		return readCount;
 	}
@@ -151,6 +121,8 @@ public class QnaDto {
 	public void setNum(int num) {
 		this.num = num;
 	}
+
+	
 	
 	
 	

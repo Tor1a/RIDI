@@ -62,16 +62,17 @@
 					<button class="btnReply">댓글 등록</button>
 				</div>
 				<div class="txtCount">
-					<span id="currentCount"></span>/300
+					<span id="currentCount"></span>/100
 				</div>
 				<div class="replyList">
 					<!-- 여기에 댓글 등록 -->
 					<ul class="list">
-
+					
+					
 					</ul>
 				</div>
-				<a href="QnaList.do?clickedPage=1">목록</a> <a href="#"
-					id="qnaDeleteBtn" onclick="return qnaPassword(${qnaDto.no})">삭제</a>
+				<a href="QnaList.do?clickedPage=1">목록</a> 
+				<a href="#" id="qnaDeleteBtn">삭제</a>
 			</div>
 		</div>
 	</div>

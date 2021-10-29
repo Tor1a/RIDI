@@ -1,11 +1,5 @@
 replySelectAll();
 
-function qnaPassword(no){
-   let password = prompt("Qna 패스워드를 입력하세요");
-   window.location=`QndDelete.do?no=${no}&password=${password}`;
-   return false;
-}
-
 
 
 
@@ -35,9 +29,9 @@ $(".btnReply").on("click",function(){
 // 댓글 입력 글자수를 제한한다.
 $(".replyBox textarea").on("keydown", function(e){
 	const content = $(this).val();
-	if(content.length > 300) {
+	if(content.length > 100) {
 		alert("300자까지 입력 가능합니다.");
-		$(this).val(content.substr(300));
+		$(this).val(content.substr(100));
 	} else {
 		$("#currentCount").text(content.length);
 	}
@@ -63,10 +57,61 @@ function replySelectAll(){
                 list.append(`
                 <li data-no="${item.no}" data-boardid="${item.boardId}">
                 	<div class="txt">${item.reply} </div>
-                	<button><span class="material-icons">delete</span></button>
+					<button><span class="material-icons">delete</span></button>
                 </li>
                 `)
             });
 		}
 	});
 }
+
+$(".replyList").on("click","li button",function(e){
+	const _parent = $(this).parent();
+	const sendData = {
+		no:_parent.data("no")
+	}
+	$.ajax({
+		url:"DeleteReply.do",
+		type:"POST",
+		data:sendData,
+		success:function(resultData){
+			console.log(resultData);
+			if(resultData > 0){
+				_parent.remove();
+				alert("댓글이 삭제되었습니다.");
+			} else{
+				alert("뎃글 삭제에 실패했습니다.");
+			}
+		},
+		error:function(error){
+			console.log(error);
+		}
+	})
+});
+
+$("#qnaDeleteBtn").on("click",function(e){
+	console.log("hihihih");
+	let password = prompt("Qna 패스워드를 입력하세요");
+	const sendData ={
+		no:$("#qnaNo").text(),
+		password: password
+	}
+	console.log(sendData);
+	$.ajax({
+		url:"QndDelete.do",
+		type:"POST",
+		data:sendData,
+		success:function(result){
+			if(result > 0){
+				alert("게시글이 삭제되었습니다.")
+				location.href="QnaList.do";
+			} else {
+				alert("비밀번호가 달라서 삭제 실패하였습니다.")
+			}
+		}
+	})
+	
+	
+	
+	
+});

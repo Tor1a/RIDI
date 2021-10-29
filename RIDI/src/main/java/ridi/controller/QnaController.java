@@ -58,6 +58,19 @@ public class QnaController {
 				
 	}
 	
+	// 게시글 작성 기능
+	@RequestMapping("/QnaWrite.do")
+	public String qnaWrite(QnaDto qnaDto, HttpServletResponse response) throws IOException {
+			int result = qnaDao.insertQna(qnaDto);
+			if(result > 0) {
+				ScriptWriterUtil.alertAndNext(response, "게시글이 작성되었습니다", "QnaList.do");
+			}else {
+				ScriptWriterUtil.alertAndBack(response, "게시글이 작성되지 않았습니다.");
+			}
+			return null;
+		}
+	
+	// 게시글 리스트
 	@RequestMapping("/QnaList.do")
 		public String QnaList(Model model, HttpServletRequest request) {
 			
@@ -104,20 +117,9 @@ public class QnaController {
 			
 		return "qna/qna_List";
 		}
-	// 글작성 기능
 	
-	@RequestMapping("/QnaWrite.do")
-	public String qnaWrite(QnaDto qnaDto, HttpServletResponse response) throws IOException {
-		int result = qnaDao.insertQna(qnaDto);
-		if(result > 0) {
-			ScriptWriterUtil.alertAndNext(response, "吏덈Ц�씠 �벑濡앸릺�뿀�뒿�땲�떎", "QnaList.do");
-		}else {
-			ScriptWriterUtil.alertAndBack(response, "吏덈Ц�씠 �벑濡앸릺吏��븡�븯�뒿�땲�떎");
-		}
-		return null;
-	}
 
-	
+	// 리스트에서 클릭시 게시글 하나만 보여줌
 	@RequestMapping("/QnaView.do")
 		public String qnaView(int no, int clickedPage, int num, Model model,HttpServletRequest request) {
 			
@@ -137,100 +139,66 @@ public class QnaController {
 		return "qna/qna_View";
 		
 	}
-	// 삭제기능
-	
+	// 게시글 삭제기능
 	@RequestMapping("/QndDelete.do")
-	   public String qnaDelete(HttpServletResponse response,HttpServletRequest request) throws IOException {
-	      int no = Integer.parseInt(request.getParameter("no"));
-	      String password = request.getParameter("password");
-	      String userPassword = qnaDao.getPassword(no);
-	      System.out.println(no+"================================"+password);
-	      if(userPassword.equals(password)) {
-	         int result = qnaDao.deleteQna(no);
-	         if(result > 0) {
-	            ScriptWriterUtil.alertAndNext(response, "吏덈Ц�씠�궘�젣�릺�뿀�뒿�땲�떎", "QnaList.do");
-	         }else {
-	            ScriptWriterUtil.alertAndBack(response, "吏덈Ц�궘�젣媛� �븞�릺�뿀�뒿�땲�떎.");
-	         }
-	      }else {
-	         ScriptWriterUtil.alertAndBack(response, "鍮꾨�踰덊샇瑜� �솗�씤�빐 二쇱꽭�슂");
+	@ResponseBody
+	   public int qnaDelete(QnaDto qnaDto, HttpServletResponse response) throws IOException {
+	     int result = 0;
+	      String userPassword = qnaDao.getPassword(qnaDto.getNo());
+	     
+	      if(userPassword.equals(qnaDto.getPassword())) {
+	         result = qnaDao.deleteQna(qnaDto);
 	      }
-	      return null;
+	      return result;
 	   }
-	
-	//검색 기능
-	@RequestMapping("QnaSearchList.do")
-	public String getQnaSearchList(QnaDto qnaDto, Model model, HttpServletRequest request)  {
-		
-		List<Object> qnaSearchList = null;
-		
-		qnaSearchList = qnaDao.getQnaSearchList(qnaDto);
-		//hashMap.put("qnaSearchList", qnaSearchList);
-		
-		String clickedPage = request.getParameter("clickedPage");
-		if(clickedPage == null) {
-			clickedPage = "1";
-		}
-		int currentPage = Integer.parseInt(clickedPage);
-		
-		int total= 0 ;
-		int listPerCount = 5;
-		int pageGroupCount = 10;
-		
-		total = qnaDao.getTotal();
-		int lastPage = (int)(total / listPerCount) + 1;
-		
-		int startPage = (int)((currentPage - 1)/pageGroupCount)*pageGroupCount + 1;
-		int endPage = startPage + pageGroupCount -1;
-		
-		if(endPage > lastPage) {
-			endPage = lastPage;
-		}
-		
-		int start = (currentPage -1)*listPerCount+1;
-		int end = start+listPerCount;
-		
-		List<QnaDto> qnaList = null;
-		qnaList = qnaDao.getAllList(start,end);
-		
-		
-		model.addAttribute("qnaList",qnaList);
-		model.addAttribute("lastPage",lastPage);
-		model.addAttribute("listPerCount",listPerCount);
-		model.addAttribute("startPage",startPage);
-		model.addAttribute("endPage",endPage);
-		model.addAttribute("currentPage",currentPage);
-		model.addAttribute("pageGroupCount",pageGroupCount);
-		model.addAttribute("total",total);
-		
-		return "hi";
-	}
 	
 	// 댓글기능
 	
-	@RequestMapping("/ReplyWrite.do")
-	@ResponseBody
-	public int replyWrite(ReplyDto replyDto){
-		int result = 0;
-		result = replyDao.insertReply(replyDto);
+		// 댓글 작성
+		@RequestMapping("/ReplyWrite.do")
+		@ResponseBody
+		public int replyWrite(ReplyDto replyDto){
+			int result = 0;
+			result = replyDao.insertReply(replyDto);
+			
+			return result;
+		}
 		
-		return result;
-	}
+		// 댓글 리스트 
+		@RequestMapping("/ReplySelectAll.do")
+		@ResponseBody
+		public Map<String,Object> getAllReply(@RequestParam Map<String,Object> map) {
+			Map<String,Object> hashMap = new HashMap<String,Object>();
+			List<ReplyDto> replyList = null;
+			
+			String boardId = (String)map.get("boardId");
+			replyList = replyDao.getAllReply(Integer.parseInt(boardId));
+			hashMap.put("replyList", replyList);
+			return hashMap;
+		}
+		
+		// 댓글 삭제
+		@RequestMapping("DeleteReply.do")
+		@ResponseBody
+		public int deleteReply(ReplyDto replyDto) {
+			int result =0;
+			result = replyDao.deleteReply(replyDto);
+			
+			
+			return result;
+		}
+		
 	
 	
-	@RequestMapping("/ReplySelectAll.do")
-	@ResponseBody
-	public Map<String,Object> getAllReply(@RequestParam Map<String,Object> map) {
-		Map<String,Object> hashMap = new HashMap<String,Object>();
-		List<ReplyDto> replyList = null;
+	//검색 기능
+	@RequestMapping("QnaSearchList.do")
+	public Map<String, Object> getQnaSearchList(QnaDto qnaDto)  {
+		Map<String, Object> hashMap = new HashMap<String, Object>();
+		List<QnaDto> getSearchAllList = null;
 		
-		String boardId = (String)map.get("boardId");
-		replyList = replyDao.getAllReply(Integer.parseInt(boardId));
-		hashMap.put("replyList", replyList);
+		
 		return hashMap;
 	}
-	
-	
 	
 	
 }
