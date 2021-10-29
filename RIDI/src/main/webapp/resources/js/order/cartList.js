@@ -36,9 +36,10 @@ function getAllCartList() {
 	});
 };
 
-function addComma(){
+// 카트 아이템의 가격에 천원 단위로 ,를 찍는다.
+function addComma() {
 	let money;
-	$(".cartList_btm").each(function(){
+	$(".cartList_btm").each(function() {
 		//let priceLength = $(this).find(".bookPrice").text().length;
 		money = Number($(this).find(".bookPrice").text().slice(0, -1)).toLocaleString();
 		$(this).find(".bookPrice").text(`${money}원`);
@@ -56,7 +57,7 @@ function calCheckedCartList() {
 	$(".cartList_btm").each(function() {
 		//console.log($(this).find(".bookPrice").text());
 		if ($(this).find(".cartCheckBox").prop("checked")) {
-			let price = Number($(this).find(".bookPrice").text().slice(0, -1).replace(",",""));
+			let price = Number($(this).find(".bookPrice").text().slice(0, -1).replace(",", ""));
 			priceSum = priceSum + price;
 			selectCartListNum++;
 		}
@@ -71,52 +72,38 @@ function calCheckedCartList() {
 // OrderGroupNo를 DB에서 생성해서 받고 
 // 선택한 찜한 아이템을 DB에 업데이트 해주고 결제 페이지로 넘어간다.
 $("#selectedItemPayBtn").on("click", function() {
-	let order_Group_No;
 	let uncheckBoxInspect = 0;
-	
-	$(".cartCheckBox").each(function(){
-		if($(this).prop("checked")){
+
+	$(".cartCheckBox").each(function() {
+		if ($(this).prop("checked")) {
 			uncheckBoxInspect++;
 		}
 	})
 
-	if(uncheckBoxInspect == 0){
+	if (uncheckBoxInspect == 0) {
 		alert("최소 1개 이상 체크해주세요");
 		return false;
 	}
-	
-	$.ajax({
-		url: "GetOrderGroupNo.do",
-		type: "POST",
-		success: function(result) {
-			order_Group_No = result;
-		},
-		complete: function() {
-			$(".cartList_btm").each(function() {
-				const sendData = {
-						order_Group_No: order_Group_No,
-						no: $(this).data("no")
-					}
-				if ($(this).find(".cartCheckBox").prop("checked")) {
-					$.ajax({
-						url:"setOrderGroupNo.do",
-						type:"POST",
-						data:sendData
-					})
-				} else{
-					$.ajax({
-						url:"unsetOrderGroupNo.do",
-						type:"POST",
-						data:sendData
-					})
-				}
+
+	$(".cartList_btm").each(function() {
+		const sendData = {
+			no: $(this).data("no")
+		}
+		if ($(this).find(".cartCheckBox").prop("checked")) {
+			$.ajax({
+				url: "setShippingStageWaitPay.do",
+				type: "POST",
+				data: sendData
 			})
-			window.location = "OrderPayForm.do";
+		} else {
+			$.ajax({
+				url: "setShippingStageDibs.do",
+				type: "POST",
+				data: sendData
+			})
 		}
 	})
-
-
-
+	window.location.href="OrderPayForm.do";
 })
 
 // 카트 리스트 전체 선택/해제 기능을 구현

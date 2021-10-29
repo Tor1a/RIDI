@@ -523,11 +523,11 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 .order_Inner .order_Book_Info table tr td:nth-child(1) div, .order_Inner .pay_Order_Book_Info table tr td:nth-child(1) div { display: flex; align-items: center; justify-content: space-between; }
 
-.order_Inner .order_Book_Info table tr td:nth-child(1) div a, .order_Inner .pay_Order_Book_Info table tr td:nth-child(1) div a { font-size: 20px; }
+.order_Inner .order_Book_Info table tr td:nth-child(1) div a, .order_Inner .pay_Order_Book_Info table tr td:nth-child(1) div a { font-size: 16px; }
 
 .order_Inner .order_Book_Info table tr td:nth-child(1) div a:nth-child(1) img, .order_Inner .pay_Order_Book_Info table tr td:nth-child(1) div a:nth-child(1) img { width: 60px; height: 85px; padding: 7px 15px 7px 0; }
 
-.order_Inner .order_Book_Info table tr td:nth-child(1) div p, .order_Inner .pay_Order_Book_Info table tr td:nth-child(1) div p { margin-right: 50px; margin-bottom: 2px !important; }
+.order_Inner .order_Book_Info table tr td:nth-child(1) div p, .order_Inner .pay_Order_Book_Info table tr td:nth-child(1) div p { font-size: 12px; margin-right: 20px; margin-bottom: 2px !important; }
 
 .order_Inner .order_Book_Info table tr td:nth-of-type(2), .order_Inner .pay_Order_Book_Info table tr td:nth-of-type(2) { text-align: center; }
 

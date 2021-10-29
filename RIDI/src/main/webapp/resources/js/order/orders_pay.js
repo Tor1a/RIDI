@@ -1,17 +1,17 @@
 //주문 예정인 주문상품을 화면에 출력한다.
 getOrderList();
-function getOrderList(){
+function getOrderList() {
 	const sendData = {
-		order_Person:$("#loggedMemberId").text(),
-		payCheck:"NOPAY"
+		order_Person: $("#loggedMemberId").text(),
+		payCheck: "NOPAY"
 	}
 	$.ajax({
-		url:"getOrdersList.do",
-		type:"POST",
-		data:sendData,
-		success:function(result){
+		url: "getOrdersList.do",
+		type: "POST",
+		data: sendData,
+		success: function(result) {
 			const orderList = result.orderList;
-			$.each(orderList,function(i,item){
+			$.each(orderList, function(i, item) {
 				$(".order_Book_Info table").append(`<tr class="orderList" data-no=${item.order_Group_No}>
 		                                <td>
 		                                    <div>
@@ -34,17 +34,17 @@ function getOrderList(){
 
 // 결제완료한 주문상품을 출력한다.
 getPayOrderList()
-function getPayOrderList(){
+function getPayOrderList() {
 	const sendData = {
-		order_Person:$("#loggedMemberId").text(),
+		order_Person: $("#loggedMemberId").text(),
 	}
 	$.ajax({
-		url:"getPayOrderList.do",
-		type:"POST",
-		data:sendData,
-		success:function(result){
+		url: "getPayOrderList.do",
+		type: "POST",
+		data: sendData,
+		success: function(result) {
 			const orderList = result.orderList;
-			$.each(orderList,function(i,item){
+			$.each(orderList, function(i, item) {
 				$(".pay_Order_Book_Info table").append(`<tr class="orderList" data-no=${item.order_Group_No}>
 		                                <td>
 		                                    <div>
@@ -65,15 +65,15 @@ function getPayOrderList(){
 }
 
 // 주문한 예정인 상품의 가격 총합을 계산한다.
-function calPriceSum(){
+function calPriceSum() {
 	let bookPriceSum = 0;
 	let shippingFeeSum = 0;
-	$(".bookPrice").each(function(){
-		let bookPrice = Number($(this).text().slice(0, -1).replace(",",""));
+	$(".bookPrice").each(function() {
+		let bookPrice = Number($(this).text().slice(0, -1).replace(",", ""));
 		bookPriceSum = bookPriceSum + bookPrice;
 	})
-	$(".shippingFee").each(function(){
-		let shippingFee = Number($(this).text().slice(0,-1).replace(",",""));
+	$(".shippingFee").each(function() {
+		let shippingFee = Number($(this).text().slice(0, -1).replace(",", ""));
 		shippingFeeSum = shippingFeeSum + shippingFee;
 	})
 	$("#bookPriceSum").text(`${Number(bookPriceSum).toLocaleString()}원`);
@@ -95,33 +95,46 @@ $("#btnZip").on("click", function() {
 });
 
 // 결제를 진행한다.
-$(".order_Btn").on("click",function(){
-	if(confirm(`최종 결제 금액만큼 캐쉬가 차감됩니다.\n결제를 진행하시겠습니까?`) == true){
-		const sendData = {
-			order_Group_No:$(".orderList").data("no")
-		}
+$(".order_Btn").on("click", function() {
+	let order_Group_No = 0;
+	if (confirm(`최종 결제 금액만큼 캐쉬가 차감됩니다.\n결제를 진행하시겠습니까?`) == true) {
 		$.ajax({
-			url:"setPayCheck.do",
-			type:"POST",
-			data:sendData,
-			success:function(result){
-				if(result > 0){
-					const sendData2={
-						minusCash:$("#totalPirceSum").text().slice(0,-1).replace(",",""),
-						id:$("#loggedMemberId").text()
-					}
-					$.ajax({
-						url:"minusCash.do",
-						type:"POST",
-						data:sendData2,
-						success:function(result){
-							if(result > 0){
-								alert("결제 완료되었습니다.")
-								window.location.reload();	
-							}
-						}
-					})	
+			url: "GetOrderGroupNo.do",
+			type: "POST",
+			success: function(result) {
+				order_Group_No = result;
+			},
+			complete: function() {
+				let sendData = {
+					order_Person: $("#loggedMemberId").text(),
+					order_Group_No: order_Group_No
 				}
+				$.ajax({
+					url: "SetOrderGroupNo.do",
+					type: "POST",
+					data: sendData,
+					success: function(result) {
+						if (result > 0) {
+							const sendData2 = {
+								minusCash: $("#totalPirceSum").text().slice(0, -1).replace(",", ""),
+								id: $("#loggedMemberId").text()
+							}
+							$.ajax({
+								url: "minusCash.do",
+								type: "POST",
+								data: sendData2,
+								success: function(result) {
+									if (result > 0) {
+										alert("결제 완료되었습니다.")
+										window.location.reload();
+									}
+								}
+							})
+
+						}
+
+					}
+				})
 			}
 		})
 	}
