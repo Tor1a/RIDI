@@ -442,11 +442,14 @@ input[type="number"]::-webkit-inner-spin-button {
             }
             .info {
                 .info_Box {
+                    display:flex;
+                    justify-content: center;
                     margin-bottom: 40px;
-                    background-color: #ebf6ff;
                     border: 2px solid #636c73;
-                    padding: 24px 20px;
                     .my_info {
+                        background-color: #ebf6ff;
+                        width:30%;
+                        padding:24px 20px;
                         li {
                         }
                         li:nth-child(1) {
@@ -459,6 +462,31 @@ input[type="number"]::-webkit-inner-spin-button {
                             font-size: 12px;
                         }
                     }
+                    .my_cash{
+                        width:70%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        li:nth-of-type(1){
+                            font-size:30px;
+                        }
+                        li:nth-of-type(2){
+                            font-weight: bold;
+                        }
+                        li:nth-of-type(3){
+                            font-size:30px;
+                            color:#1F8CE6;
+                            span{
+                                font-size:20px;
+                            }
+                        }
+                        li:nth-of-type(4){
+                            font-size:15px;
+                            color:#636c73;
+                        }
+                    }
+
                 }
                 .info_Notice_Box {
                     .info_Notice_Title {
@@ -1363,7 +1391,7 @@ input[type="number"]::-webkit-inner-spin-button {
             }
         }
     }
-    .order_Book_Info {
+    .order_Book_Info, .pay_Order_Book_Info {
         margin-top: 40px;
         h4 {
             font-size: 25px;
@@ -1390,7 +1418,15 @@ input[type="number"]::-webkit-inner-spin-button {
                             font-weight: normal;
                         }
                         &:nth-child(2) {
-                            width: 30%;
+                            width: 10%;
+                            font-weight: normal;
+                        }
+                        &:nth-child(3){
+                            width: 10%;
+                            font-weight: normal;
+                        }
+                        &:nth-child(4){
+                            width: 10%;
                             font-weight: normal;
                         }
                     }
@@ -1403,7 +1439,10 @@ input[type="number"]::-webkit-inner-spin-button {
                         div {
                             display: flex;
                             align-items: center;
+                            justify-content: space-between;
+                            
                             a {
+                                font-size:20px;
                                 &:nth-child(1) {
                                     img {
                                         width: 60px;
@@ -1412,14 +1451,27 @@ input[type="number"]::-webkit-inner-spin-button {
                                     }
                                 }
                             }
+                            p{
+                                margin-right:50px;
+                                margin-bottom: 2px !important;
+                            }
                         }
                     }
-                    &:nth-child(2) {
-                        display: flex;
-                        justify-content: space-around;
-                        align-items: center;
-                        height: 103px;
+                    &:nth-of-type(2){
+                        text-align: center;
                     }
+                    &:nth-of-type(3){
+                        text-align: center;
+                    }
+                    &:nth-of-type(4){
+                        text-align: center;
+                    }
+                    // &:nth-child(2) {
+                    //     display: flex;
+                    //     justify-content: space-around;
+                    //     align-items: center;
+                    //     height: 103px;
+                    // }
                 }
             }
         }

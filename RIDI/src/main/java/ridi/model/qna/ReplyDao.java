@@ -13,6 +13,7 @@ public class ReplyDao {
 	@Autowired
 	private SqlSessionFactory sqlSessionFactory;
 	
+	// 댓글 입력
 	public int insertReply(ReplyDto replyDto) {
 		int result = 0;
 		SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -22,6 +23,7 @@ public class ReplyDao {
 		return result;
 	}
 	
+	// 작성한 댓글 보여주는 리스트
 	public List<ReplyDto> getAllReply(int boardId) {
 		List<ReplyDto> replyList =  null;
 		SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -29,4 +31,17 @@ public class ReplyDao {
 		sqlSession.close();
 		return replyList;
 	}
+	
+	// 댓글 하나 삭제
+	public int deleteReply(ReplyDto replyDto) {
+		int result = 0;
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		result = sqlSession.delete("deleteReply",replyDto);
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return result;
+	}
+	
+	
 }

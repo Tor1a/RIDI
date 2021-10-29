@@ -169,11 +169,25 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 #content .info_Content .info_Inner .info_Sub .info_List li a { color: #808991; font-size: 15px; font-weight: bold; }
 
-#content .info_Content .info_Inner .info .info_Box { margin-bottom: 40px; background-color: #ebf6ff; border: 2px solid #636c73; padding: 24px 20px; }
+#content .info_Content .info_Inner .info .info_Box { display: flex; justify-content: center; margin-bottom: 40px; border: 2px solid #636c73; }
+
+#content .info_Content .info_Inner .info .info_Box .my_info { background-color: #ebf6ff; width: 30%; padding: 24px 20px; }
 
 #content .info_Content .info_Inner .info .info_Box .my_info li:nth-child(1) { font-size: 20px; font-weight: bold; margin-bottom: 10px; }
 
 #content .info_Content .info_Inner .info .info_Box .my_info li:nth-child(2) { color: #808991; font-size: 12px; }
+
+#content .info_Content .info_Inner .info .info_Box .my_cash { width: 70%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+#content .info_Content .info_Inner .info .info_Box .my_cash li:nth-of-type(1) { font-size: 30px; }
+
+#content .info_Content .info_Inner .info .info_Box .my_cash li:nth-of-type(2) { font-weight: bold; }
+
+#content .info_Content .info_Inner .info .info_Box .my_cash li:nth-of-type(3) { font-size: 30px; color: #1F8CE6; }
+
+#content .info_Content .info_Inner .info .info_Box .my_cash li:nth-of-type(3) span { font-size: 20px; }
+
+#content .info_Content .info_Inner .info .info_Box .my_cash li:nth-of-type(4) { font-size: 15px; color: #636c73; }
 
 #content .info_Content .info_Inner .info .info_Notice_Box .info_Notice_Title { position: relative; margin-bottom: 15px; }
 
@@ -487,27 +501,39 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 .order_Inner #order_Form .order_Form_Inner .order_Input .zipcode_Container .zipcode_Btn:hover { background-color: #0077d9; border: 1px solid #0077d9; }
 
-.order_Inner .order_Book_Info { margin-top: 40px; }
+.order_Inner .order_Book_Info, .order_Inner .pay_Order_Book_Info { margin-top: 40px; }
 
-.order_Inner .order_Book_Info h4 { font-size: 25px; margin-bottom: 20px; padding-bottom: 5px; border-bottom: 3px solid #7d8e9e; }
+.order_Inner .order_Book_Info h4, .order_Inner .pay_Order_Book_Info h4 { font-size: 25px; margin-bottom: 20px; padding-bottom: 5px; border-bottom: 3px solid #7d8e9e; }
 
-.order_Inner .order_Book_Info table { border-collapse: collapse; border-spacing: 0; color: #303538; width: 100%; margin-bottom: 30px; }
+.order_Inner .order_Book_Info table, .order_Inner .pay_Order_Book_Info table { border-collapse: collapse; border-spacing: 0; color: #303538; width: 100%; margin-bottom: 30px; }
 
-.order_Inner .order_Book_Info table thead tr { background-color: #f2f4f5; height: 45px; }
+.order_Inner .order_Book_Info table thead tr, .order_Inner .pay_Order_Book_Info table thead tr { background-color: #f2f4f5; height: 45px; }
 
-.order_Inner .order_Book_Info table thead tr th { font-size: 14px; border-bottom: 0.5px solid #97999b; }
+.order_Inner .order_Book_Info table thead tr th, .order_Inner .pay_Order_Book_Info table thead tr th { font-size: 14px; border-bottom: 0.5px solid #97999b; }
 
-.order_Inner .order_Book_Info table thead tr th:nth-child(1) { border-right: 1px solid #97999b; width: 70%; font-weight: normal; }
+.order_Inner .order_Book_Info table thead tr th:nth-child(1), .order_Inner .pay_Order_Book_Info table thead tr th:nth-child(1) { border-right: 1px solid #97999b; width: 70%; font-weight: normal; }
 
-.order_Inner .order_Book_Info table thead tr th:nth-child(2) { width: 30%; font-weight: normal; }
+.order_Inner .order_Book_Info table thead tr th:nth-child(2), .order_Inner .pay_Order_Book_Info table thead tr th:nth-child(2) { width: 10%; font-weight: normal; }
 
-.order_Inner .order_Book_Info table tr td:nth-child(1) { border-right: 1px solid #97999b; }
+.order_Inner .order_Book_Info table thead tr th:nth-child(3), .order_Inner .pay_Order_Book_Info table thead tr th:nth-child(3) { width: 10%; font-weight: normal; }
 
-.order_Inner .order_Book_Info table tr td:nth-child(1) div { display: flex; align-items: center; }
+.order_Inner .order_Book_Info table thead tr th:nth-child(4), .order_Inner .pay_Order_Book_Info table thead tr th:nth-child(4) { width: 10%; font-weight: normal; }
 
-.order_Inner .order_Book_Info table tr td:nth-child(1) div a:nth-child(1) img { width: 60px; height: 85px; padding: 7px 15px 7px 0; }
+.order_Inner .order_Book_Info table tr td:nth-child(1), .order_Inner .pay_Order_Book_Info table tr td:nth-child(1) { border-right: 1px solid #97999b; }
 
-.order_Inner .order_Book_Info table tr td:nth-child(2) { display: flex; justify-content: space-around; align-items: center; height: 103px; }
+.order_Inner .order_Book_Info table tr td:nth-child(1) div, .order_Inner .pay_Order_Book_Info table tr td:nth-child(1) div { display: flex; align-items: center; justify-content: space-between; }
+
+.order_Inner .order_Book_Info table tr td:nth-child(1) div a, .order_Inner .pay_Order_Book_Info table tr td:nth-child(1) div a { font-size: 20px; }
+
+.order_Inner .order_Book_Info table tr td:nth-child(1) div a:nth-child(1) img, .order_Inner .pay_Order_Book_Info table tr td:nth-child(1) div a:nth-child(1) img { width: 60px; height: 85px; padding: 7px 15px 7px 0; }
+
+.order_Inner .order_Book_Info table tr td:nth-child(1) div p, .order_Inner .pay_Order_Book_Info table tr td:nth-child(1) div p { margin-right: 50px; margin-bottom: 2px !important; }
+
+.order_Inner .order_Book_Info table tr td:nth-of-type(2), .order_Inner .pay_Order_Book_Info table tr td:nth-of-type(2) { text-align: center; }
+
+.order_Inner .order_Book_Info table tr td:nth-of-type(3), .order_Inner .pay_Order_Book_Info table tr td:nth-of-type(3) { text-align: center; }
+
+.order_Inner .order_Book_Info table tr td:nth-of-type(4), .order_Inner .pay_Order_Book_Info table tr td:nth-of-type(4) { text-align: center; }
 
 .order_Inner .order_Btn_Box { margin-top: 41.7px; width: 35%; }
 

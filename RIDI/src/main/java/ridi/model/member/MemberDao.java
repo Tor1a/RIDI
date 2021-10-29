@@ -82,7 +82,28 @@ public class MemberDao {
 		   
 		   SqlSession sqlSession = sqlSessionFactory.openSession();
 		   result = sqlSession.update("memberFindPw",memberDto);
+		   sqlSession.commit();
 		   sqlSession.close();
 		   return result;
+	   }
+	   
+	   //결제한 금액만큼 캐시를 차감하고 member 세션을 다시받는다.
+	   public int minusCash(MemberDto memberDto) {
+		   int result = 0;
+		   
+		   SqlSession sqlSession = sqlSessionFactory.openSession();
+		   result = sqlSession.update("minusCash",memberDto);
+		   sqlSession.commit();
+		   sqlSession.close();
+		   
+		   return result;
+	   }
+	   
+	   public MemberDto getOneMember(MemberDto memberDto) {
+		   MemberDto loggedMember = null;
+		   SqlSession sqlSession = sqlSessionFactory.openSession();
+		   loggedMember = sqlSession.selectOne("getOneMember",memberDto);
+		   
+		   return loggedMember;
 	   }
 }

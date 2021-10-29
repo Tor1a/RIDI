@@ -52,7 +52,7 @@ function reviewWrite(writer_Id,book_No){
 // 리뷰들을 출력한다.
 function getReviewList(){
 	const sendData = {
-		book_No:$("#bootDtoBookNo").text()
+		book_No:$("#bookDtoBookNo").text()
 	}
 	$.ajax({
 		url:"ReviewList.do",
@@ -105,7 +105,7 @@ $(".bookContents_wrapper").on("click",".reviewDeleteBtn",function(){
 	const reviewNo = reviewRow.data("no");
 	const sendData = {
 		no:reviewNo,
-		book_No:$("#bootDtoBookNo").text()
+		book_No:$("#bookDtoBookNo").text()
 	}
 	$.ajax({
 		url:"ReviewDelete.do",

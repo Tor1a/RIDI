@@ -123,7 +123,7 @@ $.ajax({
 		dataType : 'json',
 		success:function(resultData){
 			const popBookList = resultData.popBookList;
-			console.log(popBookList);
+			//console.log(popBookList);
 			$.each(popBookList, function(i, item){
 				$(".Popgrid").append(`	
 									<li class="img_Box${i+1}">

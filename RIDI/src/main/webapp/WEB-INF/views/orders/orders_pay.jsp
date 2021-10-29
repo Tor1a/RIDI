@@ -34,55 +34,52 @@
                         </div>
                     </form>
                     <div class="order_Book_Info">
-                        <!--장바구니 작동되게할지 안할지몰라서 다중선택은 일단 빼둘게요-->
                         <h4>주문상품</h4>
                         <table>
                             <thead>
                                 <tr>
                                     <th>상품정보</th>
                                     <th>판매가</th>
+                                    <th>배송비</th>
+                                    <th>수량</th>
                                 </tr>
                             </thead>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <a href="#"><img src="../images/slide/book.JPG" alt=""></a>
-                                        <a href="#">책제목</a>
-                                    </div>
-                                </td>
-                                <td><span>가격원</span><span>수량n개</span></td>
-                            </tr>
+                            <!-- Jquery로 채운다 -->
                         </table>
                     </div>
                 </div>
+                <div class="pay_Order_Book_Info">
+                        <h4>결제한 상품</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>상품정보</th>
+                                    <th>판매가</th>
+                                    <th>배송비</th>
+                                    <th>주문 수량</th>
+                                </tr>
+                            </thead>
+                            <!-- Jquery로 채운다 -->
+                        </table>
+                    </div>
             </div>
             <div class="order_Btn_Box">
                 <div class="order_Btn_Box_Inner">
                     <ul>
                         <li>
-                            <div><span>상품금액</span><span>가격원</span></div>
+                            <div><span>상품금액</span><span id="bookPriceSum">원</span></div>
                         </li>
                         <li>
-                            <div><span>배송비</span><span>가격원</span></div>
+                            <div><span>배송비</span><span id="shippingFeeSum">원</span></div>
                         </li>
                     </ul>
-                    <div class="order_result_price"><div><span>최종 결제금액</span><span>가격원</span></div></div>
+                    <div class="order_result_price"><div><span>최종 결제금액</span><span id="totalPirceSum">가격원</span></div></div>
                 </div>
-                <input type="submit" value="결제하기" class="order_Btn">
-                <a href="#" class="cart_Back">장바구니 가기</a>
+                <input type="button" value="결제하기" class="order_Btn">
+                <a href="CartListForm.do" class="cart_Back">장바구니 가기</a>
             </div>
         </div>
     </div>
-    <script>
-        $("#btnZip").on("click",function(){
-            new daum.Postcode({
-                oncomplete: function(data) {
-                    $("#zipcode").val(data.zonecode);
-                    $("#address01").val(data.address);
-                    
-                }
-            }).open();
-            return false;
-        });
-    </script>
+<script src="./js/order/orders_pay.js" defer></script>
+<div style="display:none" id="loggedMemberId">${sessionScope.loggedMember.id }</div>
 <%@ include file="../include/footer.jsp"%>

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ridi.mybatis.mapper.QnaMapper">
+	
+	<!-- 게시글  -->
 	<insert id="insertQna" parameterType="QnaDto">
 		INSERT INTO QNA VALUES (
 							SEQ_QNA.NEXTVAL,
@@ -12,15 +14,15 @@
 							#{contents})
 		
 	</insert>
-
-	 <select id="getTotal" resultType="Integer" >
-	 		SELECT COUNT(*) AS TOTAL FROM QNA
-	 </select>
-	 
-	 <select id="getAllList" parameterType="HashMap" resultType="QnaDto">
+	
+	<select id="getAllList" parameterType="HashMap" resultType="QnaDto">
 		SELECT * FROM (SELECT B.*,ROWNUM AS NUM FROM ( SELECT * FROM QNA  ) B	) 
 		WHERE NUM  <![CDATA[>=]]>  #{start} AND NUM  <![CDATA[<]]> #{end} ORDER BY NO DESC
 	</select>
+
+	 <select id="getTotal" resultType="Integer" >
+	 		SELECT COUNT(*) AS TOTAL FROM QNA
+	 </select>	 
 	 
 	 <update id="updateReadCount" parameterType="Integer">
 	 	UPDATE QNA SET READCOUNT = 
@@ -42,14 +44,35 @@
 						( SELECT * FROM QNA ) B)
 					WHERE NUM = #{num} + 1
 	 </select>
+	
 	 <select id="getPassword" parameterType="Integer" resultType="String">
 	 	SELECT PASSWORD FROM QNA WHERE NO = #{no}
 	 </select>
 	 
-	 <delete id="deleteQna" parameterType="Integer">
+	 <delete id="deleteQna" parameterType="QnaDto">
 	 	DELETE FROM QNA WHERE NO = #{no}
 	 </delete>
 	 
+	 <!-- 댓글  -->
+	 <insert id="insertReply" parameterType="ReplyDto">
+		INSERT INTO REPLY VALUES(
+										SEQ_REPLY.NEXTVAL,
+										#{boardId},
+										#{reply}
+										)
+	</insert>
+	<select id="getAllReply" parameterType="Integer" resultType="ReplyDto">
+		SELECT * FROM REPLY WHERE BOARDID = #{boardId} ORDER BY NO DESC
+	</select>
+	
+	<delete id="deleteReply" parameterType="Integer">
+		DELETE FROM REPLY WHERE NO = #{no}
+	</delete>
+	
+	<delete id="deleteAllReply" parameterType="QnaDto" >
+		DELETE FROM REPLY WHERE BOARDID = #{no}
+	</delete>
+	
 	 <!-- 검색기능 -->
 	 <select id="getSearchAllList" parameterType="SearchDto" resultType="QnaDto">
 	 	SELECT * FROM 
@@ -67,18 +90,5 @@
 		QNA WHERE ${field} 
 		LIKE '%' || #{searchWord} || '%' 
 	 </select>
-	 
-	 
-	 <!-- 댓글  -->
-	 <insert id="insertReply" parameterType="ReplyDto">
-		INSERT INTO REPLY VALUES(
-										SEQ_REPLY.NEXTVAL,
-										#{boardId},
-										#{reply}
-										)
-	</insert>
-	<select id="getAllReply" parameterType="Integer" resultType="ReplyDto">
-		SELECT * FROM REPLY WHERE BOARDID = #{boardId} ORDER BY NO DESC
-	</select>
-	 
+
 </mapper>

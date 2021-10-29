@@ -33,6 +33,7 @@ public class OrdersController {
 	@Autowired
 	MemberDto memberDto;
 	
+	//////////////////////////////// 카트/찜하기 관련 ////////////////////////////////
 	//유저 카트 페이지로 이동한다.
 	@RequestMapping("/CartListForm.do")
 	public String cartListForm(HttpSession session, HttpServletResponse response) throws IOException {
@@ -77,6 +78,34 @@ public class OrdersController {
 		return result;
 	}
 	
+	//주문번호를 DB에서 생성하고 결과를 반환한다.
+	@RequestMapping("/GetOrderGroupNo.do")
+	@ResponseBody
+	public int getOrderGroupNo() {
+		int order_Group_No;
+		order_Group_No = ordersDao.getOrderGroupNo();
+		return order_Group_No;
+	}
+	
+	// 결제예정인 찜한 책들을 DB에 같은 orderGroupNo에 묶어준다.
+	@RequestMapping("/setOrderGroupNo.do")
+	@ResponseBody
+	public int setOrderGroupNo(OrdersDto ordersDto) {
+		int result = 0;
+		result = ordersDao.setOrderGroupNo(ordersDto);
+		return result;
+	}
+	
+	// 결제에서 빠진 찜한 책들을 DB에서 orderGroupNo를 초기화 한다.
+	@RequestMapping("/unsetOrderGroupNo.do")
+	@ResponseBody
+	public int unsetOrderGroupNo(OrdersDto ordersDto) {
+		int result = 0;
+		result = ordersDao.unsetOrderGroupNo(ordersDto);
+		return result;
+	}
+
+	//////////////////////////////// 결제 관련 ////////////////////////////////
 	// 주문 결제페이지로 이동한다
 	@RequestMapping("/OrderPayForm.do")
 	public String orderPayForm(HttpSession session, HttpServletResponse response) throws IOException {
@@ -86,4 +115,36 @@ public class OrdersController {
 		}
 		return "orders/orders_pay";
 	}
+	
+	// 결제예정인 상품들을 반환한다.
+	@RequestMapping("/getOrdersList.do")
+	@ResponseBody
+	public Map<String, Object> getOrdersList(OrdersDto ordersDto){
+		 Map<String, Object> hashMap = new HashMap<String, Object>();
+		 List<OrdersDto> orderList = ordersDao.getOrderList(ordersDto);
+		 
+		 hashMap.put("orderList", orderList);
+		 return hashMap;
+	}
+	
+	//결제한 Order를 결제 setPayCheck처리 표시를 DB에 저장한다.
+	@RequestMapping("/setPayCheck.do")
+	@ResponseBody
+	public int setPayCheck(OrdersDto ordersDto) {
+		int result = 0;
+		result = ordersDao.setPayCheck(ordersDto);
+		return result;
+	}
+	
+	//결제완료한 Order들을 DB에서 받아온다.
+	@RequestMapping("/getPayOrderList.do")
+	@ResponseBody
+	public Map<String, Object> getPayOrderList(OrdersDto ordersDto){
+		Map<String,Object> hashMap = new HashMap<String,Object>();
+		List<OrdersDto> orderList = ordersDao.getPayOrderList(ordersDto);
+		
+		hashMap.put("orderList", orderList);
+		return hashMap;
+	}
+	
 }
