@@ -77,7 +77,7 @@
                         </table>
                         <div class="modify_Btn_Box">
                             <input type="submit" value="회원수정" class="modify_Btn">
-                            <a href="#" class="modify_Cancel">취소</a>
+                            <a href="MemberHomeForm.do" class="modify_Cancel">취소</a>
                         </div>
                     </form>
                 </div>
