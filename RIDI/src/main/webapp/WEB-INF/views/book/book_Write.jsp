@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/RIDI.css">
     <link rel="shortcut icon" href="./images/favicon.ico">
+    <script src="js/jquery-3.6.0.min.js"></script>
     <title>Book</title>
 </head>
 <body id="book_bg">
@@ -43,7 +44,7 @@
             </form>
             <div class="bookBtns">
                 <input type="submit" value="확인" id="bookSign_Up">
-                <input type="reset" value="취소" id="cancel">
+                <input type="reset" value="취소" id="cancel" onclick="window.location.href='/RIDI'")>
             </div>
             </div>
         </div>
