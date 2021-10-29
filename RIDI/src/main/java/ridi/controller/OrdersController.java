@@ -87,7 +87,7 @@ public class OrdersController {
 		return order_Group_No;
 	}
 	
-	// 결제하려는 찜한 책들을 DB에 같은 orderGroupNo에 묶어서를 넣어준다.
+	// 결제예정인 찜한 책들을 DB에 같은 orderGroupNo에 묶어준다.
 	@RequestMapping("/setOrderGroupNo.do")
 	@ResponseBody
 	public int setOrderGroupNo(OrdersDto ordersDto) {
@@ -116,7 +116,7 @@ public class OrdersController {
 		return "orders/orders_pay";
 	}
 	
-	// 결제하려는 상품들을 반환한다.
+	// 결제예정인 상품들을 반환한다.
 	@RequestMapping("/getOrdersList.do")
 	@ResponseBody
 	public Map<String, Object> getOrdersList(OrdersDto ordersDto){
@@ -136,5 +136,15 @@ public class OrdersController {
 		return result;
 	}
 	
+	//결제완료한 Order들을 DB에서 받아온다.
+	@RequestMapping("/getPayOrderList.do")
+	@ResponseBody
+	public Map<String, Object> getPayOrderList(OrdersDto ordersDto){
+		Map<String,Object> hashMap = new HashMap<String,Object>();
+		List<OrdersDto> orderList = ordersDao.getPayOrderList(ordersDto);
+		
+		hashMap.put("orderList", orderList);
+		return hashMap;
+	}
 	
 }

@@ -92,11 +92,23 @@ public class OrdersDao {
 	}
 	
 	////////////////////////////////결제 관련 ////////////////////////////////
+
+	//결제 예정인 Order 정보를 DB에서 받아온다
 	public List<OrdersDto> getOrderList(OrdersDto ordersDto){
 		List<OrdersDto> orderList = null;
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		orderList = sqlSession.selectList("getOrderList",ordersDto);
 		sqlSession.close();
+		return orderList;
+	}
+	
+	//결제한 Order 정보를 DB에서 받아온다
+	public List<OrdersDto> getPayOrderList(OrdersDto ordersDto){
+		List<OrdersDto> orderList = null;
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		orderList = sqlSession.selectList("getPayOrderList",ordersDto);
+		sqlSession.close();
+		
 		return orderList;
 	}
 }

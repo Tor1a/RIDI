@@ -1,4 +1,4 @@
-// 주문상품을 화면에 출력한다.
+//주문 예정인 주문상품을 화면에 출력한다.
 getOrderList();
 function getOrderList(){
 	const sendData = {
@@ -15,8 +15,11 @@ function getOrderList(){
 				$(".order_Book_Info table").append(`<tr class="orderList" data-no=${item.order_Group_No}>
 		                                <td>
 		                                    <div>
-		                                        <a href="BookInfo.do?no=${item.book_No}"><img src="${item.book_Image}" alt=""></a>
-		                                        <a href="#">${item.book_Name}</a>
+		                                        <div>
+			                                        <a href="BookInfo.do?no=${item.book_No}"><img src="${item.book_Image}" alt=""></a>
+			                                        <a href="BookInfo.do?no=${item.book_No}">${item.book_Name}</a>
+												</div>
+												<p>${item.shipping_Stage}</p>
 		                                    </div>
 		                                </td>
 		                                <td><span class="bookPrice">${item.price}원</span></td>
@@ -25,6 +28,38 @@ function getOrderList(){
 		                            </tr>`);
 			})
 			calPriceSum();
+		}
+	})
+}
+
+// 결제완료한 주문상품을 출력한다.
+getPayOrderList()
+function getPayOrderList(){
+	const sendData = {
+		order_Person:$("#loggedMemberId").text(),
+	}
+	$.ajax({
+		url:"getPayOrderList.do",
+		type:"POST",
+		data:sendData,
+		success:function(result){
+			const orderList = result.orderList;
+			$.each(orderList,function(i,item){
+				$(".pay_Order_Book_Info table").append(`<tr class="orderList" data-no=${item.order_Group_No}>
+		                                <td>
+		                                    <div>
+												<div>
+			                                        <a href="BookInfo.do?no=${item.book_No}"><img src="${item.book_Image}" alt=""></a>
+			                                        <a href="BookInfo.do?no=${item.book_No}">${item.book_Name}</a>
+												</div>
+												<p>${item.shipping_Stage}</p>
+		                                    </div>
+		                                </td>
+		                                <td><span class="payBookPrice">${item.price}원</span></td>
+										<td><span class="payBookshippingFee">${item.shipping_Fee}원</span></td>
+										<td><span>${item.qty}개</span></td>
+		                            </tr>`);
+			})
 		}
 	})
 }

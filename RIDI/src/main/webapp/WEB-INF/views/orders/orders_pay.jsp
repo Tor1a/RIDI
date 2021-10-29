@@ -34,7 +34,6 @@
                         </div>
                     </form>
                     <div class="order_Book_Info">
-                        <!--장바구니 작동되게할지 안할지몰라서 다중선택은 일단 빼둘게요-->
                         <h4>주문상품</h4>
                         <table>
                             <thead>
@@ -49,6 +48,20 @@
                         </table>
                     </div>
                 </div>
+                <div class="pay_Order_Book_Info">
+                        <h4>결제한 상품</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>상품정보</th>
+                                    <th>판매가</th>
+                                    <th>배송비</th>
+                                    <th>주문 수량</th>
+                                </tr>
+                            </thead>
+                            <!-- Jquery로 채운다 -->
+                        </table>
+                    </div>
             </div>
             <div class="order_Btn_Box">
                 <div class="order_Btn_Box_Inner">

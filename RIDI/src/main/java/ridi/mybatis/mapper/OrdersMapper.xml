@@ -29,9 +29,14 @@
 	 
 	 
 	 <!-- ################## 결제 관련 ################## -->
-	 <!-- 찜한 Order 정보를 DB에서 받아온다 -->
+	 <!-- 결제 예정인 Order 정보를 DB에서 받아온다 -->
 	 <select id="getOrderList" parameterType="OrdersDto" resultType="OrdersDto">
 	 	SELECT * FROM ORDERS WHERE ORDER_PERSON = #{order_Person} AND PAYCHECK = #{payCheck} AND ORDER_GROUP_NO IS NOT NULL
+	 </select>
+	 
+	 <!-- 결제한 Order 정보를 DB에서 받아온다. -->
+	 <select id="getPayOrderList" parameterType="OrdersDto" resultType="OrdersDto">
+	 	SELECT * FROM ORDERS WHERE ORDER_PERSON = #{order_Person} AND PAYCHECK = 'PAY' AND ORDER_GROUP_NO IS NOT NULL
 	 </select>
 	 
 	 <!-- orderGroupNo를 빈값으로 바꾼다 -->
@@ -41,7 +46,7 @@
 	 
 	 <!-- 결제한 Order를 결제 처리표시를 DB에 해준다. -->
 	 <update id="setPayCheck" parameterType="OrdersDto">
-	 	UPDATE ORDERS SET PAYCHECK = 'PAY' WHERE ORDER_GROUP_NO = #{order_Group_No}
+	 	UPDATE ORDERS SET PAYCHECK = 'PAY', SHIPPING_STAGE = '결제완료' WHERE ORDER_GROUP_NO = #{order_Group_No}
 	 </update>
 	 
 	 
