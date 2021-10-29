@@ -22,8 +22,8 @@ function getOrderList(){
 												<p>${item.shipping_Stage}</p>
 		                                    </div>
 		                                </td>
-		                                <td><span class="bookPrice">${item.price}원</span></td>
-										<td><span class="shippingFee">${item.shipping_Fee}원</span></td>
+		                                <td><span class="bookPrice">${Number(item.price).toLocaleString()}원</span></td>
+										<td><span class="shippingFee">${Number(item.shipping_Fee).toLocaleString()}원</span></td>
 										<td><span>${item.qty}개</span></td>
 		                            </tr>`);
 			})
@@ -55,8 +55,8 @@ function getPayOrderList(){
 												<p>${item.shipping_Stage}</p>
 		                                    </div>
 		                                </td>
-		                                <td><span class="payBookPrice">${item.price}원</span></td>
-										<td><span class="payBookshippingFee">${item.shipping_Fee}원</span></td>
+		                                <td><span class="payBookPrice">${Number(item.price).toLocaleString()}원</span></td>
+										<td><span class="payBookshippingFee">${Number(item.shipping_Fee).toLocaleString()}원</span></td>
 										<td><span>${item.qty}개</span></td>
 		                            </tr>`);
 			})
@@ -69,16 +69,16 @@ function calPriceSum(){
 	let bookPriceSum = 0;
 	let shippingFeeSum = 0;
 	$(".bookPrice").each(function(){
-		let bookPrice = Number($(this).text().slice(0, -1));
+		let bookPrice = Number($(this).text().slice(0, -1).replace(",",""));
 		bookPriceSum = bookPriceSum + bookPrice;
 	})
 	$(".shippingFee").each(function(){
-		let shippingFee = Number($(this).text().slice(0,-1));
+		let shippingFee = Number($(this).text().slice(0,-1).replace(",",""));
 		shippingFeeSum = shippingFeeSum + shippingFee;
 	})
-	$("#bookPriceSum").text(`${bookPriceSum}원`);
-	$("#shippingFeeSum").text(`${shippingFeeSum}원`);
-	$("#totalPirceSum").text(`${bookPriceSum + shippingFeeSum}원`)
+	$("#bookPriceSum").text(`${Number(bookPriceSum).toLocaleString()}원`);
+	$("#shippingFeeSum").text(`${Number(shippingFeeSum).toLocaleString()}원`);
+	$("#totalPirceSum").text(`${Number(bookPriceSum + shippingFeeSum).toLocaleString()}원`);
 }
 
 

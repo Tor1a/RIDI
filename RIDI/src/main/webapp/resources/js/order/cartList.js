@@ -31,11 +31,19 @@ function getAllCartList() {
                         </ul>`);
 			})
 			calCheckedCartList();
-
+			addComma();
 		}
 	});
 };
 
+function addComma(){
+	let money;
+	$(".cartList_btm").each(function(){
+		//let priceLength = $(this).find(".bookPrice").text().length;
+		money = Number($(this).find(".bookPrice").text().slice(0, -1)).toLocaleString();
+		$(this).find(".bookPrice").text(`${money}원`);
+	});
+}
 //
 
 
@@ -48,14 +56,14 @@ function calCheckedCartList() {
 	$(".cartList_btm").each(function() {
 		//console.log($(this).find(".bookPrice").text());
 		if ($(this).find(".cartCheckBox").prop("checked")) {
-			let price = Number($(this).find(".bookPrice").text().slice(0, -1));
+			let price = Number($(this).find(".bookPrice").text().slice(0, -1).replace(",",""));
 			priceSum = priceSum + price;
 			selectCartListNum++;
 		}
 	});
-	$(".cartList_sum > div:nth-of-type(1) span").text(`${selectCartListNum}권을 선택하셨습니다.`);
-	$(".cartList_sum > div:nth-of-type(3) span").text(`${priceSum}원`);
-	$(".select_btm > div:nth-of-type(2) span").text(`${priceSum}원`);
+	$(".cartList_sum > div:nth-of-type(1) span").text(`${selectCartListNum.toLocaleString()}권을 선택하셨습니다.`);
+	$(".cartList_sum > div:nth-of-type(3) span").text(`${priceSum.toLocaleString()}원`);
+	$(".select_btm > div:nth-of-type(2) span").text(`${priceSum.toLocaleString()}원`);
 
 
 }
