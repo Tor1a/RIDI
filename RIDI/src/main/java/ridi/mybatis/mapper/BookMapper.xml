@@ -17,7 +17,8 @@
 									#{author},
 									#{book_Intro},
 									#{book_Image},
-									#{book_RealImage}
+									#{book_RealImage},
+									'0'
 									)
 	</insert>
 	

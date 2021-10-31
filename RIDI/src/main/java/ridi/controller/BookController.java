@@ -124,7 +124,7 @@ public class BookController {
 		int result = bookDao.modifyBook(bookDto);
 		
 		if(result > 0) {
-			ScriptWriterUtil.alertAndNext(response, "글이 수정 되었습니다.", "BookList.do");
+			ScriptWriterUtil.alertAndNext(response, "글이 수정 되었습니다.","/RIDI");
 		} else {
 			ScriptWriterUtil.alertAndBack(response, "글 수정 실패했습니다.");
 		}
@@ -137,7 +137,7 @@ public class BookController {
 		int result = bookDao.deleteBook(no);
 		
 		if(result > 0) {
-			ScriptWriterUtil.alertAndNext(response, "삭제되었습니다.", "BookList.do");
+			ScriptWriterUtil.alertAndNext(response, "삭제되었습니다.", "/RIDI");
 		} else {
 			ScriptWriterUtil.alertAndBack(response, "삭제 실패 하였습니다.");
 		}

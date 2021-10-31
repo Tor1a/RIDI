@@ -18,7 +18,7 @@ function getAllCartList() {
                                 <div><input class="cartCheckBox" type="checkbox" onclick="calCheckedCartList()"></div>
                             </li>
                             <li>
-                                <div><img src="${item.book_Image}"></div>
+                                <div><a href="BookInfo.do?no=${item.book_No}"><img src="${item.book_Image}"></a></div>
                             </li>
                             <li>
                                 <div><span>${item.book_Name}</span></div>
