@@ -70,10 +70,9 @@ public class OrdersController {
 	// 찜한 내용을 1개 삭제한다.
 	@RequestMapping("/DeleteShoppingCart.do")
 	@ResponseBody
-	public int deleteShoppingCart(@RequestParam Map<String,Object> map) {
+	public int deleteShoppingCart(OrdersDto ordersDto) {
 		int result = 0;
-		String itemNo = (String)map.get("itemNo");
-		result = ordersDao.deleteOrder(itemNo);
+		result = ordersDao.deleteOrder(ordersDto);
 		
 		return result;
 	}

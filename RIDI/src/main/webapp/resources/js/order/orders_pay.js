@@ -19,6 +19,7 @@ function getOrderList() {
 			                                        <a href="BookInfo.do?no=${item.book_No}"><img src="${item.book_Image}" alt=""></a>
 			                                        <a href="BookInfo.do?no=${item.book_No}">${item.book_Name}</a>
 												</div>
+												<a href="#" class="orderDeleteBtn" data-no="${item.no}"><i class="fas fa-trash-alt"></i></a>
 												<p>${item.shipping_Stage}</p>
 		                                    </div>
 		                                </td>
@@ -138,5 +139,26 @@ $(".order_Btn").on("click", function() {
 			}
 		})
 	}
+})
+
+// 주문예정인 상품을 삭제한다.
+$(".order_Book_Info table").on("click",".orderDeleteBtn",function(){
+	const orderListRow = $(this).parent().parent().parent();
+	const sendData = {
+		no:$(this).data("no"),
+		order_Person:$("#loggedMemberId").text()
+	}
+	$.ajax({
+		url:"DeleteShoppingCart.do",
+		type:"POST",
+		data:sendData,
+		success:function(result){
+			if(result > 0){
+				orderListRow.remove();
+				calPriceSum();
+			}
+		}
+	})
+	return false;
 })
 

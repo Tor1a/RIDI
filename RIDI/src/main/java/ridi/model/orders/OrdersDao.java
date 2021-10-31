@@ -40,10 +40,10 @@ public class OrdersDao {
 	}
 	
 	// 찜한 내용을 1개 삭제
-	public int deleteOrder(String itemNo) {
+	public int deleteOrder(OrdersDto ordersDto) {
 		int result = 0;
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		result = sqlSession.delete("deleteOrder",itemNo);
+		result = sqlSession.delete("deleteOrder",ordersDto);
 		sqlSession.commit();
 		sqlSession.close();
 		return result;

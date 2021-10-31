@@ -124,8 +124,10 @@ $(".cartList_left").on("click", ".cartDeleteBtn", function() {
 	const _cartRowBox = $(this).parent("div").parent("li").parent("ul");
 	const itemNo = $(this).data("no");
 	const sendData = {
-		itemNo: itemNo
+		no: itemNo,
+		order_Person:$("#loggedMemberId").text()
 	}
+	console.log(sendData);
 	$.ajax({
 		url: "DeleteShoppingCart.do",
 		data: sendData,

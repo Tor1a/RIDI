@@ -13,8 +13,8 @@
 	 </select>
 	 
 	 <!-- 찜한 내용을 1개 삭제 -->
-	 <delete id="deleteOrder" parameterType="string">
-	 	DELETE FROM ORDERS WHERE NO = #{itemNo}
+	 <delete id="deleteOrder" parameterType="OrdersDto">
+	 	DELETE FROM ORDERS WHERE NO = #{no} AND ORDER_PERSON = #{order_Person}
 	 </delete>
 	 
 	 <!-- 주문번호를 DB에서 생성하고 결과를 반환한다. -->
