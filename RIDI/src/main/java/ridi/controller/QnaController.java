@@ -81,11 +81,17 @@ public class QnaController {
 			int currentPage = Integer.parseInt(clickedPage);
 			
 			int total= 0 ;
-			int listPerCount = 5;
-			int pageGroupCount = 10;
+			int listPerCount = 7;
+			int pageGroupCount = 5;
 			
 			total = qnaDao.getTotal();
-			int lastPage = (int)(total / listPerCount) + 1;
+			int lastPage = 0;
+			if((int)(total % listPerCount) ==0) {
+				lastPage = (int)(total / listPerCount);
+			} else {
+				lastPage = (int)(total / listPerCount) + 1;
+			}
+			
 			
 			int startPage = (int)((currentPage - 1)/pageGroupCount)*pageGroupCount + 1;
 			int endPage = startPage + pageGroupCount -1;
@@ -96,6 +102,8 @@ public class QnaController {
 			
 			int start = (currentPage -1)*listPerCount+1;
 			int end = start+listPerCount;
+			log.info("start========={}",start);
+			log.info("end========{}",end);
 			
 			List<QnaDto> qnaList = null;
 			qnaList = qnaDao.getAllList(start,end);

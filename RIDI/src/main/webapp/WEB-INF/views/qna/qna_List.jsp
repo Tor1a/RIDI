@@ -50,7 +50,7 @@
 				</c:forEach>
 				<c:if test="${endPage != lastPage}">
 					<li><a href="QnaList.do?clickedPage=${startPage + pageGroupCount }">
-					<span class="far fa-caret-square-right"></span></a></li>
+					<span><i class="fas fa-chevron-square-right"></i></span></a></li>
 				</c:if>
 			</ul>
 		</div>
