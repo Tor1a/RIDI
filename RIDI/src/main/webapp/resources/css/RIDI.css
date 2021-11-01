@@ -519,6 +519,8 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 .order_Inner .order_Book_Info table thead tr th:nth-child(4), .order_Inner .pay_Order_Book_Info table thead tr th:nth-child(4) { width: 10%; font-weight: normal; }
 
+.order_Inner .order_Book_Info table tr.borderLine, .order_Inner .pay_Order_Book_Info table tr.borderLine { border-top: 1px solid black; }
+
 .order_Inner .order_Book_Info table tr td:nth-child(1), .order_Inner .pay_Order_Book_Info table tr td:nth-child(1) { border-right: 1px solid #97999b; }
 
 .order_Inner .order_Book_Info table tr td:nth-child(1) div, .order_Inner .pay_Order_Book_Info table tr td:nth-child(1) div { display: flex; align-items: center; justify-content: space-between; }

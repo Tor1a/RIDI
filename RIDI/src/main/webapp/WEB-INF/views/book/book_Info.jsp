@@ -94,7 +94,7 @@
 		</div>
 		<!--starRating_container-->
 		<ul class="bookContents_wrapper">
-
+			
 		</ul>
 	</div>
 	<!--book_Review-->

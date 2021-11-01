@@ -45,8 +45,12 @@ function getPayOrderList() {
 		data: sendData,
 		success: function(result) {
 			const orderList = result.orderList;
+			let beforeOrderGruopNo = null;
+			let nowOrderGroupNo = null;
 			$.each(orderList, function(i, item) {
-				$(".pay_Order_Book_Info table").append(`<tr class="orderList" data-no=${item.order_Group_No}>
+				nowOrderGroupNo = item.order_Group_No;
+				
+				$(".pay_Order_Book_Info table").append(`<tr class="orderList test${item.order_Group_No}" data-no=${item.order_Group_No}>
 		                                <td>
 		                                    <div>
 												<div>
@@ -60,6 +64,10 @@ function getPayOrderList() {
 										<td><span class="payBookshippingFee">${Number(item.shipping_Fee).toLocaleString()}원</span></td>
 										<td><span>${item.qty}개</span></td>
 		                            </tr>`);
+				if(beforeOrderGruopNo != nowOrderGroupNo && beforeOrderGruopNo != null){
+					$(`.test${item.order_Group_No}`).addClass("borderLine");
+				}
+				beforeOrderGruopNo = nowOrderGroupNo;
 			})
 		}
 	})

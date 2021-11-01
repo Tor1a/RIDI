@@ -40,7 +40,7 @@
 	 
 	 <!-- 결제 완료한 Order 정보를 DB에서 받아온다. -->
 	 <select id="getPayOrderList" parameterType="OrdersDto" resultType="OrdersDto">
-	 	SELECT * FROM ORDERS WHERE ORDER_PERSON = #{order_Person} AND PAYCHECK = 'PAY' AND ORDER_GROUP_NO IS NOT NULL AND SHIPPING_STAGE = '결제 완료'
+	 	SELECT * FROM ORDERS WHERE ORDER_PERSON = #{order_Person} AND PAYCHECK = 'PAY' AND ORDER_GROUP_NO IS NOT NULL AND SHIPPING_STAGE = '결제 완료' ORDER BY ORDER_GROUP_NO DESC
 	 </select>
 	 
 	 <!-- orderGroupNo를 빈값으로 바꾼다 -->
