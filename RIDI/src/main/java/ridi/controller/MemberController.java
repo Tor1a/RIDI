@@ -3,6 +3,7 @@ package ridi.controller;
 import java.io.IOException;
 import java.net.http.HttpResponse;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -48,9 +49,12 @@ public class MemberController {
   //전달받은 email주소로 ID를 찾는다.
   @RequestMapping("/MemberFindId.do")
   @ResponseBody
-  public MemberDto memberFindId(MemberDto memberDto) {
-	  tempMemberDto = memberDao.memberFindId(memberDto);
-	  return tempMemberDto;
+  public Map<String,Object> memberFindId(MemberDto memberDto) {
+	  Map<String,Object> hashMap = new HashMap<String,Object>();
+	  List<MemberDto> idList = memberDao.memberFindId(memberDto);
+	  
+	  hashMap.put("idList", idList);
+	  return hashMap;
   }
   
   //비밀번호 재설정 페이지로 이동

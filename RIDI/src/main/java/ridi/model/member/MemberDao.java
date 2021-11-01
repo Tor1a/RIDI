@@ -1,5 +1,7 @@
 package ridi.model.member;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,12 +70,12 @@ public class MemberDao {
 	   }
 	   
 	   //ID 찾기 시 탐색된 ID값을 반환(위랑 같아보이지만 select 결과가 다름)
-	   public MemberDto memberFindId(MemberDto memberDto) {
+	   public List<MemberDto> memberFindId(MemberDto memberDto) {
 		   SqlSession sqlSession = sqlSessionFactory.openSession();
+		   List<MemberDto> idList = sqlSession.selectList("memberFindId",memberDto);
 		   
-		   MemberDto tempMemberDto = sqlSession.selectOne("memberFindId",memberDto);
 		   sqlSession.close();
-		   return tempMemberDto;
+		   return idList;
 	   }
 	   
 	   //PW찾기 시 임시 패스워드를 DB에 저장

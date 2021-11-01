@@ -173,7 +173,6 @@ $("#rrn_Last").on("keyup",function(input){
 
 // 핸드폰번호 중간 4자리 숫자만 입력되게
 $("#hp_Middle").on("keyup",function(input){
-	console.log("hi");
 	var inputVal = $(this).val();
 	$(this).val(inputVal.replace(/[^0-9]/gi,""));
 });

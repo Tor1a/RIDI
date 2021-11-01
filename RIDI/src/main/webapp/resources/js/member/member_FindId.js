@@ -22,12 +22,17 @@ function findId(){
 				type: "POST",
 				success: function(result){
 					$(".findIdResultBox").html("");
-					if(typeof result.id == "undefined"){
+					let idList = result.idList;
+					console.log(idList)
+					if(idList.length == 0){
 						$(".findIdResultBox").append(`<h3>해당 이메일로 가입된 ID가 <br>존재하지 않습니다.</h3>`);
 					} else {
-						$(".findIdResultBox").append(`<h3>회원님의 아이디는 다음과 같습니다.</h3>
-			               								<p id="resultId">${result.id}</p>
-														<p id="secureInfo">개인 정보 보호를 위해 앞 두글자만 보여드립니다.</p>`);
+						$(".findIdResultBox").append("<h3>회원님의 아이디는 다음과 같습니다.</h3>");
+						$.each(idList,function(i,item){
+							$(".findIdResultBox").append(`<p id="resultId">${item.id}</p>`);
+						})
+						$(".findIdResultBox").append('<p id="secureInfo">개인 정보 보호를 위해 앞 두글자만 보여드립니다.</p>');
+						
 						$(".find_Id_Btn").remove();
 						$(".find_Id_Input").append('<input type="submit" value="로그인" class="go_LoginForm_Btn">');
 					}
