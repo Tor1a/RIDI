@@ -625,27 +625,35 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 .qnaList_body .qnaList_wrap .qnaList_form .contentsContainer { background-color: #f5f4f4; text-align: center; height: 40px; }
 
+.qnaList_body .qnaList_wrap .qnaList_form .contentsContainer td:nth-child(3) { padding-left: 20px; text-align: left; }
+
 .qnaList_body .qnaList_wrap .qnaList_form .contentsContainer .qnaList_replyOk { display: inline-block; width: 100px; height: 30px; border: 2px solid #1f8ce6; border-radius: 5px; text-align: center; line-height: 30px; color: #ff2828; }
 
 .qnaList_body .qnaList_wrap .qnaList_btn { display: flex; justify-content: flex-end; margin-right: 3px; }
 
 .qnaList_body .qnaList_wrap .qnaList_btn .qnaList_write { background-color: #1f8ce6; display: inline-block; justify-content: center; width: 100px; height: 30px; border: 2px solid #1f8ce6; border-radius: 5px; text-align: center; line-height: 30px; color: #fff; margin: 20px 0; font-weight: bold; }
 
-.qnaList_body .qnaList_wrap .qnaList_page { font-size: 18px; }
+.qnaList_body .qnaList_wrap .qnaList_page { font-size: 18px; margin-top: 20px; }
 
-.qnaList_body .qnaList_wrap .qnaList_page .pageContainer { display: flex; justify-content: center; margin-right: 28px; font-weight: 18px; padding-bottom: 100px; }
+.qnaList_body .qnaList_wrap .qnaList_page .pageContainer { display: flex; justify-content: center; margin-right: 28px; font-weight: 18px; padding-bottom: 50px; }
 
-.qnaList_body .qnaList_wrap .qnaList_page .pageContainer a { color: #000000; margin: 0 2px; }
+.qnaList_body .qnaList_wrap .qnaList_page .pageContainer li { font-size: 20px; margin: 0 2px; color: #000000; }
 
-.qnaList_body .qnaList_search { display: flex; justify-content: center; }
+.qnaList_body .qnaList_wrap .qnaList_page .pageContainer li.leftArrow, .qnaList_body .qnaList_wrap .qnaList_page .pageContainer li.rightArrow { cursor: zoom-in; }
 
-.qnaList_body .qnaList_search .searchContainer { font-size: 18px; margin-bottom: 30px; }
+.qnaList_body .qnaList_wrap .qnaList_page .pageContainer li.leftArrow:hover, .qnaList_body .qnaList_wrap .qnaList_page .pageContainer li.rightArrow:hover { color: #1F8CE6; }
 
-.qnaList_body .qnaList_search .searchContainer .searchSelect { width: 100px; height: 34px; border: 1px solid #1f8ce6; border-radius: 3px; }
+.qnaList_body .qnaList_wrap .qnaList_page .pageContainer li.active a { color: #1F8CE6; }
 
-.qnaList_body .qnaList_search .searchContainer .search_world { width: 490px; height: 30px; border: 1px solid #1f8ce6; border-radius: 3px; }
+.qnaList_body .searchForm { display: flex; justify-content: center; }
 
-.qnaList_body .qnaList_search .searchContainer .search_btn { width: 90px; height: 34px; border-radius: 3px; border: 1px solid #1f8ce6; background-color: #1f8ce6; color: #fff; padding-bottom: 4px; }
+.qnaList_body .searchForm .searchField { width: 100px; height: 34px; border: 1px solid #1f8ce6; border-radius: 3px; margin-right: 5px; }
+
+.qnaList_body .searchForm .searchWord { width: 490px; height: 30px; border: 1px solid #1f8ce6; border-radius: 3px; }
+
+.qnaList_body .searchForm .searchBtn { width: 90px; height: 34px; border-radius: 3px; border: 1px solid #1f8ce6; background-color: #1f8ce6; color: #fff; padding-bottom: 4px; font-weight: bold; margin-left: 5px; }
+
+.qnaList_body .searchForm .searchBtn:hover { cursor: pointer; }
 
 .qnaList_replyNo { display: inline-block; width: 100px; height: 30px; border: 2px solid #1f8ce6; border-radius: 5px; text-align: center; line-height: 30px; color: #738096; }
 

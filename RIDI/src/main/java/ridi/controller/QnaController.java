@@ -70,22 +70,40 @@ public class QnaController {
 			return null;
 		}
 	
-	// 게시글 리스트
+	// 게시글 리스트(Search시에도 포함)
 	@RequestMapping("/QnaList.do")
 		public String QnaList(Model model, HttpServletRequest request) {
 			
 			String clickedPage = request.getParameter("clickedPage");
+			String searchField = request.getParameter("searchField");
+			String searchWord = request.getParameter("searchWord");
+			
+			Map<String,Object> hashMap = new HashMap<String,Object>();
+			hashMap.put("searchField", searchField);
+			hashMap.put("searchWord", searchWord);
+			
 			if(clickedPage == null) {
 				clickedPage = "1";
 			}
 			int currentPage = Integer.parseInt(clickedPage);
 			
 			int total= 0 ;
-			int listPerCount = 5;
-			int pageGroupCount = 10;
+			int listPerCount = 7;
+			int pageGroupCount = 5;
 			
-			total = qnaDao.getTotal();
-			int lastPage = (int)(total / listPerCount) + 1;
+			if(searchWord == null) {
+				total = qnaDao.getTotal();
+			} else {
+				total = qnaDao.getSearchTotal(hashMap);
+				log.info("total=========={}",total);
+			}
+			int lastPage = 0;
+			if((int)(total % listPerCount) ==0) {
+				lastPage = (int)(total / listPerCount);
+			} else {
+				lastPage = (int)(total / listPerCount) + 1;
+			}
+			
 			
 			int startPage = (int)((currentPage - 1)/pageGroupCount)*pageGroupCount + 1;
 			int endPage = startPage + pageGroupCount -1;
@@ -98,7 +116,15 @@ public class QnaController {
 			int end = start+listPerCount;
 			
 			List<QnaDto> qnaList = null;
-			qnaList = qnaDao.getAllList(start,end);
+			if(searchWord == null) {
+				qnaList = qnaDao.getAllList(start,end);
+			} else {
+				
+				hashMap.put("start", start);
+				hashMap.put("end", end);
+				qnaList = qnaDao.getQnaSearchList(hashMap);
+			}
+			
 			
 			
 			model.addAttribute("qnaList",qnaList);
@@ -109,10 +135,8 @@ public class QnaController {
 			model.addAttribute("currentPage",currentPage);
 			model.addAttribute("pageGroupCount",pageGroupCount);
 			model.addAttribute("total",total);
-//			System.out.println("total==="+total);
-//			System.out.println("startPage==="+startPage);
-//			System.out.println("endPage==="+endPage);
-//			System.out.println("qnaList==="+qnaList);
+			model.addAttribute("searchWord",searchWord);
+			model.addAttribute("searchField",searchField);
 			
 			
 		return "qna/qna_List";
@@ -122,16 +146,29 @@ public class QnaController {
 	// 리스트에서 클릭시 게시글 하나만 보여줌
 	@RequestMapping("/QnaView.do")
 		public String qnaView(int no, int clickedPage, int num, Model model,HttpServletRequest request) {
-			
+		String searchField = request.getParameter("searchField");
+		String searchWord = request.getParameter("searchWord");
+		Map<String,Object> hashMap = new HashMap<String,Object>();
+		hashMap.put("searchField", searchField);
+		hashMap.put("searchWord", searchWord);
+		hashMap.put("num", num);
+		
 		qnaDto = qnaDao.getQnaSelectOne(no);
 		
-		
-		prevQnaDto = qnaDao.prevQnaDto(num);
-		nextQnaDto = qnaDao.nextQnaDto(num);	
+		if(searchWord == "") {
+			prevQnaDto = qnaDao.prevQnaDto(num);
+			nextQnaDto = qnaDao.nextQnaDto(num);			
+		} else {
+			prevQnaDto = qnaDao.prevSearchQnaDto(hashMap);
+			nextQnaDto = qnaDao.nextSearchQnaDto(hashMap);
+		}
+			
 		model.addAttribute("clickedPage",clickedPage);
 		model.addAttribute("qnaDto", qnaDto);
 		model.addAttribute("prevQnaDto",prevQnaDto);
 		model.addAttribute("nextQnaDto",nextQnaDto);
+		model.addAttribute("searchField",searchField);
+		model.addAttribute("searchWord",searchWord);
 		
 		System.out.println("clickedPage=="+clickedPage);
 		System.out.println("qnaDto=="+qnaDto);
@@ -178,7 +215,7 @@ public class QnaController {
 		}
 		
 		// 댓글 삭제
-		@RequestMapping("DeleteReply.do")
+		@RequestMapping("/DeleteReply.do")
 		@ResponseBody
 		public int deleteReply(ReplyDto replyDto) {
 			int result =0;
@@ -188,17 +225,16 @@ public class QnaController {
 			return result;
 		}
 		
-	
-	
-	//검색 기능
-	@RequestMapping("QnaSearchList.do")
-	public Map<String, Object> getQnaSearchList(QnaDto qnaDto)  {
-		Map<String, Object> hashMap = new HashMap<String, Object>();
-		List<QnaDto> getSearchAllList = null;
-		
-		
-		return hashMap;
-	}
+		// 해당글의 댓글 개수 출력
+		@RequestMapping("/GetReplyCount.do")
+		@ResponseBody
+		public int getReplyCount(@RequestParam Map<String,Object> map) {
+			int result = 0;
+			int boardId = Integer.parseInt((String) map.get("boardId"));
+			log.info("ssoh============={}",boardId);
+			result = replyDao.getReplyCount(boardId);
+			return result;
+		}
 	
 	
 }

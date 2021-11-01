@@ -43,5 +43,13 @@ public class ReplyDao {
 		return result;
 	}
 	
+	// 해당글의 댓글수를 출력한다
+	public int getReplyCount(int boardId) {
+		int result = 0;
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		result = sqlSession.selectOne("getReplyCount",boardId);
+		return result;
+	}
+	
 	
 }

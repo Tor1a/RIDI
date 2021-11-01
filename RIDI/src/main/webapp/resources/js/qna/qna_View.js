@@ -16,8 +16,8 @@ $(".btnReply").on("click",function(){
 		type:"POST",
 		data:sendData,
 		success:function(resultData){
-			console.log(resultData);
 			$(".replyList .list").html("");
+			$("#reply").val("");
 			replySelectAll();
 		},
 		error:function(errorMsg){
@@ -27,11 +27,10 @@ $(".btnReply").on("click",function(){
 });
 
 // 댓글 입력 글자수를 제한한다.
-$(".replyBox textarea").on("keydown", function(e){
+$(".replyBox textarea").on("keyup", function(e){
 	const content = $(this).val();
 	if(content.length > 100) {
-		alert("300자까지 입력 가능합니다.");
-		$(this).val(content.substr(100));
+		alert("100자까지 입력 가능합니다.");
 	} else {
 		$("#currentCount").text(content.length);
 	}
@@ -49,7 +48,6 @@ function replySelectAll(){
 		type:"POST",
 		data:sendData,
 		success:function(resultData){
-			console.log(resultData);
 			$(".replyList .list").html(""); // 기존꺼 지우기
             const list=$(".replyList .list");
             const replyList = resultData.replyList;

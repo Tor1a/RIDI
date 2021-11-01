@@ -2,6 +2,7 @@ package ridi.model.qna;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -44,13 +45,22 @@ public class QnaDao {
 		return qnaList;
 	}
 	
-	// 게시글 총 조회수 
+	// 총 게시글 개수
 	public int getTotal() {
 		int result = 0;
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		result = sqlSession.selectOne("getTotal");
 		sqlSession.close();
 		
+		return result;
+	}
+	
+	// 검색된 게시글의 총 개수
+	public int getSearchTotal(Map hashMap) {
+		int result = 0;
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		result = sqlSession.selectOne("getSearchTotal",hashMap);
+		sqlSession.close();
 		return result;
 	}
 	
@@ -94,6 +104,26 @@ public class QnaDao {
 		
 		return qnaDto;		
 	}
+	
+	// 검색할 시 이전페이지로 이동
+	public QnaDto prevSearchQnaDto(Map hashMap) {
+		QnaDto qnaDto = null;
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		qnaDto = sqlSession.selectOne("prevSearchQnaDto",hashMap);
+		sqlSession.close();
+		
+		return qnaDto;
+	}
+	
+	// 검색할 시 이전페이지로 이동
+		public QnaDto nextSearchQnaDto(Map hashMap) {
+			QnaDto qnaDto = null;
+			SqlSession sqlSession = sqlSessionFactory.openSession();
+			qnaDto = sqlSession.selectOne("nextSearchQnaDto",hashMap);
+			sqlSession.close();
+			
+			return qnaDto;
+		}
 	// 페스워드 입력
 	public String getPassword(int no) {
 		String password = null;
@@ -116,9 +146,9 @@ public class QnaDao {
 		return result1+result2;
 	}
 	
-	public List<Object> getQnaSearchList(QnaDto qnaDto){
+	public List<QnaDto> getQnaSearchList(Map hashMap){
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		List<Object> qnaSearchList = sqlSession.selectList("getSearchAllList",qnaDto);
+		List<QnaDto> qnaSearchList = sqlSession.selectList("getSearchAllList",hashMap);
 		return qnaSearchList;
 	}
 	

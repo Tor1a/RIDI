@@ -28,7 +28,7 @@ public class RootAppContext {
 		hikariConfig.setPassword("1234");
 		
 		
-		hikariConfig.setMaximumPoolSize(50);
+		hikariConfig.setMaximumPoolSize(100);
 //		hikariConfig.setConnectionTimeout(5000000);
 //		hikariConfig.setIdleTimeout(6000000);
 		hikariConfig.setKeepaliveTime(240000);

@@ -1700,6 +1700,12 @@ input[type="number"]::-webkit-inner-spin-button {
                         background-color: rgb(245, 244, 244);
                         text-align: center;
                         height: 40px;
+                        td{
+                            &:nth-child(3){
+                                padding-left: 20px;
+                                text-align: left;
+                            }
+                        }
                         .qnaList_replyOk {
                             display: inline-block;
                             width: 100px;
@@ -1735,48 +1741,62 @@ input[type="number"]::-webkit-inner-spin-button {
 
         .qnaList_page {
             font-size: 18px;
+            margin-top:20px;
             .pageContainer {
                 display: flex;
                 justify-content: center;
                 margin-right: 28px;
                 font-weight: 18px;
-                padding-bottom: 100px;
-                a {
-                    color: #000000;
+                padding-bottom: 50px;
+                li{
+                    font-size:20px;
                     margin: 0 2px;
+                    color: #000000;
+                    &.leftArrow, &.rightArrow{
+                        cursor: zoom-in;
+                        &:hover{
+                            color:#1F8CE6;
+                        }
+                    }
+                    &.active{
+                        a{
+                            color:#1F8CE6;
+                        }
+                    }
                 }
             }
         }
     }
-    .qnaList_search {
+    .searchForm {
         display: flex;
         justify-content: center;
-        .searchContainer{
-            font-size: 18px;
-            margin-bottom: 30px;
-            .searchSelect {
-                width: 100px;
-                height: 34px;
-                border: 1px solid #1f8ce6; 
-                border-radius: 3px;
+        .searchField {
+            width: 100px;
+            height: 34px;
+            border: 1px solid #1f8ce6; 
+            border-radius: 3px;
+            margin-right: 5px;
+        }
+        .searchWord {
+            width: 490px;
+            height: 30px;
+            border: 1px solid #1f8ce6; 
+            border-radius: 3px;
+        }
+        .searchBtn {
+            width: 90px;
+            height: 34px;
+            border-radius: 3px;
+            border: 1px solid #1f8ce6; 
+            background-color: #1f8ce6;
+            color: #fff;
+            padding-bottom: 4px;
+            font-weight: bold;
+            margin-left: 5px;
+            &:hover{
+                cursor: pointer;
             }
-            .search_world {
-                width: 490px;
-                height: 30px;
-                border: 1px solid #1f8ce6; 
-                border-radius: 3px;
-            }
-            .search_btn {
-                width: 90px;
-                height: 34px;
-                border-radius: 3px;
-                border: 1px solid #1f8ce6; 
-                background-color: #1f8ce6;
-                color: #fff;
-                padding-bottom: 4px;
-            }
-           
-         }
+        }
     }
 }
 
