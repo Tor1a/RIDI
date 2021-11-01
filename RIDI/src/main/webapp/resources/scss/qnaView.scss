@@ -5,7 +5,7 @@
         width: 1200px;
         margin: 0 auto;
         .qnaView_form {
-            
+            position: relative;
             .qnaView_container {
                 .qnaView_inner {
                     li {
@@ -119,44 +119,49 @@
     }
 }
 
-.prevAndNext {
-    padding-top: 50px;
-    height: 70vh;
-    width: 230px;
-    float: left;
-    span { 
-        font-weight: bold;
-       
-    }
-}
-
-.qnaView_btn {
-    position: relative;
-    margin: 0 auto;
-    height: 70vh;
-    a {
-      
-        border: 1px solid #1f8ce6;
-        height: 30px;
-        border-radius: 5px;
-        padding: 5px 10px;
-        line-height: 30px;
-        position: absolute;
-        
-        &:nth-child(4) {
-            margin-left: 70px;
-            margin-top: 55px;
-            background-color: #1F8CE6;
-            color: #fff;
+.bottomContent{
+    display: flex;
+    .prevAndNext {
+        padding-top: 50px;
+        height: 70vh;
+        width: 16%;
+        //float: left;
+        span { 
             font-weight: bold;
-        }
-
-        &:nth-child(5) {
-            margin-left: 10px;
-            margin-top: 55px;
-            color: #1F8CE6;
+           
         }
     }
+    
+    .qnaView_btn {
+        //position: relative;
+        width: 83%;
+        margin: 0;
+        height: 70vh;
+        a {
+          
+            border: 1px solid #1f8ce6;
+            height: 30px;
+            border-radius: 5px;
+            padding: 5px 10px;
+            line-height: 30px;
+            position: absolute;
+            
+            &:nth-child(4) {
+                margin-left: 70px;
+                margin-top: 55px;
+                background-color: #1F8CE6;
+                color: #fff;
+                font-weight: bold;
+            }
+    
+            &:nth-child(5) {
+                margin-left: 10px;
+                margin-top: 55px;
+                color: #1F8CE6;
+            }
+        }
+    }
+
 }
 
 

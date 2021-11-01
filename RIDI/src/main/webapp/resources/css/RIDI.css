@@ -639,6 +639,10 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 .qnaList_body .qnaList_wrap .qnaList_page .pageContainer li { font-size: 20px; margin: 0 2px; color: #000000; }
 
+.qnaList_body .qnaList_wrap .qnaList_page .pageContainer li.leftArrow, .qnaList_body .qnaList_wrap .qnaList_page .pageContainer li.rightArrow { cursor: zoom-in; }
+
+.qnaList_body .qnaList_wrap .qnaList_page .pageContainer li.leftArrow:hover, .qnaList_body .qnaList_wrap .qnaList_page .pageContainer li.rightArrow:hover { color: #1F8CE6; }
+
 .qnaList_body .qnaList_wrap .qnaList_page .pageContainer li.active a { color: #1F8CE6; }
 
 .qnaList_body .searchForm { display: flex; justify-content: center; }

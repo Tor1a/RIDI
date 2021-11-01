@@ -39,41 +39,40 @@
 					</li>
 				</ul>
 			</div>
-
-			<div class="prevAndNext">
-				<!-- 이전 페이지로 넘기기 -->
-				<div class="item">
-					<span class="inner">PREV&nbsp;<span class="fas fa-angle-up"></span></span>
-					<a
-						href="QnaView.do?no=${prevQnaDto.no}&clickedPage=1&num=${prevQnaDto.num}">${prevQnaDto.subject }</a>
+			<div class="bottomContent">
+				<div class="prevAndNext">
+					<!-- 다음 페이지로 넘기기 -->
+					<div class="item">
+						<span class="inner">NEXT <span class="fas fa-angle-down"></span></span>
+						<a href="QnaView.do?no=${nextQnaDto.no}&clickedPage=1&num=${nextQnaDto.num}&searchField=${searchField}&searchWord=${searchWord}">${nextQnaDto.subject }</a>
+					</div>
+					<!-- 이전 페이지로 넘기기 -->
+					<div class="item">
+						<span class="inner">PREV&nbsp;<span class="fas fa-angle-up"></span></span>
+						<a href="QnaView.do?no=${prevQnaDto.no}&clickedPage=1&num=${prevQnaDto.num}&searchField=${searchField}&searchWord=${searchWord}">${prevQnaDto.subject }</a>
+					</div>
 				</div>
-				<!-- 다음 페이지로 넘기기 -->
-				<div class="item">
-					<span class="inner">NEXT <span class="fas fa-angle-down"></span></span>
-					<a
-						href="QnaView.do?no=${nextQnaDto.no}&clickedPage=1&num=${nextQnaDto.num}">${nextQnaDto.subject }</a>
+				<!--  댓글기능 -->
+				<div class="qnaView_btn">
+					<div class="replyBox">
+						<textarea name="reply" id="reply" placeholder="댓글을 입력해주세요." maxlength=100></textarea>
+						<button class="btnReply">댓글 등록</button>
+					</div>
+					<div class="txtCount">
+						<span id="currentCount"></span>/100
+					</div>
+					<div class="replyList">
+						<!-- 여기에 댓글 등록 -->
+						<ul class="list">
+						
+						
+						</ul>
+					</div>
+					<a href="QnaList.do?clickedPage=1">목록</a> 
+					<a href="#" id="qnaDeleteBtn">삭제</a>
 				</div>
 			</div>
 
-			<!--  댓글기능 -->
-			<div class="qnaView_btn">
-				<div class="replyBox">
-					<textarea name="reply" id="reply" placeholder="댓글을 입력해주세요."></textarea>
-					<button class="btnReply">댓글 등록</button>
-				</div>
-				<div class="txtCount">
-					<span id="currentCount"></span>/100
-				</div>
-				<div class="replyList">
-					<!-- 여기에 댓글 등록 -->
-					<ul class="list">
-					
-					
-					</ul>
-				</div>
-				<a href="QnaList.do?clickedPage=1">목록</a> 
-				<a href="#" id="qnaDeleteBtn">삭제</a>
-			</div>
 		</div>
 	</div>
 </div>

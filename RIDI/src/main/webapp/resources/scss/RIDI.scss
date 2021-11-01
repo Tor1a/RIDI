@@ -1752,6 +1752,12 @@ input[type="number"]::-webkit-inner-spin-button {
                     font-size:20px;
                     margin: 0 2px;
                     color: #000000;
+                    &.leftArrow, &.rightArrow{
+                        cursor: zoom-in;
+                        &:hover{
+                            color:#1F8CE6;
+                        }
+                    }
                     &.active{
                         a{
                             color:#1F8CE6;
