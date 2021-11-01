@@ -70,10 +70,9 @@ public class OrdersController {
 	// 찜한 내용을 1개 삭제한다.
 	@RequestMapping("/DeleteShoppingCart.do")
 	@ResponseBody
-	public int deleteShoppingCart(@RequestParam Map<String,Object> map) {
+	public int deleteShoppingCart(OrdersDto ordersDto) {
 		int result = 0;
-		String itemNo = (String)map.get("itemNo");
-		result = ordersDao.deleteOrder(itemNo);
+		result = ordersDao.deleteOrder(ordersDto);
 		
 		return result;
 	}
@@ -87,8 +86,8 @@ public class OrdersController {
 		return order_Group_No;
 	}
 	
-	// 결제예정인 찜한 책들을 DB에 같은 orderGroupNo에 묶어준다.
-	@RequestMapping("/setOrderGroupNo.do")
+	// 결제완료한 책들을 DB에 같은 orderGroupNo에 묶어준다.
+	@RequestMapping("/SetOrderGroupNo.do")
 	@ResponseBody
 	public int setOrderGroupNo(OrdersDto ordersDto) {
 		int result = 0;
@@ -102,6 +101,24 @@ public class OrdersController {
 	public int unsetOrderGroupNo(OrdersDto ordersDto) {
 		int result = 0;
 		result = ordersDao.unsetOrderGroupNo(ordersDto);
+		return result;
+	}
+	
+	//배송상태를 결제 대기중으로 변경한다.
+	@RequestMapping("/setShippingStageWaitPay.do")
+	@ResponseBody
+	public int setShippingStageWaitPay(OrdersDto ordersDto) {
+		int result = 0;
+		result = ordersDao.setShippingStageWaitPay(ordersDto);
+		return result;
+	}
+	
+	//배송상태를 찜한 상태로 변경한다
+	@RequestMapping("/setShippingStageDibs.do")
+	@ResponseBody
+	public int setShippingStageDibs(OrdersDto ordersDto) {
+		int result = 0;
+		result = ordersDao.setShippingStageDibs(ordersDto);
 		return result;
 	}
 
@@ -127,14 +144,6 @@ public class OrdersController {
 		 return hashMap;
 	}
 	
-	//결제한 Order를 결제 setPayCheck처리 표시를 DB에 저장한다.
-	@RequestMapping("/setPayCheck.do")
-	@ResponseBody
-	public int setPayCheck(OrdersDto ordersDto) {
-		int result = 0;
-		result = ordersDao.setPayCheck(ordersDto);
-		return result;
-	}
 	
 	//결제완료한 Order들을 DB에서 받아온다.
 	@RequestMapping("/getPayOrderList.do")
@@ -146,5 +155,7 @@ public class OrdersController {
 		hashMap.put("orderList", orderList);
 		return hashMap;
 	}
+	
+
 	
 }

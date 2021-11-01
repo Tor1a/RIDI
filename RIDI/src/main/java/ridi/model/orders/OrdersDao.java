@@ -40,10 +40,10 @@ public class OrdersDao {
 	}
 	
 	// 찜한 내용을 1개 삭제
-	public int deleteOrder(String itemNo) {
+	public int deleteOrder(OrdersDto ordersDto) {
 		int result = 0;
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		result = sqlSession.delete("deleteOrder",itemNo);
+		result = sqlSession.delete("deleteOrder",ordersDto);
 		sqlSession.commit();
 		sqlSession.close();
 		return result;
@@ -58,7 +58,7 @@ public class OrdersDao {
 		return order_Group_No;
 	}
 	
-	// 결제하려는 찜한 책들을 DB에 같은 orderGroupNo에 묶어서를 넣어준다.
+	// 결제완료한 책들을 DB에 같은 orderGroupNo에 묶어준다.
 	public int setOrderGroupNo(OrdersDto ordersDto) {
 		int result = 0;
 		SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -80,11 +80,24 @@ public class OrdersDao {
 		return result;
 	}
 	
-	//결제한 Order를 결제 처리 표시를 DB에 저장한다.
-	public int setPayCheck(OrdersDto ordersDto) {
+	
+	
+	//배송상태를 결제 대기중으로 변경한다.
+	public int setShippingStageWaitPay(OrdersDto ordersDto) {
 		int result = 0;
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		result = sqlSession.update("setPayCheck", ordersDto);
+		result = sqlSession.update("setShippingStageWaitPay", ordersDto);
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return result;
+	}
+	
+	//배송상태를 찜한 상태로 변경한다
+	public int setShippingStageDibs(OrdersDto ordersDto) {
+		int result = 0;
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		result = sqlSession.update("setShippingStageDibs", ordersDto);
 		sqlSession.commit();
 		sqlSession.close();
 		

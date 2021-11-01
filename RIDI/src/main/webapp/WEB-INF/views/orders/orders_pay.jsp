@@ -3,7 +3,7 @@
 <div id="order_Content" style="height: 100%">
         <div class="order_Inner">
             <div id="order_Form">
-                <h4 class="order_Title">주문/결제</h4>
+                <h4 class="order_Title">주문 / 결제</h4>
                 <p>배송/결제 정보를 정확히 입력해 주세요.</p>
                 <div class="order_Form_Inner">
                     <form action="" method="post">

@@ -13,8 +13,8 @@
 	 </select>
 	 
 	 <!-- 찜한 내용을 1개 삭제 -->
-	 <delete id="deleteOrder" parameterType="string">
-	 	DELETE FROM ORDERS WHERE NO = #{itemNo}
+	 <delete id="deleteOrder" parameterType="OrdersDto">
+	 	DELETE FROM ORDERS WHERE NO = #{no} AND ORDER_PERSON = #{order_Person}
 	 </delete>
 	 
 	 <!-- 주문번호를 DB에서 생성하고 결과를 반환한다. -->
@@ -22,21 +22,25 @@
 	 	SELECT SEQ_ORDER_GROUP_NO.NEXTVAL AS ORDER_GROUP_NO FROM DUAL
 	 </select>
 	 
-	 <!-- 결제하려는 찜한 책들을 DB에 같은 orderGroupNo에 묶어서를 넣어준다. -->
-	 <update id="setOrderGroupNo" parameterType="OrdersDto">
-	 	UPDATE ORDERS SET ORDER_GROUP_NO = #{order_Group_No} WHERE NO = #{no}
+	 <!-- 배송상태를 결제 대기중으로 변경한다. -->
+	 <update id="setShippingStageWaitPay" parameterType="OrdersDto">
+	 	UPDATE ORDERS SET SHIPPING_STAGE = '결제 대기중' WHERE NO = #{no}
 	 </update>
 	 
+	 <!-- 배송상태를 찜한 상태로 변경한다. -->
+	 <update id="setShippingStageDibs" parameterType="OrdersDto">
+	 	UPDATE ORDERS SET SHIPPING_STAGE = '찜한 상태' WHERE NO = #{no}
+	 </update>
 	 
 	 <!-- ################## 결제 관련 ################## -->
 	 <!-- 결제 예정인 Order 정보를 DB에서 받아온다 -->
 	 <select id="getOrderList" parameterType="OrdersDto" resultType="OrdersDto">
-	 	SELECT * FROM ORDERS WHERE ORDER_PERSON = #{order_Person} AND PAYCHECK = #{payCheck} AND ORDER_GROUP_NO IS NOT NULL
+	 	SELECT * FROM ORDERS WHERE ORDER_PERSON = #{order_Person} AND PAYCHECK = #{payCheck} AND ORDER_GROUP_NO IS NULL AND SHIPPING_STAGE = '결제 대기중' 
 	 </select>
 	 
-	 <!-- 결제한 Order 정보를 DB에서 받아온다. -->
+	 <!-- 결제 완료한 Order 정보를 DB에서 받아온다. -->
 	 <select id="getPayOrderList" parameterType="OrdersDto" resultType="OrdersDto">
-	 	SELECT * FROM ORDERS WHERE ORDER_PERSON = #{order_Person} AND PAYCHECK = 'PAY' AND ORDER_GROUP_NO IS NOT NULL
+	 	SELECT * FROM ORDERS WHERE ORDER_PERSON = #{order_Person} AND PAYCHECK = 'PAY' AND ORDER_GROUP_NO IS NOT NULL AND SHIPPING_STAGE = '결제 완료' ORDER BY ORDER_GROUP_NO DESC
 	 </select>
 	 
 	 <!-- orderGroupNo를 빈값으로 바꾼다 -->
@@ -44,10 +48,11 @@
 	 	UPDATE ORDERS SET ORDER_GROUP_NO = NULL WHERE NO = #{no}
 	 </update>
 	 
-	 <!-- 결제한 Order를 결제 처리표시를 DB에 해준다. -->
-	 <update id="setPayCheck" parameterType="OrdersDto">
-	 	UPDATE ORDERS SET PAYCHECK = 'PAY', SHIPPING_STAGE = '결제완료' WHERE ORDER_GROUP_NO = #{order_Group_No}
+	  <!-- 결제완료한 책들을 DB에 같은 orderGroupNo에 묶어준다. -->
+	 <update id="setOrderGroupNo" parameterType="OrdersDto">
+		UPDATE ORDERS SET ORDER_GROUP_NO = #{order_Group_No}, SHIPPING_STAGE = '결제 완료', PAYCHECK='PAY' WHERE ORDER_PERSON = #{order_Person} AND SHIPPING_STAGE = '결제 대기중'
 	 </update>
+	 
 	 
 	 
 </mapper>

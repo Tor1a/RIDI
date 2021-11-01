@@ -58,7 +58,7 @@
 					<div class="book_Btn">
 						<!-- 오성식 수정(21.10.26) -->
 						<a style="cursor: pointer;" id="dibs"><i class="fas fa-shopping-cart"></i></a> 
-						<a href="#">구매하기</a>
+						<a href="OrderPayForm.do" id="bookPayBtn" onclick="return bookPay()">구매하기</a>
 					</div>
 				</div>
 			</div>
@@ -94,7 +94,7 @@
 		</div>
 		<!--starRating_container-->
 		<ul class="bookContents_wrapper">
-
+			
 		</ul>
 	</div>
 	<!--book_Review-->
