@@ -178,7 +178,7 @@ public class QnaController {
 		}
 		
 		// 댓글 삭제
-		@RequestMapping("DeleteReply.do")
+		@RequestMapping("/DeleteReply.do")
 		@ResponseBody
 		public int deleteReply(ReplyDto replyDto) {
 			int result =0;
@@ -191,13 +191,9 @@ public class QnaController {
 	
 	
 	//검색 기능
-	@RequestMapping("QnaSearchList.do")
-	public Map<String, Object> getQnaSearchList(QnaDto qnaDto)  {
-		Map<String, Object> hashMap = new HashMap<String, Object>();
-		List<QnaDto> getSearchAllList = null;
-		
-		
-		return hashMap;
+	@RequestMapping("/QnaSearchList.do")
+	public String getQnaSearchList(QnaDto qnaDto)  {
+		return "qna/qna_Search";
 	}
 	
 	

@@ -165,7 +165,7 @@ public class MemberController {
 	  memberDto.setAddress(memberDto.getAddress01()+"/"+memberDto.getAddress02());
 	  memberDto.setHp(memberDto.getHp_First()+"-"+memberDto.getHp_Middle()+"-"+memberDto.getHp_Last());
 
-	  
+	  log.info("memberDto=================={}",memberDto);
 	  int result = memberDao.insertMember(memberDto);
 	  if(result > 0) {
 		  ScriptWriterUtil.alertAndNext(response, "회원가입이 완료 되었습니다.", "/RIDI");

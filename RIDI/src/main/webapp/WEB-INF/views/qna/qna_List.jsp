@@ -58,13 +58,13 @@
 		<!-- 검색기능 -->
 		<div>
 		<form class="searchForm" name="searchForm" method="GET" action="QnaSearchList.do">
-			<select name="searchField" class="searchSelect">
+			<select class="searchField" name="searchField" class="searchSelect">
 				<option value="writerId" ${param.searchSelect=="writerId"?"selected":"" }  >작성자</option>
 				<option value="contents" ${param.searchSelect=="contents"?"selected":"" }>내용</option>
 				<option value="subject"  ${param.searchSelect=="subject"?"selected":""}>제목</option>
 			</select>
-			<input type="text" name="searchWord" value="${param.searchWord }" placeholder="검색어를 입력하세요.">
-			<input type="submit" id="searchBtn" class="btn"  value="검색">
+			<input class="searchWord" type="text" name="searchWord" value="${param.searchWord }" placeholder="검색어를 입력하세요.">
+			<input class="searchBtn" type="submit" id="searchBtn" class="btn"  value="검색">
 		</form>
 		
 		<!-- 글 작성 -->

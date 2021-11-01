@@ -637,15 +637,15 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 .qnaList_body .qnaList_wrap .qnaList_page .pageContainer a { color: #000000; margin: 0 2px; }
 
-.qnaList_body .qnaList_search { display: flex; justify-content: center; }
+.qnaList_body .searchForm { display: flex; justify-content: center; }
 
-.qnaList_body .qnaList_search .searchContainer { font-size: 18px; margin-bottom: 30px; }
+.qnaList_body .searchForm .searchField { width: 100px; height: 34px; border: 1px solid #1f8ce6; border-radius: 3px; margin-right: 5px; }
 
-.qnaList_body .qnaList_search .searchContainer .searchSelect { width: 100px; height: 34px; border: 1px solid #1f8ce6; border-radius: 3px; }
+.qnaList_body .searchForm .searchWord { width: 490px; height: 30px; border: 1px solid #1f8ce6; border-radius: 3px; }
 
-.qnaList_body .qnaList_search .searchContainer .search_world { width: 490px; height: 30px; border: 1px solid #1f8ce6; border-radius: 3px; }
+.qnaList_body .searchForm .searchBtn { width: 90px; height: 34px; border-radius: 3px; border: 1px solid #1f8ce6; background-color: #1f8ce6; color: #fff; padding-bottom: 4px; font-weight: bold; margin-left: 5px; }
 
-.qnaList_body .qnaList_search .searchContainer .search_btn { width: 90px; height: 34px; border-radius: 3px; border: 1px solid #1f8ce6; background-color: #1f8ce6; color: #fff; padding-bottom: 4px; }
+.qnaList_body .searchForm .searchBtn:hover { cursor: pointer; }
 
 .qnaList_replyNo { display: inline-block; width: 100px; height: 30px; border: 2px solid #1f8ce6; border-radius: 5px; text-align: center; line-height: 30px; color: #738096; }
 
