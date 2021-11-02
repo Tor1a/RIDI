@@ -39,7 +39,7 @@
                                             <option value="010">010</option>
                                             <option value="011">011</option>
                                             <option value="017">017</option>
-                                        </select> - <input type="number" name="hp_Middel" class="short" value="${ fn:substring(sessionScope.loggedMember.hp,4,8)}">
+                                        </select> - <input type="number" name="hp_Middle" class="short" value="${ fn:substring(sessionScope.loggedMember.hp,4,8)}">
                                         - <input type="number" name="hp_Last" class="short" value="${ fn:substring(sessionScope.loggedMember.hp,9,13)}">
                                     </td>
                                 </tr>
