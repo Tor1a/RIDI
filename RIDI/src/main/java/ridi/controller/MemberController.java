@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,6 +40,8 @@ public class MemberController {
      
      @Autowired
      MemberDto tempMemberDto;
+     
+     private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
   //아이디 찾기 페이지로 이동
   @RequestMapping("/MemberFindIdForm.do")
@@ -94,8 +97,8 @@ public class MemberController {
 				break;
 			}
 		}
-	  
-	  memberDto.setPassword(tempPassword);
+	  String securePw = encoder.encode(tempPassword);
+	  memberDto.setPassword(securePw);
 	  result = memberDao.memberFindPw(memberDto);
 	  
 	  if(result > 0) {
@@ -142,11 +145,18 @@ public class MemberController {
   public void memberLogin(MemberDto memberDto,HttpServletResponse response,HttpServletRequest request,HttpSession session) throws IOException {
 	  
 	  loggedMemberDto = memberDao.getLoggedMember(memberDto);
+	  
 	  if(loggedMemberDto != null) {
-		  session.setAttribute("loggedMember", loggedMemberDto);
-		  ScriptWriterUtil.alertAndNext(response, "로그인되었습니다.", "/RIDI");
+		  String inputPw = memberDto.getPassword();
+		  String DBPw = loggedMemberDto.getPassword();
+		  if(encoder.matches(inputPw, DBPw)) {
+			  session.setAttribute("loggedMember", loggedMemberDto);
+			  ScriptWriterUtil.alertAndNext(response, "로그인되었습니다.", "/RIDI");			  
+		  } else {
+			  ScriptWriterUtil.alertAndBack(response, "패스워드가 틀립니다.");
+		  }
 	  } else {
-		  ScriptWriterUtil.alertAndBack(response, "아이디 또는 비밀번호가 맞지 않습니다.");
+		  ScriptWriterUtil.alertAndBack(response, "존재하는 ID가 아닙니다.");
 	  }
   }
   
@@ -164,8 +174,9 @@ public class MemberController {
 	  memberDto.setRRN(memberDto.getRrn_First()+"-"+memberDto.getRrn_Last());
 	  memberDto.setAddress(memberDto.getAddress01()+"/"+memberDto.getAddress02());
 	  memberDto.setHp(memberDto.getHp_First()+"-"+memberDto.getHp_Middle()+"-"+memberDto.getHp_Last());
+	  String securePw = encoder.encode(memberDto.getPassword());
+	  memberDto.setPassword(securePw);
 
-	  log.info("memberDto=================={}",memberDto);
 	  int result = memberDao.insertMember(memberDto);
 	  if(result > 0) {
 		  ScriptWriterUtil.alertAndNext(response, "회원가입이 완료 되었습니다.", "/RIDI");
@@ -190,8 +201,9 @@ public class MemberController {
 	  memberDto.setAddress(memberDto.getAddress01()+"/"+memberDto.getAddress02());
 	  memberDto.setHp(memberDto.getHp_First()+"-"+memberDto.getHp_Middle()+"-"+memberDto.getHp_Last());
 	  
-	  if(memberDto.getPassword().isBlank()) {
-		  memberDto.setPassword(loggedMemberDto.getPassword());
+	  if(!memberDto.getPassword().isBlank()) {
+		  String securePw = encoder.encode(memberDto.getPassword());		  
+		  memberDto.setPassword(securePw);		  
 	  }
 	  
 	  int result = memberDao.modifyMember(memberDto);

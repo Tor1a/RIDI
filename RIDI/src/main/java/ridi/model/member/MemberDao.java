@@ -42,7 +42,13 @@ public class MemberDao {
 		   int result = 0;
 		   
 		   SqlSession sqlSession = sqlSessionFactory.openSession();
-		   result = sqlSession.update("modifyMember",memberDto);
+		   
+		   if(memberDto.getPassword().isBlank()) {
+			   result = sqlSession.update("modifyMemberNotPw", memberDto);
+		   } else {
+			   result = sqlSession.update("modifyMember",memberDto);			   
+		   }
+		   
 		   sqlSession.commit();
 		   sqlSession.close();
 		   return result;

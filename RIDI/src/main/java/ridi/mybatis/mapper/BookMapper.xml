@@ -65,7 +65,7 @@
 	<!-- 오성식 추가 -->
 	<!-- 베스트셀러 9개 책 출력 -->
 	<select id="getBestSeller" resultType="BookDto">
-		SELECT * FROM (SELECT * FROM BOOK ORDER BY STAR_RATING DESC) WHERE ROWNUM <![CDATA[<]]>= 9
+		SELECT * FROM (SELECT B.*, ROWNUM FROM (SELECT * FROM BOOK ORDER BY STAR_RATING DESC) B) WHERE ROWNUM <![CDATA[<]]>= 9
 	</select>
 	
 	<!-- 조회수 증가 -->
@@ -84,7 +84,7 @@
 	<select id="getNewBook" resultType="BookDto">
 		SELECT * FROM BOOK 
 							WHERE 
-							PUBLICATION_DATE <![CDATA[>]]> SYSDATE - (INTERVAL '21' DAY) 
+							PUBLICATION_DATE <![CDATA[>]]> SYSDATE - (INTERVAL '63' DAY) 
 							AND CATEGORY NOT IN('mainadv') 
 							ORDER BY PUBLICATION_DATE DESC
 	</select>
@@ -96,14 +96,14 @@
 		SELECT * FROM BOOK WHERE CATEGORY = 'mainadv' ORDER BY NO DESC
 	</select>
 	
-	<!-- 재태크페이지 현재시간, 사람들이 많이 읽고있는 페이지 출력 (아직 미설계, sql 수정해야함) -->
+	<!-- 재태크페이지 현재시간, 사람들이 많이 읽고있는 페이지 출력 (오성식 수정) -->
 	<select id="getMoneyTimeBook" resultType="BookDto">
-		SELECT * FROM BOOK WHERE CATEGORY = '재태크' AND ROWNUM <![CDATA[<]]>= 9
+		SELECT * FROM (SELECT B.*,ROWNUM FROM (SELECT * FROM BOOK WHERE CATEGORY = '재태크' ORDER BY COUNT DESC) B ) WHERE ROWNUM <![CDATA[<=]]> 9
 	</select>
 	
 	<!-- 재태크페이지 리디추천 출력 (아직 미설계, sql 수정해야함)-->
 	<select id="getMoneyRecomBook" resultType="BookDto">
-		SELECT * FROM BOOK WHERE CATEGORY = '재태크'
+		SELECT * FROM (SELECT B.*, ROWNUM FROM (SELECT * FROM BOOK WHERE CATEGORY = '재태크' ORDER BY STAR_RATING DESC) B) WHERE ROWNUM <![CDATA[<=]]> 12
 	</select>
 	
 	<!-- 만화 페이지 -->
@@ -115,12 +115,12 @@
 	
 	<!-- 만화 페이지 현재시간, 사람들이 많이 읽고있는 페이지 출력  -->
 	<select id="getComicTimeBook" resultType="BookDto">
-		SELECT * FROM BOOK WHERE CATEGORY = '만화' AND ROWNUM <![CDATA[<]]>= 9
+		SELECT * FROM (SELECT B.*,ROWNUM FROM (SELECT * FROM BOOK WHERE CATEGORY = '만화' ORDER BY COUNT DESC) B ) WHERE ROWNUM <![CDATA[<=]]> 9
 	</select>
 	
 	<!-- 만화 페이지 리디추천 출력 (아직 미설계, sql 수정해야함)-->
 	<select id="getComicRecomBook" resultType="BookDto">
-		SELECT * FROM BOOK WHERE CATEGORY = '만화'
+		SELECT * FROM (SELECT B.*, ROWNUM FROM (SELECT * FROM BOOK WHERE CATEGORY = '만화' ORDER BY STAR_RATING DESC) B) WHERE ROWNUM <![CDATA[<=]]> 12
 	</select>
 	
 	<!-- 에세이 페이지 -->
@@ -132,12 +132,12 @@
 	
 	<!-- 에세이 페이지 현재시간, 사람들이 많이 읽고있는 페이지 출력  -->
 	<select id="getEssayTimeBook" resultType="BookDto">
-		SELECT * FROM BOOK WHERE CATEGORY = '에세이' AND ROWNUM <![CDATA[<]]>= 9
+		SELECT * FROM (SELECT B.*,ROWNUM FROM (SELECT * FROM BOOK WHERE CATEGORY = '에세이' ORDER BY COUNT DESC) B ) WHERE ROWNUM <![CDATA[<=]]> 9
 	</select>
 	
 	<!-- 에세이 페이지 리디추천 출력 (아직 미설계, sql 수정해야함)-->
 	<select id="getEssayRecomBook" resultType="BookDto">
-		SELECT * FROM BOOK WHERE CATEGORY = '에세이'
+		SELECT * FROM (SELECT B.*, ROWNUM FROM (SELECT * FROM BOOK WHERE CATEGORY = '에세이' ORDER BY STAR_RATING DESC) B) WHERE ROWNUM <![CDATA[<=]]> 12
 	</select>
 	
 </mapper>
