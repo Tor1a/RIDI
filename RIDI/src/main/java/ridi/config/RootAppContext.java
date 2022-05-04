@@ -23,8 +23,8 @@ public class RootAppContext {
 	public DataSource dataSource() {
 		HikariConfig hikariConfig = new HikariConfig();
 		hikariConfig.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-		hikariConfig.setJdbcUrl("jdbc:oracle:thin:@20.196.196.215:1521:xe");
-		hikariConfig.setUsername("TEST");
+		hikariConfig.setJdbcUrl("jdbc:oracle:thin:@3.35.53.229:2521:xe");
+		hikariConfig.setUsername("SYSTEM");
 		hikariConfig.setPassword("1234");
 		
 		

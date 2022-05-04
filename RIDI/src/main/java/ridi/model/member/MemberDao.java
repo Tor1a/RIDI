@@ -85,15 +85,15 @@ public class MemberDao {
 	   }
 	   
 	   //PW찾기 시 임시 패스워드를 DB에 저장
-	   public int memberFindPw(MemberDto memberDto) {
-		   int result = 0;
-		   
-		   SqlSession sqlSession = sqlSessionFactory.openSession();
-		   result = sqlSession.update("memberFindPw",memberDto);
-		   sqlSession.commit();
-		   sqlSession.close();
-		   return result;
-	   }
+//	   public int memberFindPw(MemberDto memberDto) {
+//		   int result = 0;
+//		   
+//		   SqlSession sqlSession = sqlSessionFactory.openSession();
+//		   result = sqlSession.update("memberFindPw",memberDto);
+//		   sqlSession.commit();
+//		   sqlSession.close();
+//		   return result;
+//	   }
 	   
 	   //결제한 금액만큼 캐시를 차감하고 member 세션을 다시받는다.
 	   public int minusCash(MemberDto memberDto) {

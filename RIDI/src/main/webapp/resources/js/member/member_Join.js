@@ -183,25 +183,25 @@ $("#hp_Last").on("keyup",function(){
 });
 
 // 이메일 인증번호를 생성하고 유저가 입력한 메일주소로 인증번호를 전송한다.
-let emailAuthNum;
-function generateEmailAuthNum(){
-	if($.trim($("#email").val()) == ""){
-		alert("메일정보를 입력해주세요.");
-		return false;
-	}
-	
-	if(emailValidationCheck() == true){
-		$.ajax({
-			url:"generateEmailAuthNum.do",
-			type:"post",
-			data: {"email":$("#email").val()},
-			success:function(result){
-				emailAuthNum = result
-				alert("인증메일을 발송했습니다. 메일함을 확인해주세요");
-			},
-			error:function(error){
-				alert(error);
-			}
-		})
-	}
-}
+//let emailAuthNum;
+//function generateEmailAuthNum(){
+//	if($.trim($("#email").val()) == ""){
+//		alert("메일정보를 입력해주세요.");
+//		return false;
+//	}
+//	
+//	if(emailValidationCheck() == true){
+//		$.ajax({
+//			url:"generateEmailAuthNum.do",
+//			type:"post",
+//			data: {"email":$("#email").val()},
+//			success:function(result){
+//				emailAuthNum = result
+//				alert("인증메일을 발송했습니다. 메일함을 확인해주세요");
+//			},
+//			error:function(error){
+//				alert(error);
+//			}
+//		})
+//	}
+//}

@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,6 +35,8 @@ import ridi.utlils.ScriptWriterUtil;
 @Slf4j
 public class QnaController {
 
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	@Autowired
 	QnaDao qnaDao;
 	
@@ -95,7 +99,7 @@ public class QnaController {
 				total = qnaDao.getTotal();
 			} else {
 				total = qnaDao.getSearchTotal(hashMap);
-				log.info("total=========={}",total);
+				logger.info("total=========={}",total);
 			}
 			int lastPage = 0;
 			if((int)(total % listPerCount) ==0) {
@@ -231,7 +235,7 @@ public class QnaController {
 		public int getReplyCount(@RequestParam Map<String,Object> map) {
 			int result = 0;
 			int boardId = Integer.parseInt((String) map.get("boardId"));
-			log.info("ssoh============={}",boardId);
+			logger.info("ssoh============={}",boardId);
 			result = replyDao.getReplyCount(boardId);
 			return result;
 		}

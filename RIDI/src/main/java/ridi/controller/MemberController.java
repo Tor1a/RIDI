@@ -68,46 +68,46 @@ public class MemberController {
   
   //비밀번호 재설정 페이지에서 입력받은 id,email을 토대로 임시 비밀번호 생성,발급
   // 임시 비밀번호 생성, DB에 저장, 유효한 Email에 임시 비밀번호 발송
-  @RequestMapping("/MemberFindPw.do")
-  @ResponseBody
-  public Map<String,String> memberFindPw(MemberDto memberDto) {
-	  int result = 0;
-	  Map<String,String> hashMap = new HashMap<String,String>();
-	  
-	  // 길이 20의 임시 패스워드 생성
-	  String tempPassword = "";
-		Random random = new Random();
-		for(int i=0; i <20; i++) {
-			int rIndex = random.nextInt(4);
-			switch(rIndex) {
-			case 0:
-				// a-z
-				tempPassword=tempPassword+(char)((int)random.nextInt(26)+97);
-				break;
-			case 1:
-				// A-Z
-				tempPassword=tempPassword+(char)((int)random.nextInt(26)+65);
-				break;
-			case 2:
-				// 0-9
-				tempPassword=tempPassword+random.nextInt(10);
-				break;
-			case 3:
-				tempPassword=tempPassword+(char)(random.nextInt(15)+33);
-				break;
-			}
-		}
-	  String securePw = encoder.encode(tempPassword);
-	  memberDto.setPassword(securePw);
-	  result = memberDao.memberFindPw(memberDto);
-	  
-	  if(result > 0) {
-		  Mail.NaverMail(memberDto.getEmail(), "[RIDI] 임시 비밀번호 발급.", "<p>안녕하세요 RIDI 임시 비밀번호 입니다. <br><br> 비밀번호 : <b>"+tempPassword+"</b></p>");
-	  }
-	  
-	  hashMap.put("result", String.valueOf(result));
-	  return hashMap;
-  }
+//  @RequestMapping("/MemberFindPw.do")
+//  @ResponseBody
+//  public Map<String,String> memberFindPw(MemberDto memberDto) {
+//	  int result = 0;
+//	  Map<String,String> hashMap = new HashMap<String,String>();
+//	  
+//	  // 길이 20의 임시 패스워드 생성
+//	  String tempPassword = "";
+//		Random random = new Random();
+//		for(int i=0; i <20; i++) {
+//			int rIndex = random.nextInt(4);
+//			switch(rIndex) {
+//			case 0:
+//				// a-z
+//				tempPassword=tempPassword+(char)((int)random.nextInt(26)+97);
+//				break;
+//			case 1:
+//				// A-Z
+//				tempPassword=tempPassword+(char)((int)random.nextInt(26)+65);
+//				break;
+//			case 2:
+//				// 0-9
+//				tempPassword=tempPassword+random.nextInt(10);
+//				break;
+//			case 3:
+//				tempPassword=tempPassword+(char)(random.nextInt(15)+33);
+//				break;
+//			}
+//		}
+//	  String securePw = encoder.encode(tempPassword);
+//	  memberDto.setPassword(securePw);
+//	  result = memberDao.memberFindPw(memberDto);
+//	  
+//	  if(result > 0) {
+//		  Mail.NaverMail(memberDto.getEmail(), "[RIDI] 임시 비밀번호 발급.", "<p>안녕하세요 RIDI 임시 비밀번호 입니다. <br><br> 비밀번호 : <b>"+tempPassword+"</b></p>");
+//	  }
+//	  
+//	  hashMap.put("result", String.valueOf(result));
+//	  return hashMap;
+//  }
      
   //회원가입 페이지로 이동
   @RequestMapping("/MemberJoinForm.do")
@@ -125,15 +125,15 @@ public class MemberController {
   }
   
   //Email 인증번호를 생성, 입력받은 메일로 발송
-  @RequestMapping("/generateEmailAuthNum.do")
-  @ResponseBody
-  public int generateEmailAuthNum(@RequestParam Map<String,Object> map) {
-	  String email = (String)map.get("email");
-	  double random = Math.random()*1000000;
-	  Mail.NaverMail(email, "[RIDI] 인증메일 발송드립니다.", "<p>안녕하세요 RIDI 이메일 인증번호 발송드립니다. <br><br> 인증번호 : <b>"+(int)random+"</b></p>");
-	  return (int)random;
-  }
-  
+//  @RequestMapping("/generateEmailAuthNum.do")
+//  @ResponseBody
+//  public int generateEmailAuthNum(@RequestParam Map<String,Object> map) {
+//	  String email = (String)map.get("email");
+//	  double random = Math.random()*1000000;
+//	  Mail.NaverMail(email, "[RIDI] 인증메일 발송드립니다.", "<p>안녕하세요 RIDI 이메일 인증번호 발송드립니다. <br><br> 인증번호 : <b>"+(int)random+"</b></p>");
+//	  return (int)random;
+//  }
+//  
   //로그인 페이지로 이동
   @RequestMapping("/MemberLoginForm.do")
   public String memberLoginForm() {

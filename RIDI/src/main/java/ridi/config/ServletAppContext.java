@@ -24,7 +24,7 @@ public class ServletAppContext implements WebMvcConfigurer{
 		public void addResourceHandlers(ResourceHandlerRegistry registry) {
 			WebMvcConfigurer.super.addResourceHandlers(registry);
 			registry.addResourceHandler("/**").addResourceLocations("/resources/");
-			registry.addResourceHandler("/bookImage/**").addResourceLocations("file:///C:/bookImage/");
+			registry.addResourceHandler("/bookImage/**").addResourceLocations("file:///home/usr/bookImage/");
 		
 		}
 		@Bean

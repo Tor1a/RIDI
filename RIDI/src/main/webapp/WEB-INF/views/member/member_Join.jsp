@@ -66,8 +66,8 @@
                     <p>-</p><input type="type" name="hp_Last" class="short" placeholder="번호 뒷자리" id="hp_Last" maxlength="4">
                 </div>
                 <input type="text" name="email" placeholder="이메일" class="join_Email" id="email">
-                <input type="text" name="emailCheck" placeholder="이메일 인증번호" class="join_box" id="emailCheck">
-				<input type="button" name="emailCheckBtn" value="메일 인증번호 발송" id="btnEmail" class="emailCheckBtn" onclick="generateEmailAuthNum()">
+<!--                 <input type="text" name="emailCheck" placeholder="이메일 인증번호" class="join_box" id="emailCheck"> -->
+<!-- 				<input type="button" name="emailCheckBtn" value="메일 인증번호 발송" id="btnEmail" class="emailCheckBtn" onclick="generateEmailAuthNum()"> -->
                 <input type="submit" value="회원가입 완료" class="join_Btn_Box" onclick="return checkEmptyInput()")>
             </div>
         </form>
